@@ -1,7 +1,12 @@
 import { useState } from "react";
+import Footer from "./components/Footer";
 
 function App() {
-  return <div>for now</div>;
+  return (
+    <div>
+      <Footer />
+    </div>
+  );
 }
 
 export default App;
