@@ -34,7 +34,6 @@
 .item.one {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
 }
 
 .item.one h1 {
