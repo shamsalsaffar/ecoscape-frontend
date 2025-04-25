@@ -2,15 +2,15 @@
 
 .header {
   width: 100vw;
-  background-image: url("../images/tree_background.png");
+  background-image: url("../images/tree_background.jpg");
   height: 80px; /* height som passar */
   background-color: rgba(255, 255, 255, 0); /*شفافية transparency */
   /*position: fixed; /* يبقى بالأعلى fast upp änvande när behövs*/
-  background-size: cover;
   background-position: center;
   display: flex;
   align-items: center;
   z-index: 999;
+  overflow-x: hidden;
 }
 
 .header h1 {
