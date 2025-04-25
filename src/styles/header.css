@@ -1,0 +1,209 @@
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+.header {
+  width: 100vw;
+  background-image: url("../images/tree_background.jpg");
+  height: 80px; /* height som passar */
+  background-color: rgba(255, 255, 255, 0); /*شفافية transparency */
+  /*position: fixed; /* يبقى بالأعلى fast upp änvande när behövs*/
+  background-position: center;
+  display: flex;
+  align-items: center;
+  z-index: 999;
+}
+
+.header h1 {
+  margin: 0;
+  margin-left: 2rem;
+  font-size: 1.8rem;
+  color: white;
+}
+
+.header nav {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2em; /* mellanrum mellan länkar och knappar */
+}
+.nav-links {
+  margin-left: auto;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.header nav a {
+  color: black; /* färg test */
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.header nav a:hover {
+  text-decoration: underline;
+}
+.dropdown-menu {
+  position: absolute;
+  top: 73.5px; /* Placera menyn precis under ikonen */
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 2px;
+  width: 110px; /* Begränsa menue size */
+  left: 87%; /* för styra dropdown menu till höger eller vänster*/
+}
+
+.dropdown-menu a {
+  display: block;
+  padding: 4px;
+  color: black;
+  text-decoration: none;
+}
+
+.dropdown-menu a:hover {
+  background-color: #f0f0f0;
+}
+
+/*==== SMALLER SCREEN======*/
+@media (max-width: 768px) {
+  .header nav {
+    margin: 0;
+  }
+  .header nav a {
+    font-size: 11px; /* mindre textstorlek på länkar när skärmen är smal */
+  }
+  .header h1 {
+    margin: 0;
+    margin-left: 0.01rem;
+    font-size: 1rem;
+  }
+  .user-icon {
+    font-size: 1em;
+  }
+  .dropdown-menu {
+    width: 80px; /* Begränsa menue size */
+    left: 80%; /* för styra dropdown menu till höger eller vänster*/
+  }
+}
+
+/* ====SMALLER SCREEN ====*/
+@media (max-width: 440px) {
+  .header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.5rem;
+  }
+
+  .header h1 {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+  }
+
+  .header nav {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 0.5rem;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .header nav > div {
+    display: flex;
+    flex-direction: row;
+    gap: 0.2rem;
+    margin-left: 0;
+  }
+
+  .header button {
+    font-size: 0.5rem;
+    padding: 0.1rem 0.1rem;
+    margin: 2px;
+    border-radius: none;
+  }
+
+  .icon-button {
+    padding: 0.1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .user-icon {
+    font-size: 1em;
+    border-radius: none;
+  }
+
+  .header nav a {
+    font-size: 10px;
+    gap: 0;
+  }
+  .dropdown-menu {
+    width: 76px; /* Begränsa menue size */
+    left: 77%; /* för styra dropdown menu till höger eller vänster*/
+  }
+}
+
+@media (max-width: 390px) {
+  .header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.5rem;
+  }
+
+  .header h1 {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+  }
+
+  .header nav {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 0.1rem;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .header nav > div {
+    display: flex;
+    flex-direction: row;
+    gap: 0.2rem;
+    margin-left: 0;
+  }
+
+  .header button {
+    font-size: 0.5rem;
+    padding: 0.1rem 0.1rem;
+    margin: 2px;
+    border-radius: none;
+  }
+
+  .icon-button {
+    padding: 0.1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .user-icon {
+    font-size: 1em;
+    border-radius: none;
+  }
+
+  .header nav a {
+    font-size: 8px;
+    gap: 0;
+    /* margin-right: 8px;*/
+    padding-right: 2px;
+    padding-left: -2px;
+    margin-left: 0;
+    margin-top: 2px;
+    left: -100px;
+  }
+}
