@@ -8,23 +8,23 @@ import Header from "./components/Header";
 import Home from "./components/Home";
 import Listings from "./components/Listings";
 import { useState } from "react";
-import "./styles/header.css"; // Kontrollera att dessa CSS-filer finns
+import "./styles/header.css";
 import "./styles/home.css";
 import Footer from "./components/Footer";
-
 import Signup from "./components/Signup";
 import Login from "./components/Login";
 import Helpcenter from "./components/Helpcenter";
 import HostPage from "./components/HostPage";
+import Banner from "./components/Banner";
 
 function App() {
   const [listings, setListings] = useState([]);
 
   const fetchListings = () => {
     fetch("http://localhost:8080/api/listings")
-      .then((res) => res.json()) // Konverterar svaret till JSON-format
-      .then((data) => setListings(data)) // Uppdaterar state med listorna
-      .catch((err) => console.error("Error fetching listings", err)); // Fångar och loggar eventuella fel
+      .then((res) => res.json())
+      .then((data) => setListings(data))
+      .catch((err) => console.error("Error fetching listings", err));
   };
 
   return (
@@ -69,3 +69,13 @@ function App() {
 }
 
 export default App;
+
+// const App = () => {
+//   return (
+//     <div>
+//       <Banner />
+//     </div>
+//   );
+// };
+
+// export default App;

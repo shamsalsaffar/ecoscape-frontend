@@ -11,8 +11,8 @@ const SearchBar = () => {
         </label>
         <input
           type="text"
-          id="property-name"
-          name="propertyName"
+          //id="property-name"
+          //name="propertyName"
           className="value"
           placeholder="Search by name"
         />
@@ -24,8 +24,8 @@ const SearchBar = () => {
         </label>
         <input
           type="text"
-          id="location"
-          name="propertyLocation"
+          //id="location"
+          //name="propertyLocation"
           className="value"
           placeholder="Where you want to go?"
         />
@@ -37,8 +37,8 @@ const SearchBar = () => {
         </label>
         <input
           type="date"
-          id="check-in"
-          name="checkInDate" 
+          //id="check-in"
+          //name="checkInDate" 
           className="value"
         />
       </div>
@@ -49,8 +49,8 @@ const SearchBar = () => {
         </label>
         <input
           type="date"
-          id="check-out"
-          name="checkOutDate" 
+          //id="check-out"
+          //name="checkOutDate" 
           className="value"
         />
       </div>

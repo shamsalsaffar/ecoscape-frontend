@@ -3,7 +3,7 @@ import "../styles/header.css";
 import { PiUserListBold } from "react-icons/pi";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import backgroundImage from "../images/tree_background.jpg";
+//import backgroundImage from "../images/tree_background.jpg";
 import HostPage from "./HostPage";
 
 const Header = ({ onFetch }) => {

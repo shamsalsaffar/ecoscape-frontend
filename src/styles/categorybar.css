@@ -4,13 +4,12 @@
     justify-content: space-between;
     align-items: center;
     padding: 0px;
-    position: fixed;
+    position: relative;
     left: 50%; 
-    top: 30%;
+    top: 45%;
     transform: translate(-50%, -50%); 
     width: 1025px;
     height: 93px;
-    background-color: aqua;
   }
   
 

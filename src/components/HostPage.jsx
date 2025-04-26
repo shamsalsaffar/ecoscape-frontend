@@ -9,6 +9,7 @@ const HostPage = () => {
             
             <main className="content">
                 <h1>Make your home a destination - become a host today</h1>
+    
 
             </main>
         </div>

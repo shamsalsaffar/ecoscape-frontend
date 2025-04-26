@@ -1,6 +1,8 @@
 .search-bar {
   display: flex;
   justify-content: center;
+  position:relative;
+  top: 30%;
 }
 
 form {
@@ -20,12 +22,10 @@ form {
   flex-direction: column;
 }
 
-
 .search-section:hover {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
 }
-
 
 .label {
   font-size: 12px;
@@ -42,9 +42,7 @@ form {
   outline: none;
   font-family: "Montserrat", sans-serif;
   font-weight: bolder;
-
 }
-
 
 .search-button {
   display: flex;
@@ -53,7 +51,7 @@ form {
   padding: 0;
   margin: 0;
   cursor: pointer;
-  width: 2rem; 
+  width: 2rem;
   height: 2rem;
   background-image: url("../assets/round-search.svg");
   background-size: contain;
@@ -61,18 +59,17 @@ form {
   background-position: center;
 }
 
+.search-button img {
+  width: 2rem;
+  height: 2rem;
+}
+
 .search-button:hover {
   transform: scale(1.05);
-  opacity: 80%;
 }
-
-.search-button:active {
-  transform: scale(0.95);
-}
-
 
 ::placeholder {
-  color:#2e5724;
+  color: #2e5724;
 }
 
 select {
