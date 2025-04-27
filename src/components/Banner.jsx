@@ -1,18 +1,24 @@
 import SearchBar from "./SearchBar";
 import CategoryBar from "./CategoryBar";
 import "../styles/banner.css";
-
+import background from "../images/tree_background.png";
 
 const Banner = () => {
-    return (
+  return (
+    <div className="banner">
+      <img src={background} alt="Forest image" className="banner-background" />
+
+      <div className="banner-content">
         
-      <div className="banner">
-        <h2 className="search-header">Find you sustainable accomodation</h2>
-        <SearchBar />
-        <CategoryBar />
+          <h1 className="ecoscape-header">Ecoscape</h1>
+          <div className="banner-toolbar">
+          <h2 className="search-header">Find your sustainable accommodation</h2>
+          <CategoryBar />
+          <SearchBar />
+        </div>
       </div>
-    );
-  };
-  
-  export default Banner;
-  
+    </div>
+  );
+};
+
+export default Banner;

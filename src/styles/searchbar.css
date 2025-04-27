@@ -1,8 +1,8 @@
 .search-bar {
   display: flex;
   justify-content: center;
-  position:relative;
-  top: 30%;
+  position: relative;
+  top:-15%;
 }
 
 form {
@@ -32,6 +32,7 @@ form {
   color: #989191;
   margin-bottom: 2px;
   font-weight: bold;
+  text-align: left;
 }
 
 .value {
@@ -41,7 +42,7 @@ form {
   border: none;
   outline: none;
   font-family: "Montserrat", sans-serif;
-  font-weight: bolder;
+  font-weight: 500;
 }
 
 .search-button {
