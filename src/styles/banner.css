@@ -15,15 +15,15 @@
   top: 10%;
 }
 .banner-content {
-  position: relative;
+  position: absolute;
+  width: 100%;
   text-align: center;
   color: white;
+  bottom: 0;
 }
 
 .banner-toolbar {
-  position: absolute;
-  width: 100%;
-  margin-top: 0%;
+  position: relative;
   height: 331px;
   background: linear-gradient(rgb(73 97 61 / 60%), rgb(73 97 61 / 60%));
 }
