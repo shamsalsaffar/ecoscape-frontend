@@ -3,11 +3,12 @@
 //   Routes,
 //   Route,
 //   Navigate,
+//   BrowserRouter,
 // } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import Listings from "./components/Listings";
-// import { useState } from "react";
+//import { useState } from "react";
 import "./styles/header.css";
 import "./styles/home.css";
 import Footer from "./components/Footer";
@@ -16,9 +17,13 @@ import Login from "./components/Login";
 import Helpcenter from "./components/Helpcenter";
 import HostPage from "./components/HostPage";
 import Banner from "./components/Banner";
+import { Routes } from "react-router-dom";
+import ListingBox from "./components/ListingBox";
+import ListingCollection from "./components/ListingCollection";
+
 
 // function App() {
-//   const [listings, setListings] = useState([]);
+//   // const [listings, setListings] = useState([]);
 
 //   const fetchListings = () => {
 //     fetch("http://localhost:8080/api/listings")
@@ -31,6 +36,8 @@ import Banner from "./components/Banner";
 //     <Router>
 //       <div className="layout">
 //         <Header onFetch={fetchListings} />
+//         <Banner></Banner>
+
 //         <Routes>
 //           {/* Omdirigera till startsidan */}
 //           <Route path="/" element={<Navigate to="/home" replace />} />
@@ -63,22 +70,18 @@ import Banner from "./components/Banner";
 //           <Route path="/host-page" element={<HostPage />} />
 //         </Routes>
 //       </div>
+
 //       <Footer />
 //     </Router>
 //   );
 // }
-
 // export default App;
 
+const App = () => {
+    
+  return (
+    <ListingCollection/>
+  );
+};
 
-
-// const App = () => {
-//   return (
-//     <div>
-//       <Banner/>
-
-//     </div>
-//   );
-// };
-
-// export default App;
+export default App;

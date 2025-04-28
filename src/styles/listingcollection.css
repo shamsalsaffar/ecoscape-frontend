@@ -1,0 +1,10 @@
+.listing-collection {
+    display:flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 5%;
+    justify-content: center;
+}
