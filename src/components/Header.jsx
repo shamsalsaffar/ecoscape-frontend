@@ -9,7 +9,7 @@ const Header = ({ onFetch }) => {
   const navigate = useNavigate();
   const handleClick = () => {
     // kan använda denna function för become a host i framtiden
-    navigate("/host-page"); // flytta till host request sidan
+    navigate("/host"); // flytta till host request sidan
   };
   const [dropdownOpen, setDropdownOpen] = useState(false); // skapar state för dropdown menyn
   const toggleDropdown = () => {
@@ -31,7 +31,7 @@ const Header = ({ onFetch }) => {
         {/* Vänstra länkar */}
         <div style={{ display: "flex", gap: "1.5rem" }}>
           <Link
-            to="/Home"
+            to="/"
             onClick={onFetch}
             style={{
               color: "white",
@@ -74,9 +74,9 @@ const Header = ({ onFetch }) => {
           </Button>
           {dropdownOpen && ( // om dropdown är true , visa menyn med länkar
             <div className="dropdown-menu">
-              <Link to="/signup-page">Sign Up</Link>
-              <Link to="/login-page">Login</Link>
-              <Link to="/helpcenter-page">Help Center</Link>
+              <Link to="/login">Login</Link>
+              <Link to="/signup">Sign Up</Link>
+              <Link to="/helpcenter">Help Center</Link>
             </div>
           )}
         </div>
