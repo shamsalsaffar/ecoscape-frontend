@@ -8,6 +8,7 @@
   align-items: center;
   z-index: 999;
   position: relative;
+
 }
 
 .header::before {
@@ -25,6 +26,7 @@
 .header h1 {
   margin: 0;
   margin-left: 2rem;
+  padding-left: 0;
   font-size: 1.8rem;
   color: white;
 }
@@ -78,14 +80,14 @@
 /*==== SMALLER SCREEN======*/
 @media (max-width: 768px) {
   .header nav {
-    margin: 0;
+    margin: 1;
   }
   .header nav a {
     font-size: 11px; /* mindre textstorlek på länkar när skärmen är smal */
   }
   .header h1 {
     margin: 0;
-    margin-left: 0.01rem;
+    margin-left: 1rem;
     font-size: 1rem;
   }
   .user-icon {
@@ -103,12 +105,13 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 0.5rem;
   }
 
   .header h1 {
     margin-bottom: 0.5rem;
     font-size: 1.2rem;
+    padding-left: 0.5em;
+    padding-top: 0.35em;
   }
 
   .header nav {
@@ -119,6 +122,7 @@
     gap: 0.5rem;
     width: 100%;
     justify-content: space-between;
+    padding-left: 4rem;
   }
 
   .header nav > div {
@@ -162,12 +166,14 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 0.5rem;
+    padding: 0em;
   }
 
   .header h1 {
     margin-bottom: 0.5rem;
-    font-size: 1.2rem;
+    font-size: 1.2em;
+    padding-top: 0.5em;
+    padding-left: 0;
   }
 
   .header nav {

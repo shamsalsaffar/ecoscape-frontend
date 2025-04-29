@@ -15,25 +15,47 @@ import Helpcenter from "./components/Helpcenter";
 import HostPage from "./components/HostPage";
 import Banner from "./components/Banner";
 import { AuthProvider } from "./contexts/AuthContext";
+import ListingCollection from "./components/ListingCollection";
+import Button from "./components/Button";
+import { RiFontSize } from "react-icons/ri";
+import "./styles/home.css";
 
 const App = () => {
   return (
     <Router>
-      <AuthProvider>
-        <div className="layout">
-          <Header />
-          <Routes>
-            <Route path="/" element={<Banner />} />
-
-            <Route path="/listings" element={<Listings />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/helpcenter" element={<Helpcenter />} />
-            <Route path="/host" element={<HostPage />} />
-          </Routes>
-          <Footer />
-        </div>
-      </AuthProvider>
+      <div className="layout">
+        <Header onFetch={fetchListings} />
+        <Routes>
+          <Route path="/" element={<Navigate to="/home" replace />} />
+          <Route
+            path="/home"
+            element={
+              <>
+                <Banner />
+                <Home listings={listings} onFetch={fetchListings} />
+              </>
+            }
+          />
+          <Route
+            path="/listings"
+            element={<Listings listings={listings} onFetch={fetchListings} />}
+          />
+          <Route
+            path="/signup-page"
+            element={<Signup onFetch={fetchListings} />}
+          />
+          <Route
+            path="/login-page"
+            element={<Login onFetch={fetchListings} />}
+          />
+          <Route
+            path="/helpcenter-page"
+            element={<Helpcenter onFetch={fetchListings} />}
+          />
+          <Route path="/host-page" element={<HostPage />} />
+        </Routes>
+        <Footer />
+      </div>
     </Router>
   );
 };
