@@ -23,7 +23,7 @@ const Header = ({ onFetch }) => {
         style={{
           display: "flex",
           alignItems: "center",
-          justifyContent: "space-between",
+          justifyContent: "space-around",
           padding: "0 1rem",
           width: "100%",
         }}
@@ -37,7 +37,8 @@ const Header = ({ onFetch }) => {
               color: "white",
               cursor: "pointer",
               textDecoration: "none",
-              marginLeft: "2rem",
+              marginLeft: "2rem"
+
             }}
           >
             Home
@@ -61,16 +62,16 @@ const Header = ({ onFetch }) => {
           <Button
             onClick={handleClick}
             className="icon-button"
-            style={{ padding: "0.5rem 1rem", borderRadius: "none" }}
+            style={{ padding: "0.5rem 1rem", borderRadius: "20px", backgroundColor:"white", paddingRight: "1rem", paddinLeft: "1rem", fontSize: "1rem", paddingTop: "0.5rem", paddingBottom: "0.5rem", fontFamily: "Montserrat", fontWeight: "600"}}
           >
             Become A Host
           </Button>
           <Button
             onClick={toggleDropdown}
             className="icon-button"
-            style={{ padding: "0.5rem", borderRadius: "none" }}
+            style={{ paddingRight: "1rem", paddingLeft: "1rem", borderRadius: "20px", textAlign: "center", color: "#49613D", paddingTop: "0.2rem", paddingBottom: "0.2rem"}}
           >
-            <PiUserListBold className="user-icon" size="2.3em" />
+            <PiUserListBold className="button" size="2em" />
           </Button>
           {dropdownOpen && ( // om dropdown är true , visa menyn med länkar
             <div className="dropdown-menu">
