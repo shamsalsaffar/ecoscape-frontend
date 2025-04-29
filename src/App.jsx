@@ -16,6 +16,10 @@ import Helpcenter from "./components/Helpcenter";
 import HostPage from "./components/HostPage";
 import Banner from "./components/Banner";
 import { useState } from "react";
+import ListingCollection from "./components/ListingCollection";
+import Button from "./components/Button";
+import { RiFontSize } from "react-icons/ri";
+import "./styles/home.css";
 
 const App = () => {
   const [listings, setListings] = useState([]);
@@ -38,6 +42,32 @@ const App = () => {
             element={
               <>
                 <Banner />
+                <ListingCollection></ListingCollection>
+                <div homepage-button-container>
+                  <Button
+                    className="show-more-button"
+                    style={{
+                      display: "flex",
+                      justifySelf: "center",
+                      borderRadius: "80px",
+                      paddingLeft: "8rem",
+                      paddingRight: "8rem",
+                      paddingTop: "2rem",
+                      paddingBottom: "2rem",
+                      backgroundColor: "#49613D",
+                      color: "white",
+                      width: "auto",
+                      fontSize: "1rem",
+                      cursor: "pointer",
+                      border: "none",
+                      textTransform: "uppercase",
+                      fontFamily: "Montserrat",
+                      fontWeight: "600",
+                    }}
+                  >
+                    Show more
+                  </Button>
+                </div>
                 <Home listings={listings} onFetch={fetchListings} />
               </>
             }
