@@ -10,6 +10,7 @@ const Home = ({ listings, onFetch }) => {
   return (
     <div className="home">
       <main className="content">
+        <h2 className="title">FIND YOUR NEXT ECOTOURISM DESTINION</h2>
         <div className="listing-grid">
           {listings.map((item, index) => (
             <div className="listing-card" key={index}>
