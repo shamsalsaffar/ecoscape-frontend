@@ -37,8 +37,7 @@ const Header = ({ onFetch }) => {
               color: "white",
               cursor: "pointer",
               textDecoration: "none",
-              marginLeft: "2rem"
-
+              marginLeft: "2rem",
             }}
           >
             Home
@@ -62,14 +61,33 @@ const Header = ({ onFetch }) => {
           <Button
             onClick={handleClick}
             className="icon-button"
-            style={{ padding: "0.5rem 1rem", borderRadius: "20px", backgroundColor:"white", paddingRight: "1rem", paddinLeft: "1rem", fontSize: "1rem", paddingTop: "0.5rem", paddingBottom: "0.5rem", fontFamily: "Montserrat", fontWeight: "600"}}
+            style={{
+              padding: "0.5rem 1rem",
+              borderRadius: "20px",
+              backgroundColor: "white",
+              paddingRight: "1rem",
+              paddinLeft: "1rem",
+              fontSize: "1rem",
+              paddingTop: "0.5rem",
+              paddingBottom: "0.5rem",
+              fontFamily: "Montserrat",
+              fontWeight: "600",
+            }}
           >
             Become A Host
           </Button>
           <Button
             onClick={toggleDropdown}
             className="icon-button"
-            style={{ paddingRight: "1rem", paddingLeft: "1rem", borderRadius: "20px", textAlign: "center", color: "#49613D", paddingTop: "0.2rem", paddingBottom: "0.2rem"}}
+            style={{
+              paddingRight: "1rem",
+              paddingLeft: "1rem",
+              borderRadius: "20px",
+              textAlign: "center",
+              color: "#49613D",
+              paddingTop: "0.2rem",
+              paddingBottom: "0.2rem",
+            }}
           >
             <PiUserListBold className="button" size="2em" />
           </Button>

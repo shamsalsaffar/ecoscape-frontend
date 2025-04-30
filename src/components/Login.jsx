@@ -24,7 +24,7 @@ const Login = () => {
   };
 
   return (
-    <div className="container" style={{ width: "40rem", margin: "2rem" }}>
+    <div className="container">
       <h2>Login</h2>
       <form className="form" onSubmit={handleSubmit}>
         <div className="form-group">
@@ -44,7 +44,54 @@ const Login = () => {
           />
         </div>
         <div className="button">
-          <Button text="Login" type="submit" variant="auth" />
+          <Button
+            style={{
+              display: "flex",
+              justifySelf: "center",
+              borderRadius: "80px",
+              paddingLeft: "4.5rem",
+              paddingRight: "4.5rem",
+              paddingTop: "1rem",
+              paddingBottom: "1rem",
+              backgroundColor: "#49613D",
+              color: "white",
+              width: "auto",
+              fontSize: "1rem",
+              cursor: "pointer",
+              border: "none",
+              textTransform: "uppercase",
+              fontFamily: "Montserrat",
+              fontWeight: "600",
+            }}
+            text="Login"
+            type="submit"
+            variant="auth"
+          />
+        </div>
+        <div className="button">
+          <Button
+            style={{
+              display: "flex",
+              justifySelf: "center",
+              borderRadius: "80px",
+              paddingLeft: "4rem",
+              paddingRight: "4rem",
+              paddingTop: "1rem",
+              paddingBottom: "1rem",
+              backgroundColor: "#49613D",
+              color: "white",
+              width: "auto",
+              fontSize: "1rem",
+              cursor: "pointer",
+              border: "none",
+              textTransform: "uppercase",
+              fontFamily: "Montserrat",
+              fontWeight: "600",
+            }}
+            text="Sign up"
+            type="submit"
+            variant="auth"
+          />
         </div>
       </form>
     </div>
