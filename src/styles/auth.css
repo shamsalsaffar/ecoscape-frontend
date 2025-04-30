@@ -1,0 +1,25 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  align-items: stretch;
+  border-radius: 30px;
+  padding: 2rem;
+  gap: 2rem;
+  font-family: "Montserrat", sans-serif;
+  box-shadow: none;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.form-group input {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid black;
+  border-radius: 8px;
+}

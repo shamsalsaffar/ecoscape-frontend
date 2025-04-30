@@ -1,4 +1,3 @@
-import "../styles/header.css";
 import "../styles/helpcenter.css";
 
 
