@@ -57,6 +57,8 @@ const App = () => {
                         paddingTop: "2rem",
                         paddingBottom: "2rem",
                         backgroundColor: "#49613D",
+                        marginBottom: "50px",
+                        marginTop: "-20px",
                         color: "white",
                         width: "auto",
                         fontSize: "1rem",

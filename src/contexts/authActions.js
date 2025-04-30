@@ -1,7 +1,7 @@
 import api from "../../api/axios";
 import { AUTH_ACTIONS } from "./authTypes";
 
-/*export const checkAuthStatus = async (dispatch) => {
+export const checkAuthStatus = async (dispatch) => {
   try {
     const response = await api.get("/auth/check");
 
@@ -15,7 +15,7 @@ import { AUTH_ACTIONS } from "./authTypes";
     dispatch({ type: AUTH_ACTIONS.AUTH_INIT });
     return null;
   }
-};*/
+};
 
 export const login = async (dispatch, username, password) => {
   dispatch({ type: AUTH_ACTIONS.AUTH_LOADING });
