@@ -1,8 +1,8 @@
-import Header from "./Header";
+import Header from "../components/Header";
 import "../styles/header.css";
 import "../styles/listings.css";
 
-const  Listings = ({listings, onFetch}) => {
+const  ViewAllAccomodations = ({listings, onFetch}) => {
     return(
         <div className="listings-page">
            
@@ -14,4 +14,7 @@ const  Listings = ({listings, onFetch}) => {
        
     )
 }
-export default Listings;
+export default ViewAllAccomodations;
+
+
+

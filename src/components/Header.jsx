@@ -3,7 +3,7 @@ import "../styles/header.css";
 import { PiUserListBold } from "react-icons/pi";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import HostPage from "./HostPage";
+import HostPage from "../pages/HostPage";
 
 const Header = ({ onFetch }) => {
   const navigate = useNavigate();
@@ -15,6 +15,7 @@ const Header = ({ onFetch }) => {
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen); // Växla mellan true och false
   };
+
 
   return (
     <header className="header">
@@ -31,7 +32,7 @@ const Header = ({ onFetch }) => {
         {/* Vänstra länkar */}
         <div style={{ display: "flex", gap: "1.5rem" }}>
           <Link
-            to="/Home"
+            to="/home"
             onClick={onFetch}
             style={{
               color: "white",
@@ -45,7 +46,7 @@ const Header = ({ onFetch }) => {
           </Link>
 
           <Link
-            to="/listings"
+            to="/viewAllAccomodations"
             onClick={onFetch}
             style={{
               color: "white",
@@ -75,9 +76,9 @@ const Header = ({ onFetch }) => {
           </Button>
           {dropdownOpen && ( // om dropdown är true , visa menyn med länkar
             <div className="dropdown-menu">
-              <Link to="/signup-page">Sign Up</Link>
-              <Link to="/login-page">Login</Link>
-              <Link to="/helpcenter-page">Help Center</Link>
+              <Link to="/signup">Sign Up</Link>
+              <Link to="/login">Login</Link>
+              <Link to="/helpcenter">Help Center</Link>
             </div>
           )}
         </div>
@@ -87,3 +88,26 @@ const Header = ({ onFetch }) => {
 };
 
 export default Header;
+
+
+/* const Header = ({ onFetch }) => {
+  const navigate = useNavigate();
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
+
+  useEffect(() => {
+    const closeDropdown = (e) => {
+      if (!e.target.closest('.dropdown-menu') && !e.target.closest('.icon-button')) {
+        setDropdownOpen(false);
+      }
+    };
+    document.addEventListener('click', closeDropdown);
+    return () => {
+      document.removeEventListener('click', closeDropdown);
+    };
+  }, []);
+
+  const handleClick = () => {
+    navigate("/host"); // المسار هنا يجب أن يتطابق مع /host في App.jsx
+  };
+ */
