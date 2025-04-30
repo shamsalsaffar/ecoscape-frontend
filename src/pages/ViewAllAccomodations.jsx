@@ -1,20 +1,9 @@
-import Header from "../components/Header";
-import "../styles/header.css";
-import "../styles/listings.css";
 
-const  ViewAllAccomodations = ({listings, onFetch}) => {
-    return(
-        <div className="listings-page">
-           
-            <main className="content">
-            <h1>All Accomandation</h1>
-            </main>
-        </div>
-    
-       
-    )
-}
+const ViewAllAccomodations = () => {
+  return (
+    <div className="view-all-accomodations">
+      <h6>View all accomodation page</h6>
+    </div>
+  );
+};
 export default ViewAllAccomodations;
-
-
-
