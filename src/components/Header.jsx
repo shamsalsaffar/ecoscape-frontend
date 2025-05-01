@@ -1,8 +1,9 @@
 import Button from "./Button";
 import "../styles/header.css";
-import { PiUserListBold } from "react-icons/pi";
+import User from "../icons/User";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+
 import HostPage from "../pages/HostPage";
 
 const Header = ({ onFetch }) => {
@@ -21,13 +22,15 @@ const Header = ({ onFetch }) => {
     <header className="header">
       <h1>ECOSCAPE</h1>
       <nav
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "space-around",
-          padding: "0 1rem",
-          width: "100%",
-        }}
+      style={{
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",  // يعطي توزيع أفضل
+    padding: "0 2rem",                 // يعطي مسافة من اليمين واليسار
+    width: "100%",
+    gap: "4rem",                       // gap داخل JSX
+  }}
+       
       >
         {/* Vänstra länkar */}
         <div style={{ display: "flex", gap: "1.5rem" }}>
@@ -62,6 +65,7 @@ const Header = ({ onFetch }) => {
         <div style={{ display: "flex", alignItems: "center", gap: "0.2rem" }}>
           <Button
             onClick={handleClick}
+            text ="Become A Host"
             className="icon-button"
             style={{
               padding: "0.5rem 1rem",
@@ -74,25 +78,30 @@ const Header = ({ onFetch }) => {
               paddingBottom: "0.5rem",
               fontFamily: "Montserrat",
               fontWeight: "600",
+              marginRight:"2rem"
             }}
-          >
-            Become A Host
-          </Button>
-          <Button
+          />
+           
+           <Button
             onClick={toggleDropdown}
             className="icon-button"
             style={{
-              paddingRight: "1rem",
-              paddingLeft: "1rem",
-              borderRadius: "20px",
-              textAlign: "center",
-              color: "#49613D",
-              paddingTop: "0.2rem",
-              paddingBottom: "0.2rem",
+              padding: 0,               // إلغاء أي padding
+              margin: 0,                // إلغاء أي margin
+              borderRadius: "12px",
+              width: "50px",
+              height: "55px",
+              backgroundColor: "#fff",  // لون الخلفية إن احتجت
+              display: "flex",          // استخدم flex لوضع الأيقونة في المنتصف
+              justifyContent: "center",
+              alignItems: "center",
+              border: "none"
+              
+              
             }}
-          >
-            <PiUserListBold className="button" size="2em" />
-          </Button>
+            text={<User className="user-icon" />}  // تمرير الأيقونة كـ نص
+          />
+
           {dropdownOpen && ( // om dropdown är true , visa menyn med länkar
             <div className="dropdown-menu">
 

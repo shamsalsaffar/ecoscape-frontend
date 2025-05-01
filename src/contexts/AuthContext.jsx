@@ -74,8 +74,4 @@ export const AuthProvider = ({ children }) => {
       {!loading && children}
     </AuthContext.Provider>
   );
-<<<<<<< HEAD
 };
-=======
-};
->>>>>>> 6a9a0e9aa551442ee4809a689d81adadcd19aca6
