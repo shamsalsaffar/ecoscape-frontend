@@ -4,6 +4,7 @@ import "../styles/banner.css";
 import background from "../images/tree_background.jpg";
 
 const Banner = () => {
+  console.log('find binner')
   return (
     <div className="banner">
       <img src={background} alt="Forest image" className="banner-background" />
