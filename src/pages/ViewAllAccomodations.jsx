@@ -1,3 +1,4 @@
+
 const ViewAllAccomodations = () => {
   return (
     <div className="view-all-accomodations">

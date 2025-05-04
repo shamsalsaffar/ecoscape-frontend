@@ -1,8 +1,9 @@
 import Button from "./Button";
 import "../styles/header.css";
-import { PiUserListBold } from "react-icons/pi";
+import User from "../icons/User";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import HostPage from "../pages/HostPage";
 
 const Header = ({ onFetch }) => {
   const navigate = useNavigate();
@@ -22,9 +23,10 @@ const Header = ({ onFetch }) => {
         style={{
           display: "flex",
           alignItems: "center",
-          justifyContent: "space-around",
-          padding: "0 1rem",
+          justifyContent: "space-between", // يعطي توزيع أفضل
+          padding: "0 2rem", // يعطي مسافة من اليمين واليسار
           width: "100%",
+          gap: "4rem", // gap داخل JSX
         }}
       >
         {/* Vänstra länkar */}
@@ -43,7 +45,7 @@ const Header = ({ onFetch }) => {
           </Link>
 
           <Link
-            to="/all-accomodations"
+            to="/viewAllAccomodations"
             onClick={onFetch}
             style={{
               color: "white",
@@ -59,6 +61,7 @@ const Header = ({ onFetch }) => {
         <div style={{ display: "flex", alignItems: "center", gap: "0.2rem" }}>
           <Button
             onClick={handleClick}
+            text="Become A Host"
             className="icon-button"
             style={{
               padding: "0.5rem 1rem",
@@ -71,29 +74,33 @@ const Header = ({ onFetch }) => {
               paddingBottom: "0.5rem",
               fontFamily: "Montserrat",
               fontWeight: "600",
+              marginRight: "2rem",
             }}
-          >
-            Become A Host
-          </Button>
+          />
+
           <Button
             onClick={toggleDropdown}
             className="icon-button"
             style={{
-              paddingRight: "1rem",
-              paddingLeft: "1rem",
-              borderRadius: "20px",
-              textAlign: "center",
-              color: "#49613D",
-              paddingTop: "0.2rem",
-              paddingBottom: "0.2rem",
+              padding: 0, // إلغاء أي padding
+              margin: 0, // إلغاء أي margin
+              borderRadius: "12px",
+              width: "50px",
+              height: "55px",
+              backgroundColor: "#fff", // لون الخلفية إن احتجت
+              display: "flex", // استخدم flex لوضع الأيقونة في المنتصف
+              justifyContent: "center",
+              alignItems: "center",
+              border: "none",
             }}
-          >
-            <PiUserListBold className="button" size="2em" />
-          </Button>
+            text={<User className="user-icon" />} // تمرير الأيقونة كـ نص
+          />
+
           {dropdownOpen && ( // om dropdown är true , visa menyn med länkar
             <div className="dropdown-menu">
               <Link to="/login">Login</Link>
               <Link to="/signup">Sign Up</Link>
+
               <Link to="/helpcenter">Help Center</Link>
             </div>
           )}
@@ -104,3 +111,25 @@ const Header = ({ onFetch }) => {
 };
 
 export default Header;
+
+/* const Header = ({ onFetch }) => {
+  const navigate = useNavigate();
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
+
+  useEffect(() => {
+    const closeDropdown = (e) => {
+      if (!e.target.closest('.dropdown-menu') && !e.target.closest('.icon-button')) {
+        setDropdownOpen(false);
+      }
+    };
+    document.addEventListener('click', closeDropdown);
+    return () => {
+      document.removeEventListener('click', closeDropdown);
+    };
+  }, []);
+
+  const handleClick = () => {
+    navigate("/host"); // المسار هنا يجب أن يتطابق مع /host في App.jsx
+  };
+ */

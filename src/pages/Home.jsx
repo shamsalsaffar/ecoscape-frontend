@@ -8,9 +8,9 @@ const Home= () => {
     <div className="home-page">
       <Banner/>
       <ListingCollection/>
-      <Button className="show-more-button">
-        Show more
-      </Button>
+      <Button className="show-more-button"
+      text="Show more"/>
+       
     </div>
   );
 };
