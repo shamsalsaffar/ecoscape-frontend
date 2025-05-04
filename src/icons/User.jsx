@@ -2,7 +2,7 @@
 
 const User = ({className}) => (
   <svg
-  width="100%"      // حجم مناسب
+  width="100%"     
   height="100%"
   viewBox="0 0 43 35"
   fill="currentColor"
