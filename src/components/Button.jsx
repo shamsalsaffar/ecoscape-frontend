@@ -1,16 +1,7 @@
-import "../styles/button.css";
-import { PiUserListBold } from "react-icons/pi";
-
-const Button = ({
-  onClick,
-  text,
-  style,
-  className = "",
-  type = "button",
-}) => {
+const Button = ({ children, onClick, className = "" }) => {
   return (
-    <button className={className} onClick={onClick} style={style} type={type}>
-      {text}
+    <button onClick={onClick} className={className}>
+      {children}
     </button>
   );
 };

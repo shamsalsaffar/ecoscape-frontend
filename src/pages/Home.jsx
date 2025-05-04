@@ -4,6 +4,7 @@ import Button from "../components/Button";
 
 const Home= () => {
   return (
+
     <div className="home-page">
       <Banner/>
       <ListingCollection/>
