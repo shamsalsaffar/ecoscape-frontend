@@ -10,10 +10,10 @@ const BookingUserUpdateForm = ({userId}) => {
         response,
     } = useBookingForm("user", userId); // use user to update booking user 
 
-    retun (
+    return (
         <div>
             <h2>Update user reservation</h2>
-            <form onUpdate ={handleUpdate}>
+            <form onSubmit ={handleUpdate}>
                 <div>
                     <label> First Name</label>
                     <input
@@ -23,29 +23,12 @@ const BookingUserUpdateForm = ({userId}) => {
                     onChange={handleChange}
                     />
                 </div>
-                <div>
-                    <label> First Name</label>
-                    <input
-                    type="text" 
-                    name= "firstName"
-                    value={formData.firstName}
-                    onChange={handleChange}
-                    />
-                </div>
-                <div>
-                    <label> First Name</label>
-                    <input
-                    type="text" 
-                    name= "firstName" // must be match with backend 100%
-                    value={formData.firstName}
-                    onChange={handleChange}
-                    />
-                </div>
+               
                 <div>
                     <label> Last Name</label>
                     <input
                     type="text" 
-                    name= "lasttName"
+                    name= "lastName"
                     value={formData.lastName}
                     onChange={handleChange}
                     />
@@ -53,18 +36,18 @@ const BookingUserUpdateForm = ({userId}) => {
                 <div>
                     <label> Email </label>
                     <input
-                    type="usersContactEmail" 
-                    name= "firstName"
-                    value={formData.email}
+                    type="email" 
+                    name= "usersContactEmail"
+                    value={formData.usersContactEmail}
                     onChange={handleChange}
                     />
                 </div>
                 <div>
-                    <label> First Name</label>
+                    <label> Phone Number</label>
                     <input
-                    type="text" 
+                    type="tel" //is specifically designe for phone to add phone form
                     name= "usersContactPhoneNumber"
-                    value={formData.phonNumber}
+                    value={formData.usersContactPhoneNumber}
                     onChange={handleChange}
                     />
                 </div>
@@ -83,6 +66,7 @@ const BookingUserUpdateForm = ({userId}) => {
 
 
             </form>
+            {response && <p className="response-message">{response}</p>} //to show response message
         </div>
     );
 };

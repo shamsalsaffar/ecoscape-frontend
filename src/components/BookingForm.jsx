@@ -5,9 +5,11 @@ import React from "react";
 import { submitBooking } from "../api/bookingsService";
 import Button from "./Button";
 import { useBookingForm } from "../hooks/useBookingForm";
+import { useBooking } from "../contexts/BookingContext";
 
 
-const BookingForm = () => {
+
+const BookingForm = ({goToNextStep}) => {
 
 // USE useBookingform  HOOKS 
 const {
@@ -15,9 +17,11 @@ const {
   handleChange,
   errors,
   validateForm,
-} = useBookingForm();
+} = useBookingForm("bookings"); // use bookinf som type here
 
 
+
+const {bookingData,updateBookingData}=useBooking();
   
 // TO CONNECT BACKEND CONNECT FUNCATION THAT IS IN BOOKKINGS SERVICE
   const handleSubmit = async(e) =>{
@@ -26,6 +30,8 @@ const {
     try {
       const result = await submitBooking(formData);
       alert ("Booking success");
+      updateBookingData(formData); //update context with new booking
+      goToNextStep(formData); // go to next step
 
     } catch (error){
       alert ("An error occurred:" + error.message);

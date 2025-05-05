@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate , useLocation} from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 import Button from "../components/Button";
 import "../styles/auth.css";
@@ -9,6 +9,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
+  const location= useLocation(); // get the distantion the user try to access نحصل علو موقع اللي كان عليه المستخدم 
   // konsumerar contexten
   const { login } = useAuth();
 
@@ -17,7 +18,11 @@ const Login = () => {
 
     try {
       await login(username, password);
-      navigate("/");
+
+      // check if there is saved distination , and route to it 
+      // التحقق اذا كان هاك موقع محفوظ والتوجه اليه
+      const form = location.state?.form || "/"; // if dont save distantion route to home page
+      navigate("form"); // otherwise return to saved destination 
     } catch (err) {
       console.log("error: " + err);
     }
@@ -39,11 +44,11 @@ const Login = () => {
           </div>
           <div className="form-group">
             <input
-              type="text"
-              id="username"
-              placeholder="Username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              type="password"
+              id="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           <div className="button">

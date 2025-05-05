@@ -1,23 +1,17 @@
 import React from "react";
 import api from "../api/axios";
+import { useBooking } from "../contexts/BookingContext";
 import { useState, useEffect} from "react";
 import { submitBooking, updateBookingUser, updateBooking} from "../api/bookingsService";
 
+
 export const useBookingForm = (type, entityId=null) => {
 
+    // to bring data from BookingContext
+    const{bookingData,updateBookingData}= useBooking();
      // to save input data from user 
-     const [formData, setFormData]= useState({
-     userId: '',
-     listingId: '',
-     firstName: '',
-     lastName: '',
-     usersContactPhoneNumber: '',
-     usersContactEmail: '',
-     startDate: '',
-     endDate: '',
-     status: 'PENDING',
-     guests: 1// defualt number 1 
-    }); 
+     const [formData, setFormData]= useState(bookingData);
+     
 
 //  TO SAVE ERRORS IF FOUND IN ARRAY 
     const [errors, setError] = useState([]);
@@ -31,17 +25,15 @@ const [response, setResponse]= useState(null);
             const fetchData = async () => {
                 try {
                 const {data} = await api.get(`/api/${type}s/${entityId}`);
-                setFormData({
-                    ... data, // fyll updatedata form 
-                });
-                } catch (error){ 
-                console.error ("an error accourred:", error);
-
-                }
+               updateBookingData(data); //update data in context 
+               setFormData(data); // save this new update
+                } catch (error){
+                  console.error("Error fetching data", error);
+                } 
             };
-         fetchData();
-        }
-    },[entityId , type]);
+          fetchData();
+          }
+        },[entityId,type,updateBookingData]);          
 
 // HANDLING FIELD CHANGES التعامل مع التغييرات في الحقول  
     const handleChange = (e) => { // e is change or obejct  e  هو الحدث اللي يحدث
@@ -100,12 +92,12 @@ const validateForm = () =>{
    };
 
   return {
-    formData,
+    formData, // data that update by user
     setFormData,
     errors,
-    handleChange,
+    handleChange, // function that handles changs in the input fieled
     validateForm,
-    handleUpdate,
+    handleUpdate, // function that to update data 
     response,
   };
 };

@@ -52,13 +52,14 @@ const Header = ({ onFetch }) => {
             to="/viewAllAccomodations"
             onClick={onFetch}
             style={{
-              color: "white",
+             color: "white",
               cursor: "pointer",
-              textDecoration: "none",
+             textDecoration: "none",
             }}
           >
             View All Accommodation
           </Link>
+
         </div>
 
         {/* Högra knappar */}
