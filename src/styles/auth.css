@@ -1,25 +1,84 @@
 .form {
   display: flex;
   flex-direction: column;
-  background-color: white;
   align-items: stretch;
-  border-radius: 30px;
-  padding: 2rem;
   gap: 2rem;
   font-family: "Montserrat", sans-serif;
   box-shadow: none;
+  padding: 0;
+  margin-top: 40px;
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
-  padding: 1rem;
   border-radius: 10px;
 }
 
 .form-group input {
   font-size: 1rem;
-  padding: 0.5rem 1rem;
+  padding: 1.2rem 1rem;
   border: 1px solid black;
-  border-radius: 8px;
+  border-radius: 30px;
+}
+
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 89vh;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 500px;
+}
+
+.login-text {
+  font-weight: bold;
+  font-size: 18px;
+  color: #484848;
+}
+
+.button-login {
+  border-radius: 80px;
+  padding-left: 5rem;
+  padding-right: 5rem;
+  padding-top: 1.2rem;
+  padding-bottom: 1.2rem;
+  background-color: #49613d;
+  color: white;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border: none;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  width: 44%;
+}
+
+/*https://www.youtube.com/watch?v=XI-hc_BRSb8&ab_channel=AndreasWik*/
+.hr-text {
+  border: none;
+  position: relative;
+}
+
+.hr-text::before {
+  background: #e0e2e6;
+  content: "";
+  position: absolute;
+  height: 1px;
+  width: 100%;
+  left: 0;
+  top: 50%;
+}
+
+.hr-text::after {
+  content: attr(data-content);
+  position: relative;
+  background: white;
+  padding: 0 5px;
+  color: #9a9a9a;
+  font-size: 14px;
+  margin-left: 30px;
 }
