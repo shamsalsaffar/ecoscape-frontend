@@ -42,21 +42,19 @@
 }
 
 .button-login {
-  display: flex;
   border-radius: 80px;
   padding-left: 5rem;
   padding-right: 5rem;
   padding-top: 1.2rem;
   padding-bottom: 1.2rem;
   background-color: #49613d;
-  width: 100%;
   color: white;
-  width: auto;
   font-size: 0.9rem;
   cursor: pointer;
   border: none;
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
+  width: 44%;
 }
 
 /*https://www.youtube.com/watch?v=XI-hc_BRSb8&ab_channel=AndreasWik*/

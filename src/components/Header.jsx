@@ -100,7 +100,6 @@ const Header = ({ onFetch }) => {
             <div className="dropdown-menu">
               <Link to="/login">Login</Link>
               <Link to="/signup">Sign Up</Link>
-
               <Link to="/helpcenter">Help Center</Link>
             </div>
           )}
