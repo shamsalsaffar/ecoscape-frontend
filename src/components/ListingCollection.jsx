@@ -1,25 +1,32 @@
-import ListingBox from "./ListingBox";
-import "../styles/listingcollection.css";
 import { useState, useEffect } from "react";
-import { getAllListings } from "../api/listingService";
+import { getAllListings, getImagesByListingId } from "../api/listingService";
+import DefaultListingImage from "../icons/DefaultListingImage"; // Importera den nya komponenten
+import "../styles/listingcollection.css";
 
 const ListingCollection = () => {
   const [listings, setListings] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchListings = async () => {
+    const fetchListingsWithImages = async () => {
       try {
         const data = await getAllListings();
-        setListings(data);
+        const listingsWithImages = await Promise.all(
+          data.map(async (listing) => {
+            const images = await getImagesByListingId(listing.id);
+            return { ...listing, images };
+          })
+        );
+
+        setListings(listingsWithImages);
       } catch (err) {
-        console.log("Error: " + err);
+        console.log("Error:", err);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchListings();
+    fetchListingsWithImages();
   }, []);
 
   if (loading) return <div>Loading...</div>;
@@ -28,9 +35,22 @@ const ListingCollection = () => {
     <div className="listing-grid">
       {listings.map((listing) => (
         <div key={listing.id} className="listing-box">
-          <div className="listing-info">
-            <h3>(product.name)</h3>
-            <h4>(product.location)</h4>
+          <div className="listing-short-description-box">
+            <h3 className="listing-box-name">{listing.name}</h3>
+            <h4 className="listing-box-location">{listing.location}</h4>
+          </div>
+
+          <div className="listing-images">
+            {listing.images && listing.images.length > 0 ? (
+              <img
+                key={listing.images[0].id} git 
+                src={listing.images[0].imageUrl}
+                alt={listing.name}
+                className="listing-image"
+              />
+            ) : (
+              <DefaultListingImage />
+            )}
           </div>
         </div>
       ))}
