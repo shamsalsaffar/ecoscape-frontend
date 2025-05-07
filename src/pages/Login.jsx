@@ -39,13 +39,14 @@ const Login = () => {
           </div>
           <div className="form-group">
             <input
-              type="text"
-              id="username"
-              placeholder="Username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              type="password"
+              id="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
+
           <div className="button">
             <Button
               style={{
