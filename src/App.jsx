@@ -7,7 +7,9 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Helpcenter from "./pages/Helpcenter";
 import HostPage from "./pages/HostPage";
+import ListingDetails from "./pages/ListingDetails";
 import { AuthProvider } from "./contexts/AuthContext";
+
 
 import "./styles/home.css";
 const App = () => {
@@ -20,6 +22,7 @@ const App = () => {
             <Routes>
               {/* public routes */}
               <Route path="/" element={<Home />} />
+              <Route path="/listings/:id" element={<ListingDetails />} />
               <Route
                 path="all-accomodations"
                 element={<ViewAllAccomodations />}
