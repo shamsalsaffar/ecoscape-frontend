@@ -3,7 +3,6 @@ import "../styles/header.css";
 import User from "../icons/User";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-
 import HostPage from "../pages/HostPage";
 
 const Header = ({ onFetch }) => {
@@ -17,26 +16,23 @@ const Header = ({ onFetch }) => {
     setDropdownOpen(!dropdownOpen); // Växla mellan true och false
   };
 
-
   return (
     <header className="header">
       <h1>ECOSCAPE</h1>
       <nav
-      style={{
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",  // يعطي توزيع أفضل
-    padding: "0 2rem",                 // يعطي مسافة من اليمين واليسار
-    width: "100%",
-    gap: "4rem",                       // gap داخل JSX
-  }}
-       
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between", // يعطي توزيع أفضل
+          padding: "0 2rem", // يعطي مسافة من اليمين واليسار
+          width: "100%",
+          gap: "4rem", // gap داخل JSX
+        }}
       >
         {/* Vänstra länkar */}
         <div style={{ display: "flex", gap: "1.5rem" }}>
           <Link
             to="/"
-
             onClick={onFetch}
             style={{
               color: "white",
@@ -65,7 +61,7 @@ const Header = ({ onFetch }) => {
         <div style={{ display: "flex", alignItems: "center", gap: "0.2rem" }}>
           <Button
             onClick={handleClick}
-            text ="Become A Host"
+            text="Become A Host"
             className="icon-button"
             style={{
               padding: "0.5rem 1rem",
@@ -78,33 +74,30 @@ const Header = ({ onFetch }) => {
               paddingBottom: "0.5rem",
               fontFamily: "Montserrat",
               fontWeight: "600",
-              marginRight:"2rem"
+              marginRight: "2rem",
             }}
           />
-           
-           <Button
+
+          <Button
             onClick={toggleDropdown}
             className="icon-button"
             style={{
-              padding: 0,               // إلغاء أي padding
-              margin: 0,                // إلغاء أي margin
+              padding: 0, // إلغاء أي padding
+              margin: 0, // إلغاء أي margin
               borderRadius: "12px",
               width: "50px",
               height: "55px",
-              backgroundColor: "#fff",  // لون الخلفية إن احتجت
-              display: "flex",          // استخدم flex لوضع الأيقونة في المنتصف
+              backgroundColor: "#fff", // لون الخلفية إن احتجت
+              display: "flex", // استخدم flex لوضع الأيقونة في المنتصف
               justifyContent: "center",
               alignItems: "center",
-              border: "none"
-              
-              
+              border: "none",
             }}
-            text={<User className="user-icon" />}  // تمرير الأيقونة كـ نص
+            text={<User className="user-icon" />} // تمرير الأيقونة كـ نص
           />
 
           {dropdownOpen && ( // om dropdown är true , visa menyn med länkar
             <div className="dropdown-menu">
-
               <Link to="/login">Login</Link>
               <Link to="/signup">Sign Up</Link>
 
@@ -118,7 +111,6 @@ const Header = ({ onFetch }) => {
 };
 
 export default Header;
-
 
 /* const Header = ({ onFetch }) => {
   const navigate = useNavigate();
