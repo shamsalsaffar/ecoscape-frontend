@@ -3,11 +3,11 @@ import "../styles/button.css";
 const Button = ({
   onClick,
   text,
-  disabled = false,  // تصحيح الكتابة إلى disabled بدلاً من disablad
+  disabled = false, // تصحيح الكتابة إلى disabled بدلاً من disablad
   style,
   className = "",
   type = "button",
-  variant,  // التأكد من تمرير variant لتخصيص الزر
+  variant, // التأكد من تمرير variant لتخصيص الزر
 }) => {
   // إضافة الصنف بناءً على variant
   const buttonClass = `btn ${variant ? variant : ""}`;

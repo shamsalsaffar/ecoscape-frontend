@@ -29,9 +29,9 @@ const Login = () => {
   };
 
   return (
-    <div className="test">
-      <div className="container">
-        <h2>Login</h2>
+    <div className="login-page">
+      <div className="login-container">
+        <div className="login-text">Login or Sign up</div>
         <form className="form" onSubmit={handleSubmit}>
           <div className="form-group">
             <input
@@ -51,27 +51,21 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
+
           <div className="button">
             <Button
-              style={{
-                display: "flex",
-                justifySelf: "center",
-                borderRadius: "80px",
-                paddingLeft: "8rem",
-                paddingRight: "8rem",
-                paddingTop: "2rem",
-                paddingBottom: "2rem",
-                backgroundColor: "#49613D",
-                color: "white",
-                width: "auto",
-                fontSize: "1rem",
-                cursor: "pointer",
-                border: "none",
-                textTransform: "uppercase",
-                fontFamily: "Montserrat",
-                fontWeight: "600",
-              }}
+              className="button-login"
               text="Login"
+              type="submit"
+              variant="auth"
+            />
+          </div>
+
+          <hr className="hr-text" data-content="Or Sign Up" />
+          <div className="button">
+            <Button
+              className="button-login"
+              text="Sign up"
               type="submit"
               variant="auth"
             />

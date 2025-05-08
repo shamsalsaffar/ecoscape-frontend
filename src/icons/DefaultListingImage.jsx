@@ -1,8 +1,8 @@
 import * as React from "react";
 const DefaultListingImage = (props) => (
   <svg
-    width={50}
-    height={50}
+    width={300}
+    height={300}
     viewBox="0 0 16 16"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"

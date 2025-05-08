@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./pages/Home";
 import ViewAllAccomodations from "./pages/ViewAllAccomodations";
@@ -14,7 +14,6 @@ import Bookings from "./pages/Bookings";
 import ProtectedBookingRoute from "./router/ProtectedBookingRoute";
 import { BookingProvider } from "./contexts/BookingContext";
 const App = () => {
-
   return (
     <BrowserRouter>
       <AuthProvider>
@@ -42,7 +41,6 @@ const App = () => {
               />
 
               {/* protected routes for admins only */}
-
             </Routes>
 
             <Footer />

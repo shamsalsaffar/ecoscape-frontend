@@ -1,10 +1,54 @@
-.listing-collection {
-    display:flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    margin-top: 5%;
-    margin-left: 5%;
-    margin-right: 5%;
-    margin-bottom: 5%;
-    justify-content: center;
+.listing-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 5%;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 5%;
+  justify-content: center;
+}
+
+.listing-box {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
+  border: 1px solid black;
+  border-radius: 1rem;
+  background-color: #fff;
+}
+
+.listing-short-description-box {
+  font-family: "Montserrat", sans-serif;
+  position: absolute;
+  bottom: 2%;
+  right: 2%;
+  left: 2%;
+  width: 96%;
+  padding: 0.75rem;
+  background: rgba(250, 248, 248, 0.75);
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.listing-box-name {
+  font-size: 1.2rem;
+  margin: 0;
+  color: #3d3d3d;
+  font-weight: 700;
+}
+
+.listing-box-location {
+  margin: 0.25rem 0 0 0;
+  font-size: 0.9rem;
+  color: rgb(35, 78, 35);
+  font-weight: 550;
+}
+
+.listing-image {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  display: block;
 }
