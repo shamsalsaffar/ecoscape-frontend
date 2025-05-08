@@ -2,8 +2,15 @@ import api from "./axios";
 
 const submitBooking = async(formData) => {
     try {
-        const response = await api.post('/api/bookings', formData, {
+       /*  const response = await api.post('/api/bookings', formData, {
+
             method:"POST", 
+            headers:{
+                "Content-Type": "application/json",
+            },
+        }); */
+        const {listingId, ...bookingBody} = formData;
+        const response = await api.get.post (`/api/bookings?listingId=${listingId}`, bookingBody,{
             headers:{
                 "Content-Type": "application/json",
             },

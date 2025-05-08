@@ -27,7 +27,9 @@ const {bookingData,updateBookingData}=useBooking();
   const handleSubmit = async(e) =>{
     e.preventDefault();
     if (!validateForm()) return;
-    try {
+
+    console.log("formData being sent:", formData);
+   /*  try {
       const result = await submitBooking(formData);
       alert ("Booking success");
       updateBookingData(formData); //update context with new booking
@@ -36,9 +38,39 @@ const {bookingData,updateBookingData}=useBooking();
     } catch (error){
       alert ("An error occurred:" + error.message);
     }
-  };
+  }; 
+ */
+  try{
+    const result = await submitBooking({
+      ...formData,
+      listingId: 4, // رقم مؤقت حتى يتم ربطه بالصفحة لاحقًا
+      pricePerNight: 250.00,
+    
+    
+    });
+    alert ("Booking success");
+    updateBookingData({
+      ...formData,
+      listingId: 4,
+      pricePerNight: 250.00,
+      
+     
+    });
+    goToNextStep({
+      ...formData,
+      listingId: 4,
+      pricePerNight: 250.00,
+      
+      
+    });
+  } catch (error){
+    alert ("An error occurred:" + error.message);
+  }
+};
 
+  
 
+ 
 
 
   return (
@@ -122,7 +154,7 @@ const {bookingData,updateBookingData}=useBooking();
         )}
         <Button type="submit"
         text="Send"
-        onClick={handleSubmit} // Work with hanlesubmit to be ensur for "secondory", and primary button 
+       
         variant="primary"
         disabled={false}
         />
