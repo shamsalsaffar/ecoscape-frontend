@@ -10,9 +10,9 @@ export const getListingById = async (id) => {
   return response.data;
 };
 
-export const getImagesByListingId = async (id) => {
+export const getImagesByListingId = async (listingId) => {
   try {
-    const response = await api.get(`api/images/all/${id}`);
+    const response = await api.get(`api/images/all/${listingId}`);
     return response.data;
   } catch (error) {
     if (error.response && error.response.status === 404) {

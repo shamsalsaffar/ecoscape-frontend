@@ -1,12 +1,14 @@
 import { useParams } from "react-router-dom";
+import ListingPageGallery from "../components/ListingPageGallery";
 
 const ListingDetails = () => {
-  const { id } = useParams();
+  const { listingId } = useParams(); 
 
   return (
     <div>
       <h2>Listing Details</h2>
-      <p>Du är på sidan för listing med ID: {id}</p>
+      <ListingPageGallery listingId={listingId} />
+   
     </div>
   );
 };
