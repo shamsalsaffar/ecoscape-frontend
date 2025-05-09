@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { getAllListings, getImagesByListingId } from "../api/listingService";
-import DefaultListingImage from "../icons/DefaultListingImage"; // Importera den nya komponenten
+import DefaultListingImage from "../icons/DefaultListingImage";
 import "../styles/listingcollection.css";
 
 const ListingCollection = () => {
   const [listings, setListings] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchListingsWithImages = async () => {
@@ -17,7 +19,6 @@ const ListingCollection = () => {
             return { ...listing, images };
           })
         );
-
         setListings(listingsWithImages);
       } catch (err) {
         console.log("Error:", err);
@@ -34,7 +35,9 @@ const ListingCollection = () => {
   return (
     <div className="listing-grid">
       {listings.map((listing) => (
-        <div key={listing.id} className="listing-box">
+        <div key={listing.id} className="listing-box"
+          onClick={() => navigate(`/listings/${listing.name}`)}>
+
           <div className="listing-short-description-box">
             <h3 className="listing-box-name">{listing.name}</h3>
             <h4 className="listing-box-location">{listing.location}</h4>
@@ -43,7 +46,7 @@ const ListingCollection = () => {
           <div className="listing-images">
             {listing.images && listing.images.length > 0 ? (
               <img
-                key={listing.images[0].id} git 
+                key={listing.images[0].id}
                 src={listing.images[0].imageUrl}
                 alt={listing.name}
                 className="listing-image"

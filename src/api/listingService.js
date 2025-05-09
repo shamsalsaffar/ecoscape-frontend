@@ -10,17 +10,15 @@ export const getListingById = async (id) => {
   return response.data;
 };
 
-export const getImagesByListingId = async (id) => {
+export const getImagesByListingId = async (listingId) => {
   try {
-    const response = await api.get(`api/images/all/${id}`);
-    // If images are not found, return an empty array
-    if (response.status === 404) {
+    const response = await api.get(`api/images/all/${listingId}`);
+    return response.data;
+  } catch (error) {
+    if (error.response && error.response.status === 404) {
       return [];
     }
-    return response.data; // Return the data if images are found
-  } catch (error) {
     console.error("Error fetching images:", error);
-    // Return an empty array in case of error (e.g., network error, or other issues)
     return [];
   }
 };

@@ -1,16 +1,26 @@
 import "../styles/listingpagegallery.css";
-import listingimage from "../images/tree_background.jpg";
 
-const ListingPageGallery = () => {
+const ListingPageGallery = ({ images = [] }) => {
+  if (images.length === 0) {
+    return <p>No images available.</p>;
+  }
+
   return (
     <div className="listing-gallery-container">
       <div className="main-image-container">
-        <img src={listingimage} className="image-1" />
+        <img src={images[0]} alt="main" className="image-1" />
         <div className="side-images-container">
-          <img src={listingimage} className="image-2" />
-          <img src={listingimage} className="image-3" />
-          <img src={listingimage} className="image-4" />
-          <img src={listingimage} className="image-5" />
+          {images.map((img, index) => {
+            if (index < 1 || index > 4) return null;
+            return (
+              <img
+                key={index}
+                src={img}
+                alt="Gallery image"
+                className="gallery-image"
+              />
+            );
+          })}
         </div>
       </div>
     </div>
