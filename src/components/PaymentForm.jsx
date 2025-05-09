@@ -29,7 +29,7 @@ const PaymentForm = ({bookingData, goToNextStep}) => {
 
           });
           if (error){
-            cosole.error("Card error", error.message);
+            console.error("Card error", error.message);
             return;
           }
 

@@ -1,6 +1,10 @@
 import React from 'react';
 import { useState } from 'react';
 import BookingForm from '../components/BookingForm';
+import PaymentForm from '../components/BookingForm';
+import Confirmation from '../components/BookingForm';
+
+
 import BookingUpdateForm from '../components/BookingUpdateForm';
 import BookingUserUpdateForm from '../components/BookingUserUpdateForm';
 
@@ -24,6 +28,8 @@ const Bookings = () => {
 
       <h1>Reservation page </h1>
       {step === 1 && <BookingForm goToNextStep={goToNextStep}/>}
+      {step === 2 && <PaymentForm bookingData={bookingData} goToNextStep={goToNextStep}/>}
+      {step === 3 && <Confirmation bookingData = {bookingData}/>}
      
 
      
