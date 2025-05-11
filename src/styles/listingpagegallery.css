@@ -3,13 +3,12 @@
   grid-template-columns: 1fr 1fr;
   gap: 20px;
   padding: 50px;
-  background-color: #f3f1ed;
+  background: rgba(250, 248, 248, 0.75);
   height: 100%;
   width: 100%;
 }
 
 .main-image-container {
- 
   display: grid;
   grid-template-rows: 1fr;
   width: 100%;
@@ -25,7 +24,6 @@
 }
 
 .side-images-container {
-
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
