@@ -1,0 +1,40 @@
+.listing-page-host-info-small-box {
+  background: rgba(250, 248, 248, 0.75);
+  padding-left: 50px;
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  gap: 10px; 
+  align-items: center; 
+  padding-right: 75%;
+  padding-bottom: 2%;
+  line-height: 150%;
+}
+
+.host-avatar {
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  grid-column: 1;
+}
+
+.host-name {
+  grid-column: 2; 
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 22px;
+  color: #484848;
+  width: 300px;
+}
+
+.listed-by {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  color: #484848;
+  width: 300px;
+  
+}
