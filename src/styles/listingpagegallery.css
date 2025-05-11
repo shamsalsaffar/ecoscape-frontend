@@ -1,16 +1,18 @@
 .listing-gallery-container {
     display: grid;
-    grid-template-columns: 1fr 1fr; 
+    grid-template-columns: 1fr 1fr;
     gap: 20px;
     padding: 20px;
     background-color: #f3f1ed;
-    height: 700px; 
+    height: 100%; 
+    width: 100%;
+    background-color: bisque;
 }
 
 
 .main-image-container {
     display: grid;
-    grid-template-rows: 1fr; 
+    grid-template-rows: 1fr;
     width: 100%;
     height: 100%;
 }
@@ -23,11 +25,10 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-
 .side-images-container {
     display: grid;
     grid-template-columns: 1fr 1fr; 
-    grid-template-rows: 1fr 1fr 1fr 1fr; 
+    grid-template-rows: 1fr 1fr; 
     gap: 15px;
     height: 100%;
 }
@@ -59,4 +60,4 @@
 .side-images-container img:nth-child(4) {
     grid-column: 2 / 3;
     grid-row: 3 / 5;
-}
+} 
