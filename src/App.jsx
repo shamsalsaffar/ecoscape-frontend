@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./pages/Home";
+import ListingPage from "./pages/ListingPage";
 import ViewAllAccomodations from "./pages/ViewAllAccomodations";
 import Footer from "./components/Footer";
 import Signup from "./pages/Signup";
@@ -20,6 +21,7 @@ const App = () => {
             <Routes>
               {/* public routes */}
               <Route path="/" element={<Home />} />
+              <Route path="/listing/:id" element={<ListingPage />} />
               <Route
                 path="all-accomodations"
                 element={<ViewAllAccomodations />}
