@@ -12,7 +12,7 @@ const ListingPageDescriptionBox = ({ listing }) => {
           </p>
           <p className="listing-location-info">{listing.location}</p>
         </div>
-        <div className="listing-page-description"><h3>Description</h3>{listing.description}</div>
+        <div className="listing-page-description"><h3 className="description-heading">Description</h3>{listing.description}</div>
       </div>
     </>
   );

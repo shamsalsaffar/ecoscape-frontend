@@ -2,7 +2,18 @@
   background: rgba(250, 248, 248, 0.75);
   padding-left: 50px;
   font-family: "Montserrat";
-  padding-right: 40%;
+  padding-right: 30%;
+}
+
+.description-heading{
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 27px;
+  color: #484848;
+  padding-top: 2%;
+  padding-bottom: 1.5%;
+
 }
 
 .listing-name {
@@ -15,15 +26,7 @@
   padding-bottom: 0;
 }
 
-h3 {
-  font-style: normal;
-  font-weight: 700;
-  font-size: 22px;
-  line-height: 27px;
-  color: #484848;
-  padding-top: 2%;
-  padding-bottom: 2%;
-}
+
 
 .listing-capacity-info {
   font-style: normal;
