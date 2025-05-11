@@ -7,7 +7,7 @@ const ListingPageHostInfoSmallBox = ({ user }) => {
         <img className="host-avatar" src={user.photoUrl} />
 
         <div className="host-name">
-          <p className="listed-by">Listed By</p>
+          <p className="listed-by">Listed By:</p>
           {user.firstName} {user.lastName}
         </div>
       </div>
