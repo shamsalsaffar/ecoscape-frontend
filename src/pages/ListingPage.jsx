@@ -4,6 +4,7 @@ import { getListingById, getImagesByListingId } from "../api/listingService";
 import { getUserByListingId } from "../api/userService";
 import ListingPageGallery from "../components/ListingPageGallery";
 import ListingPageHostInfoSmallBox from "../components/ListingPageHostInfoSmallBox";
+import ListingPageDescriptionBox from "../components/ListingPageDescriptionBox";
 
 const ListingPage = () => {
   const { id } = useParams();
@@ -34,8 +35,6 @@ const ListingPage = () => {
   if (loading) return <div>Loading...</div>;
   if (!listing) return <div>Listing not found</div>;
 
-
-
   const mainImage = images[0]?.imageUrl;
   const sideImages = images.slice(1).map((img) => img.imageUrl);
 
@@ -43,7 +42,7 @@ const ListingPage = () => {
     <div className="listing-page">
       <ListingPageGallery mainImage={mainImage} sideImages={sideImages} />
       <ListingPageHostInfoSmallBox user={user} />
-
+      <ListingPageDescriptionBox listing={listing} />
     </div>
   );
 };
