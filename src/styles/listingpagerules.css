@@ -1,10 +1,11 @@
 .listing-page-rules {
-    background: rgba(250, 248, 248, 0.75);
-    padding-left: 50px;
-    font-family: "Montserrat";
-    padding-right: 30%;
-    color: #9a9a9a;
-    padding-bottom: 1%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Tre kolumner */
+  gap: 20px; /* Avstånd mellan ikonerna */
+  padding: 20px 50px 1% 50px; /* Du kan justera detta vid behov */
+  background: rgba(250, 248, 248, 0.75);
+  color: #9a9a9a;
+  font-family: "Montserrat";
   }
   
   .rules-heading {
@@ -16,26 +17,15 @@
     padding-top: 2%;
     padding-bottom: 1.5%;
   }
-  
-  .listing-rules {
-    color: #9a9a9a;
-    padding-bottom: 2%;
+
+
+  .rules-icon{
     display: flex;
-    align-items: center;
+    align-items: center; /* vertical alignment */
+    gap: 5px; /* space between icon and text */
+    color:black;
+    font-size: 13px;
   }
+
+
   
-  .rules-icon {
-      display: flex; /* Use flexbox to align items horizontally */
-      align-items: center; /* Align items vertically in the center */
-      margin-left: 15px; /* Optional: Add some space between the icon and the text */
-      
-    }
-  
-  .rules-icon span{
-      margin-left: 10px;
-      line-height: 150%;
-    display: inline-block; /* Ensure the span is treated as an inline-block */
-      line-height: 1; /* Adjust line height for better vertical centering */
-      vertical-align: middle; /* Ensures text aligns with the icon */
-      line-height: 300%;
-  }
