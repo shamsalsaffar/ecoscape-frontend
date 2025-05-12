@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getListingById, getImagesByListingId } from "../api/listingService";
 import { getUserByListingId } from "../api/userService";
@@ -12,6 +12,8 @@ const ListingPage = () => {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
+  
+ 
 
   useEffect(() => {
     const fetchListingDetails = async () => {
@@ -43,6 +45,12 @@ const ListingPage = () => {
       <ListingPageGallery mainImage={mainImage} sideImages={sideImages} />
       <ListingPageHostInfoSmallBox user={user} />
       <ListingPageDescriptionBox listing={listing} />
+
+
+     
+  
+
+    
     </div>
   );
 };

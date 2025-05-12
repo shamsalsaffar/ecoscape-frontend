@@ -15,49 +15,8 @@ import React, { useEffect, useState } from "react";
 
 
 
-const BookingForm = ({goToNextStep}) => {
+const BookingForm = ({goToNextStep, type, entityId}) => {
 
-const location=useLocation();
-const navigate = useNavigate();
-/*const param = new URLSearchParams(location.search);
-c/* onst listingId= param.get("listingId");
-if(listingId){
-  localStorage.setItem("listingId", listingId);
-} else {
-  alert("Listing ID is missing")
-} */
-  const [listingId, setListingId] = useState(null);
-  const [error, setError] = useState(null); // حالة جديدة لعرض الخطأ
-
-  useEffect(() => {
-    const param = new URLSearchParams(location.search);
-    const id = param.get("listingId");
-
-    if (id) {
-      setListingId(id);
-      localStorage.setItem("listingId", id); // Save for fallback
-      setError(null);
-    } else {
-      const storedId = localStorage.getItem("listingId");
-      
-      if (storedId) {
-        setListingId(storedId);
-        setError(null);
-      } else {
-        setError("معرّف الإعلان غير موجود (Listing ID is missing).");
-      }
-    }
-  }, [location.search]);
-
-{error ? (
-  <div style={{ color: "red", marginTop: "20px" }}>{error}</div>
-) : (
-  // عرض النموذج أو محتوى الحجز هنا فقط إذا لا يوجد خطأ
-  <BookingForm listingId={listingId} />
-)}
-
-
-console.log("Listing ID from URL:", listingId);
 
 // USE useBookingform  HOOKS 
 const {
@@ -65,88 +24,29 @@ const {
   handleChange,
   errors,
   validateForm,
-} = useBookingForm("bookings"); // use bookinf som type here
+} = useBookingForm(type,entityId); // use bookinf som type here
 
-const {updateBookingData}=useBooking();
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-const{user}=useAuth();
+  if (!validateForm()) return;
 
+  try {
+    const response = await submitBooking(formData); // إرسال البيانات إلى السيرفر
+    console.log("Booking submitted successfully", response);
 
+    // انتقل إلى الخطوة التالية ومرر بيانات الحجز
+    goToNextStep(formData);
 
-  
-// TO CONNECT BACKEND CONNECT FUNCATION THAT IS IN BOOKKINGS SERVICE
-  const handleSubmit = async(e) =>{
-    e.preventDefault();
-    
-    if (!validateForm()) return;
-
-    if(!listingId){
-      alert("Listing ID missing, booking cannot be completed");
-      return;
-    }
-    if (!user || !user.id) {
-      alert("You must be logged in to complete a booking.");
-      navigate("/login", {state:{form:location}});
-     
-      return;
-    }
-
-
-    const enrichedFormData={
-      ...formData,
-      userId: user?.id || "",
-    
-      
-    };
-    
-    console.log("Current user:", user);
-    console.log("formData being sen:", enrichedFormData)
-
-    
-     try {
-      const result = await submitBooking(listingId,enrichedFormData);
-      alert ("Booking success");
-
-      const fullBookingData={
-        ...enrichedFormData,
-        bookingId: result.bookingId
-      };
-      updateBookingData(fullBookingData); //update context with new booking
-      goToNextStep(fullBookingData
-
-      ); // go to next step
-
-    } catch (error){
-      console.error("Booking error: ", error );
-      if (error.response && error.response.data){
-        alert("Booking faild:\n" + error.response.data);
-      }else{
-      alert ("An error occurred:" + error.message);
-    }
+  } catch (error) {
+    console.error("Error submitting booking:", error);
   }
-  }; 
- 
+};
 
-    
-   
-  
-{/* <div className="login-page">
-      <div className="login-container">
-        <div className="login-text">Login or Sign up</div>
-        <form className="form" onSubmit={handleSubmit}>
-          <div className="form-group">
-            <input
-              type="text"
-              id="username"
-              placeholder="Email"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-          </div>
- */}
-  
 
- 
+
+
+
 
   return (
     <div className ="booking-form">

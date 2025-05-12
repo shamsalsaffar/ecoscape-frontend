@@ -20,7 +20,7 @@ const ListingDetails = () => {
   const handleBooking = () => {
     if (currentUser) {
       // إذا كان المستخدم قد قام بتسجيل الدخول
-      navigate(`/booking?listingId=${listingId}`);// توجيه المستخدم إلى صفحة الحجز
+      navigate(`/booking?listingId=${id}`);// توجيه المستخدم إلى صفحة الحجز
     } else {
       // إذا لم يكن المستخدم قد قام بتسجيل الدخول
       navigate("/login"); // توجيه المستخدم إلى صفحة تسجيل الدخول
@@ -33,7 +33,7 @@ const ListingDetails = () => {
     const fetchListing = async () => {
       try {
         console.log("listingId from URL:", listingId); 
-        const data = await getListingById(Number(listingId));
+        const data = await getListingById(Number(id));
         console.log("البيانات المستلمة:", data); 
         setListing(data);
       } catch (err) {

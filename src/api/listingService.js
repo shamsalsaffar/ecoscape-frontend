@@ -5,13 +5,13 @@ export const getAllListings = async () => {
   return response.data;
 };
 
-export const getListingById = async (listingId) => {
-  const response = await api.get(`/api/listings/${listingId}`);
+export const getListingById = async (id) => {
+  const response = await api.get(`/api/listings/${id}`);
 
   return response.data;
 };
 
-export const getImagesByListingId = async (listingId) => {
+export const getImagesByListingId = async (id) => {
   try {
     const response = await api.get(`api/images/all/${id}`);
     if (response.status === 404) {

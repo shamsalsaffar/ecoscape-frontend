@@ -29,8 +29,8 @@ const App = () => {
               {/* public routes */}
 
               <Route path="/" element={<Home />} />
-             {/* <Route path="/listing/:id" element={<ListingPage />} /> */}
-              <Route path="/listings/:listingId" element={<ListingDetails />} />
+              <Route path="/listing/:id" element={<ListingPage />} /> 
+             {/* <Route path="/listings/:listingId" element={<ListingDetails />} />  */}
               <Route
                 path="/viewAllAccomodations"
                 element={<ViewAllAccomodations />}

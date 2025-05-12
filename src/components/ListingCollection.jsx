@@ -7,7 +7,7 @@ import "../styles/listingcollection.css";
 const ListingCollection = () => {
   const [listings, setListings] = useState([]);
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
+
 
   useEffect(() => {
     const fetchListingsWithImages = async () => {
@@ -45,7 +45,7 @@ const ListingCollection = () => {
             {listing.images && listing.images.length > 0 ? (
               <img
                 key={listing.images[0].id}
-                key={listing.images[0].id}
+               
                 src={listing.images[0].imageUrl}
                 alt={listing.name}
                 className="listing-image"
