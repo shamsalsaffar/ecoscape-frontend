@@ -4,6 +4,7 @@ import User from "../icons/User";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import HostPage from "../pages/HostPage";
+import { useAuth } from "../hooks/useAuth";
 
 const Header = ({ onFetch }) => {
   const navigate = useNavigate();
@@ -14,6 +15,12 @@ const Header = ({ onFetch }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false); // skapar state för dropdown menyn
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen); // Växla mellan true och false
+  };
+
+  const { currentUser, logout } = useAuth();
+
+  const handleLogout = async () => {
+    await logout();
   };
 
   return (
@@ -96,10 +103,27 @@ const Header = ({ onFetch }) => {
             text={<User className="user-icon" />} // تمرير الأيقونة كـ نص
           />
 
-          {dropdownOpen && ( // om dropdown är true , visa menyn med länkar
+          {dropdownOpen && (
             <div className="dropdown-menu">
-              <Link to="/login">Login</Link>
-              <Link to="/signup">Sign Up</Link>
+              {currentUser ? (
+                <>
+                  <Link to="/profile">Profile</Link>
+                  <Link
+                    to="/"
+                    onClick={(event) => {
+                      event.preventDefault();
+                      handleLogout();
+                    }}
+                  >
+                    Logout
+                  </Link>
+                </>
+              ) : (
+                <>
+                  <Link to="/login">Login</Link>
+                  <Link to="/signup">Sign Up</Link>
+                </>
+              )}
               <Link to="/helpcenter">Help Center</Link>
             </div>
           )}
