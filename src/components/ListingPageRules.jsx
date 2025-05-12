@@ -20,29 +20,21 @@ const ListingPageRules = ({ listing }) => {
           {listing.rules.checkInTime} Check In
         </div>
       )}
-       {listing.rules.isSmokingAllowed != null && (
+      {listing.rules.isSmokingAllowed != null && (
         <div className="smoking-policy-icon rules-icon">
           <SmokingPolicyIcon />
           <span>Smoking</span>
           {listing.rules.isSmokingAllowed ? <Permitted /> : <NotPermitted />}
         </div>
       )}
-    
-     
-     
-    
-
-
-
-
-    
       {listing.rules.isPartyingAllowed != null && (
         <div className="party-policy-icon rules-icon">
           <PartyPolicyIcon />
           <span>Party</span>
           {listing.rules.isPartyingAllowed ? <Permitted /> : <NotPermitted />}
         </div>
-      )}  {listing.rules.checkOutTime != null && (
+      )}
+      {listing.rules.checkOutTime != null && (
         <div className="check-out-time-icon rules-icon">
           <span>
             <ClockIcon className="time-icon" />
@@ -56,7 +48,7 @@ const ListingPageRules = ({ listing }) => {
           <span>Loud Music</span>
           {listing.rules.isLoudMusicAllowed ? <Permitted /> : <NotPermitted />}
         </div>
-      )} 
+      )}
       {listing.rules.isPetsAllowed != null && (
         <div className="pet-policy-icon rules-icon">
           <PetPolicy />
@@ -64,8 +56,7 @@ const ListingPageRules = ({ listing }) => {
           {listing.rules.isPetsAllowed ? <Permitted /> : <NotPermitted />}
         </div>
       )}
-
- {listing.rules.quiteHoursStart != null && (
+      {listing.rules.quiteHoursStart != null && (
         <div className="quiet-hours-start-icon rules-icon">
           <span>
             <ClockIcon className="time-icon" />
@@ -94,14 +85,15 @@ const ListingPageRules = ({ listing }) => {
             <NotPermitted />
           )}
         </div>
-      )}  {listing.rules.quiteQuiteHoursStop != null && (
+      )}
+      {listing.rules.quiteQuiteHoursStop != null && (
         <div className="quiet-hours-end-icon rules-icon">
           <span>
             <ClockIcon className="time-icon" />
           </span>
           {listing.rules.quiteQuiteHoursStop} Quiet Hours End
         </div>
-      )} 
+      )}
     </div>
   );
 };
