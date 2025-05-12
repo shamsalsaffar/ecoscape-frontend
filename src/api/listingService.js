@@ -12,12 +12,12 @@ export const getListingById = async (id) => {
 
 export const getImagesByListingId = async (listingId) => {
   try {
-    const response = await api.get(`api/images/all/${listingId}`);
-    return response.data;
-  } catch (error) {
-    if (error.response && error.response.status === 404) {
+    const response = await api.get(`api/images/all/${id}`);
+    if (response.status === 404) {
       return [];
     }
+    return response.data; 
+  } catch (error) {
     console.error("Error fetching images:", error);
     return [];
   }

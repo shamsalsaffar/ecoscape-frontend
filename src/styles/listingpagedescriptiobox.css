@@ -1,0 +1,53 @@
+.listing-page-description-box {
+  background: rgba(250, 248, 248, 0.75);
+  padding-left: 50px;
+  font-family: "Montserrat";
+  padding-right: 30%;
+}
+
+.description-heading{
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 27px;
+  color: #484848;
+  padding-top: 2%;
+  padding-bottom: 1.5%;
+
+}
+
+.listing-name {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 27px;
+  color: #484848;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+
+
+.listing-capacity-info {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 30px;
+  color: #000000;
+}
+
+.listing-location-info {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 30px;
+  color: #000000;
+}
+
+.listing-page-description {
+  color: #9a9a9a;
+}
+
+.listing-location-info {
+  color: #9a9a9a;
+}

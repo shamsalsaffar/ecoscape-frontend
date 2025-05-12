@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./pages/Home";
+import ListingPage from "./pages/ListingPage";
 import ViewAllAccomodations from "./pages/ViewAllAccomodations";
 import Footer from "./components/Footer";
 import Signup from "./pages/Signup";
@@ -25,13 +26,12 @@ const App = () => {
           <main className="main-content">
             <Routes>
               {/* public routes */}
-
-              <Route path="/" element={<Navigate to="/home" replace />} />
-              <Route path="/home" element={<Home />} />
-              <Route path="/listings/:id" element={<ListingDetails />} />
-              <Route path="/viewAllAccomodations" element={<ViewAllAccomodations />} />
-
-
+              <Route path="/" element={<Home />} />
+              <Route path="/listing/:id" element={<ListingPage />} />
+              <Route
+                path="/viewAllAccomodations"
+                element={<ViewAllAccomodations />}
+              />
               <Route path="/signup-page" element={<Signup />} />
               <Route path="/login" element={<Login />} />
               <Route path="/helpcenter" element={<Helpcenter />} />

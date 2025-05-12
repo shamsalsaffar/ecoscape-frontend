@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom"; // Import Link for navigation
 import { getAllListings, getImagesByListingId } from "../api/listingService";
 import DefaultListingImage from "../icons/DefaultListingImage"; // Importera den nya komponenten
 import "../styles/listingcollection.css";
@@ -34,7 +35,7 @@ const ListingCollection = () => {
   return (
     <div className="listing-grid">
       {listings.map((listing) => (
-        <div key={listing.id} className="listing-box">
+        <Link to={`/listing/${listing.id}`} key={listing.id} className="listing-box"> {/* Wrap in Link */}
           <div className="listing-short-description-box">
             <h3 className="listing-box-name">{listing.name}</h3>
             <h4 className="listing-box-location">{listing.location}</h4>
@@ -43,7 +44,7 @@ const ListingCollection = () => {
           <div className="listing-images">
             {listing.images && listing.images.length > 0 ? (
               <img
-                key={listing.images[0].id} git 
+                key={listing.images[0].id}
                 src={listing.images[0].imageUrl}
                 alt={listing.name}
                 className="listing-image"
@@ -52,7 +53,7 @@ const ListingCollection = () => {
               <DefaultListingImage />
             )}
           </div>
-        </div>
+        </Link>
       ))}
     </div>
   );
