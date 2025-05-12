@@ -6,6 +6,7 @@ import ListingPageGallery from "../components/ListingPageGallery";
 import ListingPageHostInfoSmallBox from "../components/ListingPageHostInfoSmallBox";
 import ListingPageDescriptionBox from "../components/ListingPageDescriptionBox";
 import ListingPageRules from "../components/ListingPageRules";
+import ListingPageAmenities from "../components/ListingPageAmenities";
 
 const ListingPage = () => {
   const { id } = useParams();
@@ -45,6 +46,7 @@ const ListingPage = () => {
       <ListingPageHostInfoSmallBox user={user} />
       <ListingPageDescriptionBox listing={listing} />
       <ListingPageRules listing={listing} />
+      <ListingPageAmenities/>
     </div>
   );
 };
