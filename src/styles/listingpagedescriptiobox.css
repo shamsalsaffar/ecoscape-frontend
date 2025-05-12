@@ -51,3 +51,13 @@
 .listing-location-info {
   color: #9a9a9a;
 }
+
+.rules-icons {
+  background: rgba(250, 248, 248, 0.75);
+  padding-left: 50px;
+  font-family: "Montserrat";
+  padding-right: 30%;
+  font-size: 12px;
+
+  
+}
