@@ -1,10 +1,10 @@
-import React from 'react'
+ import React from 'react'
 import Button from './Button';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import axios from 'axios';
 
 
-const PaymentForm = ({bookingData, goToNextStep}) => {
+const PaymentForm = ({fullBookingData, goToNextStep}) => {
 
   const stripe= useStripe(); //initalize strips تهيئة stripe
   const elements = useElements(); //  initalize elements (cared element)
@@ -20,6 +20,7 @@ const PaymentForm = ({bookingData, goToNextStep}) => {
 
          // to get the entered user card نحصل علب معلومات الكارت مدخله 
          const cardElement = elements.getElement(CardElement);
+         const token = localStorage.getItem('token');
          
          try {
           // create paymentNethod by paymentElement 
@@ -34,16 +35,22 @@ const PaymentForm = ({bookingData, goToNextStep}) => {
           }
 
           // send paymentmethod and payment  to backend 
-          const response = await fetch ('http://localhost:8080/api/payments/create-payment-intent', {
-            method: "POST",
-            headers:{"Content-Type":"application/json"},
-            body: JSON.stringify({
+          const intentRes = await axios.post (
+            'http://localhost:8080/api/payments/create-payment-intent',
+             {
               amount: bookingData. totalPrice * 100, 
-              currency: "sek"
-            }),
-          });
+              currency: "sek",
+            },
+            {
+              headers:{
+                Authorization: `Bearer ${token}`,
+              },
+            }
 
-          const paymentIntent= await response.json();
+          );
+          
+
+          const clientSecret= intentRes.data.clientSecret;
            // confirm pay by pk 
            const confirmResult = await stripe.confirmCardPayment(paymentIntent.clientSecret,{
             payment_method: paymentMethod.id,
@@ -54,14 +61,23 @@ const PaymentForm = ({bookingData, goToNextStep}) => {
            } else if (confirmResult.paymentIntent.status === 'succeeded'){
 
             // efter pay , send payment data to finalize-payment
-            const finalizeRes= await axios.post('http://localhost:8080/api/payments/finalize-payment',{
+            const finalizeRes= await axios.post(
+              'http://localhost:8080/api/payments/finalize-payment',
+              {
               paymentIntentId: confirmResult.paymentIntent.id, 
               amount: confirmResult.paymentIntent.amount,
               currency: confirmResult.paymentIntent.currency,
               userId: bookingData.userId, 
               bookingId: bookingData.bookingId,
-              paymentType: 'FULL',
-            });
+              paymentType: 'STRIPE',
+              },
+              {
+                headers: {
+                  Authorization:  `Bearer ${token}`,
+                },
+              }
+            );
+
             console.log(finalizeRes.data.message);
 
             goToNextStep(finalizeRes.data);
@@ -87,3 +103,4 @@ const PaymentForm = ({bookingData, goToNextStep}) => {
 };
 
 export default PaymentForm
+ 

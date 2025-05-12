@@ -1,29 +1,30 @@
+import axios from "axios";
 import api from "./axios";
 
-const submitBooking = async(formData) => {
+import React from 'react'
+
+export const submitBooking = async (bookingData, listingId, token) => {
     try {
-       /*  const response = await api.post('/api/bookings', formData, {
-
-            method:"POST", 
-            headers:{
-                "Content-Type": "application/json",
-            },
-        }); */
-        const {listingId, ...bookingBody} = formData;
-        const response = await api.get.post (`/api/bookings?listingId=${listingId}`, bookingBody,{
-            headers:{
-                "Content-Type": "application/json",
-            },
-        });
-
-        return response.data; //Booking success 
-    } catch (error){
-        console.error("Error in submitBooking:" , error); //log the error  for beter debugging occurred
-        throw new Error(error.message || 'an error occurred while sending');
-
+        const response = await axios.post(
+            `/api/bookings?listingId=${listingId}`, // ✅ korrekt URL
+            bookingData,
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                },
+            }
+        );
+        return response.data;
+    } catch (error) {
+        if (error.response) {
+            throw new Error(error.response.data);
+        } else {
+            throw new Error('Server error. Please try again later.');
+        }
     }
 };
-export {submitBooking};
+
 
 
 //  TO UPDATE BOOKING BY USER

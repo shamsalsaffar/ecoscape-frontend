@@ -1,4 +1,4 @@
-import React from 'react';
+/* import React from 'react';
 import { AuthContext } from '../contexts/AuthContext'; // import Context
 import { Navigate, useLocation } from 'react-router-dom';// to route the user if dont logga in 
 import { useContext } from 'react';
@@ -21,3 +21,4 @@ const ProtectedBookingRoute = ({children}) => {
 };
 
 export default ProtectedBookingRoute;
+ */

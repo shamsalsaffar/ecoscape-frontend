@@ -5,8 +5,9 @@ export const getAllListings = async () => {
   return response.data;
 };
 
-export const getListingById = async (id) => {
-  const response = await api.get(`/api/listings/${id}`);
+export const getListingById = async (listingId) => {
+  const response = await api.get(`/api/listings/${listingId}`);
+
   return response.data;
 };
 

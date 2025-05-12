@@ -1,17 +1,63 @@
+
 // först import use state 
 // bookingform
 // funcktion som ska use
-import React from "react";
+
 import { submitBooking } from "../api/bookingsService";
 import Button from "./Button";
 import { useBookingForm } from "../hooks/useBookingForm";
 import { useBooking } from "../contexts/BookingContext";
 import "../styles/bookingForm.css";
 import { AuthContext } from "../contexts/AuthContext";
+import { useAuth } from "../hooks/useAuth";
+import { useLocation , useNavigate} from "react-router-dom";
+import React, { useEffect, useState } from "react";
 
 
 
 const BookingForm = ({goToNextStep}) => {
+
+const location=useLocation();
+const navigate = useNavigate();
+/*const param = new URLSearchParams(location.search);
+c/* onst listingId= param.get("listingId");
+if(listingId){
+  localStorage.setItem("listingId", listingId);
+} else {
+  alert("Listing ID is missing")
+} */
+  const [listingId, setListingId] = useState(null);
+  const [error, setError] = useState(null); // حالة جديدة لعرض الخطأ
+
+  useEffect(() => {
+    const param = new URLSearchParams(location.search);
+    const id = param.get("listingId");
+
+    if (id) {
+      setListingId(id);
+      localStorage.setItem("listingId", id); // Save for fallback
+      setError(null);
+    } else {
+      const storedId = localStorage.getItem("listingId");
+      
+      if (storedId) {
+        setListingId(storedId);
+        setError(null);
+      } else {
+        setError("معرّف الإعلان غير موجود (Listing ID is missing).");
+      }
+    }
+  }, [location.search]);
+
+{error ? (
+  <div style={{ color: "red", marginTop: "20px" }}>{error}</div>
+) : (
+  // عرض النموذج أو محتوى الحجز هنا فقط إذا لا يوجد خطأ
+  <BookingForm listingId={listingId} />
+)}
+
+
+console.log("Listing ID from URL:", listingId);
 
 // USE useBookingform  HOOKS 
 const {
@@ -21,57 +67,69 @@ const {
   validateForm,
 } = useBookingForm("bookings"); // use bookinf som type here
 
+const {updateBookingData}=useBooking();
+
+const{user}=useAuth();
 
 
-const {bookingData,updateBookingData}=useBooking();
+
   
 // TO CONNECT BACKEND CONNECT FUNCATION THAT IS IN BOOKKINGS SERVICE
   const handleSubmit = async(e) =>{
     e.preventDefault();
+    
     if (!validateForm()) return;
 
-    console.log("formData being sent:", formData);
-   /*  try {
-      const result = await submitBooking(formData);
+    if(!listingId){
+      alert("Listing ID missing, booking cannot be completed");
+      return;
+    }
+    if (!user || !user.id) {
+      alert("You must be logged in to complete a booking.");
+      navigate("/login", {state:{form:location}});
+     
+      return;
+    }
+
+
+    const enrichedFormData={
+      ...formData,
+      userId: user?.id || "",
+    
+      
+    };
+    
+    console.log("Current user:", user);
+    console.log("formData being sen:", enrichedFormData)
+
+    
+     try {
+      const result = await submitBooking(listingId,enrichedFormData);
       alert ("Booking success");
-      updateBookingData(formData); //update context with new booking
-      goToNextStep(formData); // go to next step
+
+      const fullBookingData={
+        ...enrichedFormData,
+        bookingId: result.bookingId
+      };
+      updateBookingData(fullBookingData); //update context with new booking
+      goToNextStep(fullBookingData
+
+      ); // go to next step
 
     } catch (error){
+      console.error("Booking error: ", error );
+      if (error.response && error.response.data){
+        alert("Booking faild:\n" + error.response.data);
+      }else{
       alert ("An error occurred:" + error.message);
     }
-  }; 
- */
-  try{
-    const result = await submitBooking({
-      ...formData,
-      userId: 1, 
-    
-      listingId: 4, // رقم مؤقت حتى يتم ربطه بالصفحة لاحقًا
-      pricePerNight: 250.00,
-    
-    
-    });
-    alert ("Booking success");
-    updateBookingData({
-      ...formData,
-      listingId: 4,
-      pricePerNight: 250.00,
-      
-     
-    });
-    goToNextStep({
-      ...formData,
-      listingId: 4,
-      pricePerNight: 250.00,
-      
-      
-    });
-  } catch (error){
-    alert ("An error occurred:" + error.message);
   }
-};
+  }; 
+ 
 
+    
+   
+  
 {/* <div className="login-page">
       <div className="login-container">
         <div className="login-text">Login or Sign up</div>
@@ -90,7 +148,6 @@ const {bookingData,updateBookingData}=useBooking();
 
  
 
-
   return (
     <div className ="booking-form">
       <div className="booking-container">
@@ -99,6 +156,7 @@ const {bookingData,updateBookingData}=useBooking();
         almost done! You only need to fill in the required fields marked with 
         <span className="required-star"> *</span>
          </section>
+         <p>Listing ID: {listingId}</p>
       <form  className="form" onSubmit={handleSubmit}>
         <div className="form-group">
           <label>First Name 
@@ -210,3 +268,6 @@ const {bookingData,updateBookingData}=useBooking();
 }
 
 export default BookingForm
+
+
+

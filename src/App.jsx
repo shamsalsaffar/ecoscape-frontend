@@ -10,12 +10,13 @@ import Helpcenter from "./pages/Helpcenter";
 import HostPage from "./pages/HostPage";
 import ListingDetails from "./pages/ListingDetails";
 import { AuthProvider } from "./contexts/AuthContext";
-
+import ProtectedRoute from "./router/ProtectedRoute";
 
 import "./styles/home.css";
 import Bookings from "./pages/Bookings";
-import ProtectedBookingRoute from "./router/ProtectedBookingRoute";
+
 import { BookingProvider } from "./contexts/BookingContext";
+import BookingForm from "./components/BookingForm";
 const App = () => {
   return (
     <BrowserRouter>
@@ -26,24 +27,29 @@ const App = () => {
           <main className="main-content">
             <Routes>
               {/* public routes */}
+
               <Route path="/" element={<Home />} />
-              <Route path="/listing/:id" element={<ListingPage />} />
+             {/* <Route path="/listing/:id" element={<ListingPage />} /> */}
+              <Route path="/listings/:listingId" element={<ListingDetails />} />
               <Route
                 path="/viewAllAccomodations"
                 element={<ViewAllAccomodations />}
               />
+
               <Route path="/signup-page" element={<Signup />} />
               <Route path="/login" element={<Login />} />
               <Route path="/helpcenter" element={<Helpcenter />} />
               <Route path="/host" element={<HostPage />} />
               
               {/* protected routes for all authenticated users */}
-              <Route path="/bookings" element={
-                <ProtectedBookingRoute>
-                  <Bookings/>
-                </ProtectedBookingRoute>
-              }
-              />
+              <Route element={<ProtectedRoute requiredRoles={['USER']}/>}>
+              <Route path="/bookings/:listingId" element={<Bookings/>}/>
+              <Route path="/booking" element={<BookingForm/>}/>
+             
+              
+
+              </Route>
+              
 
               {/* protected routes for admins only */}
             </Routes>

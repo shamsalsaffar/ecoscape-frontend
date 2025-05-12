@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom"; // Import Link for navigation
 import { getAllListings, getImagesByListingId } from "../api/listingService";
-import DefaultListingImage from "../icons/DefaultListingImage"; // Importera den nya komponenten
+import DefaultListingImage from "../icons/DefaultListingImage";
 import "../styles/listingcollection.css";
 
 const ListingCollection = () => {
   const [listings, setListings] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchListingsWithImages = async () => {
@@ -18,7 +19,6 @@ const ListingCollection = () => {
             return { ...listing, images };
           })
         );
-
         setListings(listingsWithImages);
       } catch (err) {
         console.log("Error:", err);
@@ -44,6 +44,7 @@ const ListingCollection = () => {
           <div className="listing-images">
             {listing.images && listing.images.length > 0 ? (
               <img
+                key={listing.images[0].id}
                 key={listing.images[0].id}
                 src={listing.images[0].imageUrl}
                 alt={listing.name}

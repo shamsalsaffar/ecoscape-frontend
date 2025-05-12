@@ -21,8 +21,8 @@ const Login = () => {
 
       // check if there is saved distination , and route to it 
       // التحقق اذا كان هاك موقع محفوظ والتوجه اليه
-      const form = location.state?.form || "/"; // if dont save distantion route to home page
-      navigate(location.state?.form || "/bookings"); // otherwise return to saved destination 
+      const redirectPath = location.state?.from?.pathname || "/";// if dont save distantion route to home page
+      navigate(redirectPath); // otherwise return to saved destination 
     } catch (err) {
       console.log("error: " + err);
     }
