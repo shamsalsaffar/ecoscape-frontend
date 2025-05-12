@@ -27,9 +27,9 @@ const Login = () => {
     <div className="login-page">
       <div className="login-container">
         <div className="login-text">Login or Sign up</div>
-        <form className="form" onSubmit={handleSubmit}>
-          <div className="form-group">
-            <input
+        <form className="login-form" onSubmit={handleSubmit}>
+          <div className="login-form-group">
+            <input className="login-input"
               type="text"
               id="username"
               placeholder="Email"
@@ -37,8 +37,8 @@ const Login = () => {
               onChange={(e) => setUsername(e.target.value)}
             />
           </div>
-          <div className="form-group">
-            <input
+          <div className="login-form-group">
+            <input className="login-input"
               type="password"
               id="password"
               placeholder="Password"

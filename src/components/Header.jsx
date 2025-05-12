@@ -55,13 +55,14 @@ const Header = ({ onFetch }) => {
             to="/viewAllAccomodations"
             onClick={onFetch}
             style={{
-              color: "white",
+             color: "white",
               cursor: "pointer",
-              textDecoration: "none",
+             textDecoration: "none",
             }}
           >
             View All Accommodation
           </Link>
+
         </div>
 
         {/* Högra knappar */}
@@ -89,18 +90,18 @@ const Header = ({ onFetch }) => {
             onClick={toggleDropdown}
             className="icon-button"
             style={{
-              padding: 0, // إلغاء أي padding
-              margin: 0, // إلغاء أي margin
+              padding: 0,              
+              margin: 0,                
               borderRadius: "12px",
               width: "50px",
               height: "55px",
-              backgroundColor: "#fff", // لون الخلفية إن احتجت
-              display: "flex", // استخدم flex لوضع الأيقونة في المنتصف
+              backgroundColor: "#fff",  
+              display: "flex",          
               justifyContent: "center",
               alignItems: "center",
               border: "none",
             }}
-            text={<User className="user-icon" />} // تمرير الأيقونة كـ نص
+            text={<User className="user-icon" />}   
           />
 
           {dropdownOpen && (

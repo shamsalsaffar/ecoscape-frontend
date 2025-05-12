@@ -5,7 +5,8 @@ const ProtectedRoute = ({ requiredRoles }) => {
   const { currentUser } = useAuth();
 
   if (!currentUser) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to="/login" replace state={{ from: location }} />;
+
   }
 
   if (requiredRoles && requiredRoles.length > 0) {

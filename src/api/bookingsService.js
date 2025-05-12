@@ -1,0 +1,51 @@
+import axios from "axios";
+import api from "./axios";
+
+import React from 'react'
+
+export const submitBooking = async (bookingData, listingId, token) => {
+    try {
+        const response = await axios.post(
+            `/api/bookings?listingId=${listingId}`, // ✅ korrekt URL
+            bookingData,
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                },
+            }
+        );
+        return response.data;
+    } catch (error) {
+        if (error.response) {
+            throw new Error(error.response.data);
+        } else {
+            throw new Error('Server error. Please try again later.');
+        }
+    }
+};
+
+
+
+//  TO UPDATE BOOKING BY USER
+export const updateBookingUser = async (bookingId, bookingData) => {
+    try {
+        const response = await api.patch(`/api/bookings/${bookingId}/update-contact`, bookingData);
+        return response.data;
+    } catch (error){
+        throw new Error ('failed to update booking data:' + error.message);
+    }
+    
+};
+
+
+// TO UPDATE  BOOKING BY ADMIN OR HOST 
+export const updateBooking = async(bookingId, bookingData) => {
+    try {
+        const response = await api.put(`/api/bookings/${bookingId}`, bookingData);
+        return response.data;
+    } catch (error){
+        throw new Error ('Faild to update booking data:' + error.message);
+        
+    }
+}

@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams} from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getListingById, getImagesByListingId } from "../api/listingService";
 import { getUserByListingId } from "../api/userService";
@@ -6,6 +6,7 @@ import ListingPageGallery from "../components/ListingPageGallery";
 import ListingPageHostInfoSmallBox from "../components/ListingPageHostInfoSmallBox";
 import ListingPageDescriptionBox from "../components/ListingPageDescriptionBox";
 import ListingPageRules from "../components/ListingPageRules";
+import ReserveButton from "../components/ReserveButton";
 
 const ListingPage = () => {
   const { id } = useParams();
@@ -13,6 +14,8 @@ const ListingPage = () => {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
+  
+ 
 
   useEffect(() => {
     const fetchListingDetails = async () => {
@@ -45,6 +48,9 @@ const ListingPage = () => {
       <ListingPageHostInfoSmallBox user={user} />
       <ListingPageDescriptionBox listing={listing} />
       <ListingPageRules listing={listing} />
+      <ReserveButton/>
+    
+
     </div>
   );
 };
