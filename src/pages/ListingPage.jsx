@@ -5,6 +5,7 @@ import { getUserByListingId } from "../api/userService";
 import ListingPageGallery from "../components/ListingPageGallery";
 import ListingPageHostInfoSmallBox from "../components/ListingPageHostInfoSmallBox";
 import ListingPageDescriptionBox from "../components/ListingPageDescriptionBox";
+import ListingPageRules from "../components/ListingPageRules";
 
 const ListingPage = () => {
   const { id } = useParams();
@@ -43,6 +44,7 @@ const ListingPage = () => {
       <ListingPageGallery mainImage={mainImage} sideImages={sideImages} />
       <ListingPageHostInfoSmallBox user={user} />
       <ListingPageDescriptionBox listing={listing} />
+      <ListingPageRules listing={listing} />
     </div>
   );
 };
