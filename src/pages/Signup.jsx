@@ -8,7 +8,6 @@ const Signup = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
-  const [validEmail, setValidEmail] = useState(false);
 
   const navigate = useNavigate();
   // konsumerar contexten
