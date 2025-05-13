@@ -46,7 +46,7 @@ const ListingPage = () => {
       <ListingPageHostInfoSmallBox user={user} />
       <ListingPageDescriptionBox listing={listing} />
       <ListingPageRules listing={listing} />
-      <ListingPageAmenities/>
+      <ListingPageAmenities listing={listing}/>
     </div>
   );
 };

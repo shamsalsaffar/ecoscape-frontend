@@ -1,5 +1,5 @@
 import * as React from "react";
-const WashingMachineIcon = (props) => (
+const WashingMashineIcon = (props) => (
   <svg
     width={24}
     height={24}
@@ -14,4 +14,4 @@ const WashingMachineIcon = (props) => (
     />
   </svg>
 );
-export default WashingMachineIcon;
+export default WashingMashineIcon;
