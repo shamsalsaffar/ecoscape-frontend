@@ -29,6 +29,8 @@ export const AuthProvider = ({ children }) => {
       const response = await api.post("/auth/login", { username, password });
 
       setCurrentUser(response.data);
+   
+
       console.log("Response: " + JSON.stringify(response.data));
       return response.data;
     } catch (error) {
@@ -61,7 +63,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const value = {
-    currentUser,
+    user:currentUser,
     login,
     logout,
     register,

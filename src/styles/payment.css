@@ -1,0 +1,53 @@
+
+
+.payment-form {
+    background-color: #f0fdf4; /* خلفية خضراء فاتحة */
+    border: 1px solid #d1fae5; /* حدود خضراء فاتحة */
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 8px rgba(34, 197, 94, 0.2); /* ظل أخضر */
+    max-width: 500px;
+    margin: 2rem auto;
+    font-family: "Segoe UI", sans-serif;
+  }
+  
+  .payment-form h2 {
+    color: #065f46;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .payment-form p {
+    color: #064e3b;
+    margin: 8px 0;
+  }
+  
+  .payment-form .StripeElement {
+    background-color: #ecfdf5;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #a7f3d0;
+    margin-bottom: 16px;
+  }
+  
+  .payment-form button {
+    background-color: #10b981;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .payment-form button:hover {
+    background-color: #059669;
+  }
+  
+  .payment-form .error {
+    color: red;
+    margin-top: 10px;
+    text-align: center;
+  }
+  

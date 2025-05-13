@@ -1,106 +1,105 @@
- import React from 'react'
-import Button from './Button';
-import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import axios from 'axios';
+import React, {useState } from "react";
+import "../styles/payment.css";
+import { loadStripe } from "@stripe/stripe-js";
+import {
+  Elements,
+  CardElement,
+  useStripe,
+  useElements,
+} from "@stripe/react-stripe-js";
+import Button from "./Button";
+import api from "../api/axios"; 
+
+const stripePromise = loadStripe('pk_test_51RLSChQEubero97NhRlRQDb7AHac3FKDb3NtjyaiBRWTG3i1eQeqiUDSYPECCqJgnk81SiqiSvg8NUr6b817hwOl00XhzHVWfT');
 
 
-const PaymentForm = ({fullBookingData, goToNextStep}) => {
+const CheckoutForm = ({ fullBookingData, goToNextStep }) => {
+  const stripe = useStripe();
+  const elements = useElements();
 
-  const stripe= useStripe(); //initalize strips تهيئة stripe
-  const elements = useElements(); //  initalize elements (cared element)
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
-    const handlePayment = async(e) =>{
-        e.preventDefault();  // منع تحديث تلقايي prevent auto-refresh on click 
+    if (!stripe || !elements) {
+      return;
+    }
 
-         if (!stripe || !elements){
-          console.log("Stripe isnot ready yet")
-          return ;
+    setLoading(true);
+    setError(null);
+
+    try {
+      // ✅ أنشئ payment intent بدون Authorization header
+      const intentRes = await api.post(
+        "/api/payments/create-payment-intent",
+        {
+          amount: fullBookingData.totalPrice * 100, // المبلغ بالـ öre (100 öre = 1 SEK)
+          currency: "sek",
         }
+      );
 
-         // to get the entered user card نحصل علب معلومات الكارت مدخله 
-         const cardElement = elements.getElement(CardElement);
-         const token = localStorage.getItem('token');
-         
-         try {
-          // create paymentNethod by paymentElement 
-          const {paymentMethod, error } = await stripe.createPaymentMethod ({
-            type : 'card',
-            card: cardElement, 
+      const clientSecret = intentRes.data.clientSecret;
 
-          });
-          if (error){
-            console.error("Card error", error.message);
-            return;
-          }
+      const confirmResult = await stripe.confirmCardPayment(clientSecret, {
+        payment_method: {
+          card: elements.getElement(CardElement),
+        },
+      });
 
-          // send paymentmethod and payment  to backend 
-          const intentRes = await axios.post (
-            'http://localhost:8080/api/payments/create-payment-intent',
-             {
-              amount: bookingData. totalPrice * 100, 
-              currency: "sek",
-            },
-            {
-              headers:{
-                Authorization: `Bearer ${token}`,
-              },
-            }
+      if (confirmResult.error) {
+        throw new Error(confirmResult.error.message);
+      }
 
-          );
-          
+      // ✅ أرسل نتيجة الدفع لتحديث الحجز في قاعدة البيانات
+      const finalizeRes = await api.post("/api/payments/finalize-payment", {
+        paymentIntentId: confirmResult.paymentIntent.id,
+        amount: confirmResult.paymentIntent.amount,
+        currency: confirmResult.paymentIntent.currency,
+        bookingId: fullBookingData.bookingId,
+        paymentType: "STRIPE",
+      });
 
-          const clientSecret= intentRes.data.clientSecret;
-           // confirm pay by pk 
-           const confirmResult = await stripe.confirmCardPayment(paymentIntent.clientSecret,{
-            payment_method: paymentMethod.id,
-           });
+      goToNextStep(finalizeRes.data); // ✅ انتقل إلى الخطوة التالية مع البيانات النهائية
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-           if (confirmResult.error){
-            cosole.error("فشل تاكيد الدفع ", confirmResult.error.message);
-           } else if (confirmResult.paymentIntent.status === 'succeeded'){
-
-            // efter pay , send payment data to finalize-payment
-            const finalizeRes= await axios.post(
-              'http://localhost:8080/api/payments/finalize-payment',
-              {
-              paymentIntentId: confirmResult.paymentIntent.id, 
-              amount: confirmResult.paymentIntent.amount,
-              currency: confirmResult.paymentIntent.currency,
-              userId: bookingData.userId, 
-              bookingId: bookingData.bookingId,
-              paymentType: 'STRIPE',
-              },
-              {
-                headers: {
-                  Authorization:  `Bearer ${token}`,
-                },
-              }
-            );
-
-            console.log(finalizeRes.data.message);
-
-            goToNextStep(finalizeRes.data);
-
-           }
-          } catch (error){
-            console.error("خطا اثنا الدفع ", error);
-          }
-         };
-       
-          
   return (
-    <form onSubmit={handlePayment}>
-      <div style={{ marginBottom:'20px'}}>
-        <CardElement/>
-      
+    <form onSubmit={handleSubmit} className="payment-form">
+      <h2>Payment Details</h2>
+
+      <p><strong>Booking for:</strong> {fullBookingData.firstName} {fullBookingData.lastName}</p>
+      <p><strong>Total to pay:</strong> {fullBookingData.totalPrice} SEK</p>
+      <div className="cardelement">
+      <CardElement />
       </div>
 
-     <Button text="Confirm payment" />
+      {error && <div style={{ color: "red", marginBottom: "10px" }}>{error}</div>}
+      <Button type="submit" 
+      text={loading ? "Processing..." : "Confirm payment"}
+      disabled={!stripe || loading} />
+
     </form>
-  
   );
 };
 
-export default PaymentForm
- 
+const PaymentForm = ({ fullBookingData, goToNextStep }) => {
+  return (
+    <Elements stripe={stripePromise}>
+      <div className="checkform">
+       
+      <CheckoutForm
+        fullBookingData={fullBookingData}
+        goToNextStep={goToNextStep}
+      />
+      </div>
+    </Elements>
+  );
+};
+
+export default PaymentForm;

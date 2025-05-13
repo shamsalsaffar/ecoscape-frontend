@@ -3,27 +3,18 @@ import api from "./axios";
 
 import React from 'react'
 
-export const submitBooking = async (bookingData, listingId, token) => {
+export const submitBooking = async (listingId, bookingData) => {
     try {
-        const response = await axios.post(
-            `/api/bookings?listingId=${listingId}`, // ✅ korrekt URL
-            bookingData,
-            {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`,
-                },
-            }
-        );
-        return response.data;
+      const response = await api.post(`/api/bookings?listingId=${listingId}`, bookingData);
+      return response.data;
     } catch (error) {
-        if (error.response) {
-            throw new Error(error.response.data);
-        } else {
-            throw new Error('Server error. Please try again later.');
-        }
+      if (error.response) {
+        throw new Error(error.response.data);
+      } else {
+        throw new Error("Server error. Please try again later.");
+      }
     }
-};
+  };
 
 
 

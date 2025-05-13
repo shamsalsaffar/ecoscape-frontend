@@ -2,10 +2,11 @@ import React, { Children } from 'react'
 import { useState, createContext, useContext } from 'react';
 
 const BookingContext= createContext();
+export const useBooking = () => useContext(BookingContext);
 
 export const BookingProvider = ({children}) => {
     const [bookingData, setBookingData]= useState({
-     userId: '',
+    /*  userId: '',
      listingId: '',
      firstName: '',
      lastName: '',
@@ -14,7 +15,7 @@ export const BookingProvider = ({children}) => {
      startDate: '',
      endDate: '',
      status: 'PENDING',
-     guests: 1,
+     guests: 1, */
 
     });
 
@@ -35,6 +36,4 @@ export const BookingProvider = ({children}) => {
 };
 
 // USE THE CONTEXT IN COMPENTENTS 
- export const useBooking= () =>{
-    return useContext(BookingContext);
- };
+ 

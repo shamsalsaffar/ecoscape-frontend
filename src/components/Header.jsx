@@ -17,7 +17,7 @@ const Header = ({ onFetch }) => {
     setDropdownOpen(!dropdownOpen); // Växla mellan true och false
   };
 
-  const { currentUser, logout } = useAuth();
+  const { user, logout } = useAuth();
 
   const handleLogout = async () => {
     await logout();
@@ -106,7 +106,7 @@ const Header = ({ onFetch }) => {
 
           {dropdownOpen && (
             <div className="dropdown-menu">
-              {currentUser ? (
+              {user ? (
                 <>
                   <Link to="/profile">Profile</Link>
                   <Link
@@ -136,24 +136,3 @@ const Header = ({ onFetch }) => {
 
 export default Header;
 
-/* const Header = ({ onFetch }) => {
-  const navigate = useNavigate();
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
-
-  useEffect(() => {
-    const closeDropdown = (e) => {
-      if (!e.target.closest('.dropdown-menu') && !e.target.closest('.icon-button')) {
-        setDropdownOpen(false);
-      }
-    };
-    document.addEventListener('click', closeDropdown);
-    return () => {
-      document.removeEventListener('click', closeDropdown);
-    };
-  }, []);
-
-  const handleClick = () => {
-    navigate("/host"); // المسار هنا يجب أن يتطابق مع /host في App.jsx
-  };
- */

@@ -60,8 +60,11 @@ const validateForm = () =>{
     if (!formData.usersContactPhoneNumber || !/^\+?\d{1,3}[-.\s]?\(?\d{1,4}\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}$/.test(formData.usersContactPhoneNumber)){
       newErrors.push("Invalid Phon Number");
     }
-    if (!formData.startDate || !formData.endDate)
+    if (!formData.startDate || !formData.endDate){
       newErrors.push("Arrival and departure dates must be specified");
+  }else if (new Date(formData.startDate) > new Date(formData.endDate)){
+    newErrors.push("Ckeck-out date must be after check-in date")
+  }
     if (!formData.guests ||isNaN(formData.guests) || formData.guests < 1 || formData.guests >10)
       newErrors.push("Number of gustes must be between 1-10");
 

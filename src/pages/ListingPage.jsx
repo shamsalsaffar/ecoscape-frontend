@@ -20,7 +20,8 @@ const ListingPage = () => {
   useEffect(() => {
     const fetchListingDetails = async () => {
       try {
-        const data = await getListingById(id);          
+        const data = await getListingById(id); 
+        console.log("Data from getListingById:", data);         
         const imgs = await getImagesByListingId(id);  
         const userData = await getUserByListingId(id);
         setListing(data);
@@ -35,6 +36,7 @@ const ListingPage = () => {
 
     fetchListingDetails();
   }, [id]);
+  console.log("Listing ID being passed to ReserveButton:", listing?.id);
 
   if (loading) return <div>Loading...</div>;
   if (!listing) return <div>Listing not found</div>;
@@ -48,8 +50,10 @@ const ListingPage = () => {
       <ListingPageHostInfoSmallBox user={user} />
       <ListingPageDescriptionBox listing={listing} />
       <ListingPageRules listing={listing} />
-      <ReserveButton/>
+      <ReserveButton listingId={listing.id} />
+
     
+
 
     </div>
   );

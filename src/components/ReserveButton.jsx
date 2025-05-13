@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
 
-const ReserveButton = () => {
+const ReserveButton = ({listingId}) => {
     const navigate = useNavigate();
 
     const goToBookingForm = () => {
-        navigate('/bookingForm');
+        navigate(`/bookings/${listingId}`);
     };
 
     return (

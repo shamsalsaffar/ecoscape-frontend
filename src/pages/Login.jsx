@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 import Button from "../components/Button";
 import "../styles/auth.css";
@@ -9,20 +9,28 @@ const Login = () => {
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
+  const location = useLocation();
+  
   // konsumerar contexten
-  const { login } = useAuth();
+  const { login, user, checkAuthStatus} = useAuth();
 
+  const from = location.state?.from?.pathname || "/"; 
+
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       await login(username, password);
-      navigate("/");
+      await checkAuthStatus();  
+     
+      navigate(from, { replace: true }); // العودة إلى الصفحة السابقة بعد التسجيل
+    
     } catch (err) {
       console.log("error: " + err);
     }
   };
-
+  
   return (
     <div className="login-page">
       <div className="login-container">

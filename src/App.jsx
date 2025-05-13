@@ -8,7 +8,7 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Helpcenter from "./pages/Helpcenter";
 import HostPage from "./pages/HostPage";
-import ListingDetails from "./pages/ListingDetails";
+
 import { AuthProvider } from "./contexts/AuthContext";
 import ProtectedRoute from "./router/ProtectedRoute";
 
@@ -19,6 +19,7 @@ import { BookingProvider } from "./contexts/BookingContext";
 import BookingForm from "./components/BookingForm";
 const App = () => {
   return (
+    
     <BrowserRouter>
       <AuthProvider>
         <BookingProvider>
@@ -30,7 +31,7 @@ const App = () => {
 
                 <Route path="/" element={<Home />} />
                 <Route path="/listing/:id" element={<ListingPage />} />
-                {/* <Route path="/listings/:listingId" element={<ListingDetails />} />  */}
+                
                 <Route
                   path="/viewAllAccomodations"
                   element={<ViewAllAccomodations />}
@@ -44,7 +45,7 @@ const App = () => {
                 {/* protected routes for all authenticated users */}
                 <Route element={<ProtectedRoute requiredRoles={["USER"]} />}>
                   <Route path="/bookings/:listingId" element={<Bookings />} />
-                  <Route path="/booking" element={<BookingForm />} />
+                 
                 </Route>
 
                 {/* protected routes for admins only */}
@@ -54,8 +55,9 @@ const App = () => {
             </main>
           </div>
         </BookingProvider>
-      </AuthProvider>
+        </AuthProvider>
     </BrowserRouter>
+    
   );
 };
 
