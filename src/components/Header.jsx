@@ -25,7 +25,9 @@ const Header = ({ onFetch }) => {
 
   return (
     <header className="header">
-      <h1>ECOSCAPE</h1>
+      <Link to="/" style={{ textDecoration: "none" }}>
+        <h1>ECOSCAPE</h1>
+      </Link>
       <nav
         style={{
           display: "flex",

@@ -23,10 +23,17 @@ const Login = () => {
     }
   };
 
+  /*https://surajsharma.net/blog/react-onkeypress-form-submit*/
+  const handleKeyPress = (event) => {
+    if (event.keyCode === 13 || event.which === 13) {
+      handleSubmit();
+    }
+  };
+
   return (
     <div className="login-page">
       <div className="login-container">
-        <div className="login-text">Login or Sign up</div>
+        <div className="login-text">Login</div>
         <form className="form" onSubmit={handleSubmit}>
           <div className="form-group">
             <input
@@ -35,6 +42,7 @@ const Login = () => {
               placeholder="Email"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
+              onKeyPress={handleKeyPress}
             />
           </div>
           <div className="form-group">
@@ -44,6 +52,7 @@ const Login = () => {
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              onKeyPress={handleKeyPress}
             />
           </div>
 
@@ -61,8 +70,9 @@ const Login = () => {
             <Button
               className="button-login"
               text="Sign up"
-              type="submit"
+              type="button"
               variant="auth"
+              onClick={() => navigate("/signup")}
             />
           </div>
         </form>
