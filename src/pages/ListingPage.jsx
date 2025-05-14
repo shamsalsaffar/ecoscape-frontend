@@ -7,6 +7,7 @@ import ListingPageHostInfoSmallBox from "../components/ListingPageHostInfoSmallB
 import ListingPageDescriptionBox from "../components/ListingPageDescriptionBox";
 import ListingPageRules from "../components/ListingPageRules";
 import ListingPageAmenities from "../components/ListingPageAmenities";
+import ListingPageSustainabilitySymbols from "../components/ListingPageSustainabilitySymbols";
 
 const ListingPage = () => {
   const { id } = useParams();
@@ -47,6 +48,8 @@ const ListingPage = () => {
       <ListingPageDescriptionBox listing={listing} />
       <ListingPageRules listing={listing} />
       <ListingPageAmenities listing={listing}/>
+      <ListingPageSustainabilitySymbols/>
+      
     </div>
   );
 };

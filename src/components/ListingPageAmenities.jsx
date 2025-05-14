@@ -103,7 +103,7 @@ const ListingPageAmenities = ({ listing }) => {
     },
     {
       key: "IS_PET_FRIENDLY",
-      label: "Pet Friednly",
+      label: "Pet Friendly",
       Icon: PetFriendlyAmenityIcon,
     },
   ];
