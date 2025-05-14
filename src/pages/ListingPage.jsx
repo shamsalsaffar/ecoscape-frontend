@@ -48,7 +48,7 @@ const ListingPage = () => {
       <ListingPageDescriptionBox listing={listing} />
       <ListingPageRules listing={listing} />
       <ListingPageAmenities listing={listing}/>
-      <ListingPageSustainabilitySymbols/>
+      <ListingPageSustainabilitySymbols listing={listing}/>
       
     </div>
   );
