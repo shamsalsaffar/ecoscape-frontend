@@ -1,0 +1,7 @@
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  background-color: #5e6b58;
+  border-radius: 30px;
+  padding: 2rem;
+}

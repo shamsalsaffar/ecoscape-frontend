@@ -31,7 +31,7 @@ const App = () => {
               <Route path="/login" element={<Login />} />
               <Route path="/helpcenter" element={<Helpcenter />} />
               <Route path="/host" element={<HostPage />} />
-              <Route path="/profile" element={<Profile />} />
+              <Route path="/profile/:userId" element={<Profile />} />
               {/* protected routes for all authenticated users */}
 
               {/* protected routes for admins only */}

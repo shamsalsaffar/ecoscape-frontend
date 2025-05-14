@@ -8,6 +8,8 @@ import { useAuth } from "../hooks/useAuth";
 
 const Header = ({ onFetch }) => {
   const navigate = useNavigate();
+  const { currentUser, logout } = useAuth();
+
   const handleClick = () => {
     // kan använda denna function för become a host i framtiden
     navigate("/host"); // flytta till host request sidan
@@ -16,9 +18,6 @@ const Header = ({ onFetch }) => {
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen); // Växla mellan true och false
   };
-
-  const { currentUser, logout } = useAuth();
-
   const handleLogout = async () => {
     await logout();
   };
@@ -109,7 +108,7 @@ const Header = ({ onFetch }) => {
             <div className="dropdown-menu">
               {currentUser ? (
                 <>
-                  <Link to="/profile">Profile</Link>
+                  <Link to={`/profile/${currentUser.userId}`}>My Profile</Link>
                   <Link
                     to="/"
                     onClick={(event) => {
