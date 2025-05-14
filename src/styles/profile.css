@@ -1,0 +1,15 @@
+.profile-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 89vh;
+}
+
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 1250px;
+  min-height: 550px;
+  background-color: #5e6b58;
+  border-radius: 30px;
+}

@@ -6,6 +6,7 @@ import ViewAllAccomodations from "./pages/ViewAllAccomodations";
 import Footer from "./components/Footer";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
+import Profile from "./pages/Profile";
 import Helpcenter from "./pages/Helpcenter";
 import HostPage from "./pages/HostPage";
 import { AuthProvider } from "./contexts/AuthContext";
@@ -30,6 +31,7 @@ const App = () => {
               <Route path="/login" element={<Login />} />
               <Route path="/helpcenter" element={<Helpcenter />} />
               <Route path="/host" element={<HostPage />} />
+              <Route path="/profile" element={<Profile />} />
               {/* protected routes for all authenticated users */}
 
               {/* protected routes for admins only */}
