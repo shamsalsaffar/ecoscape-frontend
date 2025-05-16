@@ -1,32 +1,39 @@
-.listing-page-rules {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); 
-  gap: 20px; 
-  padding: 20px 50px 1% 50px; 
+.rules-section {
   background: rgba(250, 248, 248, 0.75);
-  color: #9a9a9a;
   font-family: "Montserrat";
-  padding-right: 30%;
-  }
-  
-  .rules-heading {
-    font-style: normal;
-    font-weight: 700;
-    font-size: 22px;
-    line-height: 20px;
-    color: #484848;
-    padding-top: 2%;
-    padding-bottom: 1.5%;
-  }
+  padding-left: 50px;
+  padding-top: 1%;
+  width: 60%;
+  height: auto;
+  padding-right: 50px;
+}
 
+.listing-page-rules {
+  padding-top: 5%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  color: #9a9a9a;
+}
 
-  .rules-icon{
-    display: flex;
-    align-items: center;
-    gap: 5px; 
-    color:black;
-    font-size: 13px;
-  }
+.rules-heading {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 20px;
+  color: #484848;
+  padding-top: 3%;
+  padding-bottom: 2.5%;
+}
 
+.rules-text {
+  color: #9a9a9a;
+}
 
-  
+.rules-icon {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: black;
+  font-size: 13px;
+}

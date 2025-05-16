@@ -1,0 +1,39 @@
+.listing-page-amenities {
+  background: rgba(250, 248, 248, 0.75);
+  padding-left: 50px;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  width: 100%;
+  padding-right: 30%;
+  font-family: "Montserrat";
+}
+
+.amenities-heading {
+  font-size: 22px;
+  color: #484848;
+}
+
+.amenities-container {
+  padding-top: 3%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  padding-bottom: 2%;
+}
+
+.amenity {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 10px;
+}
+
+.amenity-icon {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.amenity-text {
+  font-size: 1rem;
+  color: #333;
+}
