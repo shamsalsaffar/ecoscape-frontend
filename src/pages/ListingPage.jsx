@@ -8,6 +8,7 @@ import ListingPageDescriptionBox from "../components/ListingPageDescriptionBox";
 import ListingPageRules from "../components/ListingPageRules";
 import ListingPageAmenities from "../components/ListingPageAmenities";
 import ListingPageSustainabilitySymbols from "../components/ListingPageSustainabilitySymbols";
+import ListingPageHostInfoLargeBox from "../components/ListingPageHostInfoLargeBox";
 
 import "../styles/listingpage.css"
 
@@ -51,6 +52,7 @@ const ListingPage = () => {
       <ListingPageRules className="listing-page-rules" listing={listing} />
       <ListingPageSustainabilitySymbols className="listing-page-sustainability-symbols" listing={listing}/>
       <ListingPageAmenities className="listing-page-amenities"listing={listing}/>
+      <ListingPageHostInfoLargeBox user={user} />
     </div>
   );
 };

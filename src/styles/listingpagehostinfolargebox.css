@@ -1,0 +1,62 @@
+.listing-page-host-info-large-box-container {
+  background: rgba(250, 248, 248, 0.75);
+  width: 100%;
+}
+
+.listing-page-host-info-large-box {
+  width: 55%;
+  background-color: #5e6b58;
+  position: relative;
+  margin: 50px auto;
+  color: #ffffff;
+  font-family: "Montserrat";
+  border-radius: 2%;
+}
+
+.large-section-host-info-content {
+  padding-top: 50px;
+  padding-left: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding-bottom: 3%;
+}
+
+.large-section-host-avatar {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border: 4px solid #ffffff;
+}
+
+.large-section-host-details {
+    padding-right: 5%;
+    line-height: 200%;
+}
+
+.large-section-host-name{
+    font-weight: 700;
+    font-size: 26px;
+
+}
+
+.host-contact-email{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.host-contact-phone-number{
+    font-weight: bold;
+    font-size: 20px;
+
+}
+
+.host-bio-section {
+  width: 90%;
+  padding-left: 5%;
+  padding-bottom: 5%;
+  font-weight: 600;
+  font-size: 16;
+}
+
