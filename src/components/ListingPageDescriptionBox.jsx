@@ -9,7 +9,7 @@ const ListingPageDescriptionBox = ({ listing }) => {
           <h2 className="listing-name">{listing.name}</h2>
 
           <p className="listing-price-info">
-            <strong>Price:</strong> {listing.pricePerNight} SEK / night
+            <strong >Price:</strong> {listing.pricePerNight} SEK / night
           </p>
 
 
