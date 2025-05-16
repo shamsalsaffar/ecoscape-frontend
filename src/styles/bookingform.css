@@ -1,4 +1,53 @@
-.submit-booking-form{
+.booking-page h1 {
+  text-align: center;               /* Centrerar texten horisontellt */
+  color: #064420;                   /* Mörkgrön färg */
+  margin-top: 2rem;                 /* Lite avstånd uppåt */
+  font-size: 2.5rem;                /* Stor rubrik */
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);  /* Subtil skugga */
+  transition: transform 0.3s ease;
+}
+
+.form {
+  padding: 0;
+  margin-top: 40px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Två kolumner */
+  gap: 1.5rem;
+}
+.form-button-wrapper {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: end;
+ 
+}
+
+.button-form {
+  grid-column: span 3;
+    border-radius: 80px;
+    padding-left: 5rem;
+    padding-right: 5rem;
+    padding-top: 1.2rem;
+    padding-bottom: 1.2rem;
+    background-color: #49613d;
+    color: white;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border: none;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    width: 44%;
+}
+
+
+
+
+
+/* .submit-booking-form{
     display: grid;
     grid-template-columns: 1fr 1fr;
  
@@ -8,32 +57,37 @@
     box-shadow: none;
     padding: 0;
     margin-top: 40px;
-  }
+  } */
   .booking-section {
     border: 2px solid #074f18;
     padding: 1.5rem ;
     margin-top: 1.5 rem ;
     background-color: #d4d1d1;
     font-size: 20px;
+    margin-bottom: 7rem;
+   ;
   }
-  .form-group {
+  .form-bookingsgroup {
     display: flex;
     flex-direction: column;
     border-radius: 10px;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    
   }
   
-  /* .form-group input {
+  .form-bookingsgroup input {
     font-size: 1.5rem;
     padding: 1.2rem 1rem;
     border: 1px solid black;
     border-radius: 30px;
   }
-  .form-group input:focus {
+  .form-bookingsgroup input:focus {
     border-color: #033910; 
     outline: none; 
     box-shadow: 0 0 0 2px rgba(7, 79, 24, 0.3); 
   }
-   */
+   
   
   .booking-form {
     display: flex;
@@ -57,7 +111,7 @@
     margin-top: 5rem;
   }
   
-  .button-form {
+  /* .button-form {
     grid-column: span 2;
     border-radius: 80px;
     padding-left: 5rem;
@@ -73,7 +127,7 @@
     font-weight: 600;
     width: 44%;
   }
-
+ */
   .required-star {
     color: red;
     font-size: 1.3rem;
@@ -104,5 +158,20 @@
     color: #9a9a9a;
     font-size: 14px;
     margin-left: 30px;
+  }
+  @media (max-width: 768px) {
+    .form {
+      grid-template-columns: 1fr;
+    }
+  
+    .button-form {
+      grid-column: span 1;
+      width: 100%;
+    }
+  
+    .booking-container {
+      min-width: auto;
+      width: 90%;
+    }
   }
   

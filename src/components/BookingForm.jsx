@@ -1,7 +1,3 @@
-// först import use state 
-// bookingform
-// funcktion som ska use
-
 import { submitBooking } from "../api/bookingsService";
 import Button from "./Button";
 import { useBookingForm } from "../hooks/useBookingForm";
@@ -18,31 +14,32 @@ const BookingForm = ({ listingId: propListingId, goToNextStep }) => {
 
   const location = useLocation();
   const navigate = useNavigate();
-  const [listingId, setListingId] = useState(null);
-  const [error, setError] = useState(null);
+  const [listingId, setListingId] = useState(null); // state to save listing id retrived from props or url
+  const [error, setError] = useState(null); // state to save error
  
   const { user } = useAuth();
 
   
 
-// USE useBookingform  HOOKS 
+// USE useBookingform  HOOKS: custom to mange form data,validation, and error handling 
 const {
   formData,
   handleChange,
   errors,
   validateForm,
-} = useBookingForm("bookings"); // use bookinf som type here
+} = useBookingForm("bookings"); 
 
 const {updateBookingData}=useBooking();
 
 
+// Get listing id from props to url and localstorge
 useEffect(() => {
   const param = new URLSearchParams(location.search);
   const id = param.get("listingId");
 
   if (id) {
     setListingId(id);
-    localStorage.setItem("listingId", id); // Save for fallback
+    localStorage.setItem("listingId", id); // Save for fallback or locally
     setError(null);
   } else {
     const storedId = localStorage.getItem("listingId");
@@ -54,11 +51,11 @@ useEffect(() => {
       setError("(Listing ID is missing).");
     }
   }
- // تحقق من وجود المستخدم
+
  if (propListingId) {
   setListingId(propListingId);
 } else {
-  // fallback from query string
+  // Get listingId from prop if available
   const param = new URLSearchParams(location.search);
   const id = param.get("listingId");
   if (id) setListingId(id);
@@ -66,18 +63,11 @@ useEffect(() => {
 }, [propListingId, location.search]);
 
 
-
-
-
-
+// COSOLE LOG TO CHECK IF THE USER AND LISTING ID DEFIEND 
 console.log("Listing ID from URL:", listingId);
 console.log("user ID from URL:", user);
 
 
-
-
-
-  
 // TO CONNECT BACKEND CONNECT FUNCATION THAT IS IN BOOKKINGS SERVICE
   const handleSubmit = async(e) =>{
     e.preventDefault();
@@ -95,7 +85,7 @@ console.log("user ID from URL:", user);
       return;
     }
 
-
+    // Enrich form with user id اضافه user idلبيانات الحجز
     const enrichedFormData={
       ...formData,
       userId: user.userId,
@@ -104,23 +94,21 @@ console.log("user ID from URL:", user);
       
     };
     
+    //CONSOLE LOG TO CHECK USER ID AND ENRICH DATA
     console.log("Current user:", user);
     console.log("formData being sen:", enrichedFormData)
 
     
      try {
-      const token = localStorage.getItem("authToken"); // الحصول على التوكن من localStorage
+      const token = localStorage.getItem("authToken"); //  get token from الحصول على التوكن من localStorage
       const result = await submitBooking(listingId,enrichedFormData, token);
       alert ("Booking success");
 
-      const fullBookingData={
-        ...enrichedFormData,
-        bookingId: result.bookingId
-      };
+      const fullBookingData=result;
       updateBookingData(fullBookingData); //update context with new booking
-      goToNextStep(fullBookingData
+      console.log("Booking response:", result);
 
-      ); // go to next step
+      goToNextStep(fullBookingData ); // go to next step
 
     } catch (error){
       console.error("Booking error: ", error );
@@ -144,7 +132,8 @@ console.log("user ID from URL:", user);
          </section>
          <p>Listing ID: {listingId}</p>
       <form  className="form" onSubmit={handleSubmit}>
-        <div className="form-group">
+        <div className="form-grid">
+        <div className="form-bookingsgroup">
           <label>First Name 
           <span className="required-star"> *</span>
           </label>
@@ -156,7 +145,7 @@ console.log("user ID from URL:", user);
           autoComplete="off" 
           />
         </div>
-        <div className="form-group">
+        <div className="form-bookingsgroup">
           <label>Lsat Name
           <span className="required-star"> *</span>
           </label>
@@ -168,7 +157,7 @@ console.log("user ID from URL:", user);
           autoComplete="off" 
           />
         </div>
-        <div className="form-group">
+        <div className="form-bookingsgroup">
           <label>Email
           <span className="required-star"> *</span>
           </label>
@@ -180,7 +169,7 @@ console.log("user ID from URL:", user);
           autoComplete="off" 
           />
         </div>
-        <div className="form-group">
+        <div className="form-bookingsgroup">
           <label>Phon Number
           <span className="required-star"> *</span>
           </label>
@@ -192,7 +181,7 @@ console.log("user ID from URL:", user);
           autoComplete="off" 
           />
         </div>
-        <div className="form-group">
+        <div className="form-bookingsgroup">
           <label>Check-in
           <span className="required-star"> *</span> </label>
           <input
@@ -203,7 +192,7 @@ console.log("user ID from URL:", user);
           autoComplete="off" 
           />
         </div>
-        <div className="form-group">
+        <div className="form-bookingsgroup">
           <label>Check-out
           <span className="required-star"> *</span>
           </label>
@@ -215,7 +204,7 @@ console.log("user ID from URL:", user);
           autoComplete="off" 
           />
         </div>
-        <div className="form-group">
+        <div className="form-bookingsgroup">
           <label>Guests
           <span className="required-star"> *</span>
           </label>
@@ -229,6 +218,7 @@ console.log("user ID from URL:", user);
           max="10"
           />
         </div>
+        </div>
         {errors.length >0 && (
           <div>
             <ul>
@@ -239,13 +229,14 @@ console.log("user ID from URL:", user);
             </ul>
           </div>
         )}
+        <div className="form-button-wrapper">
         <Button className="button-form" type="submit"
         text="Send"
        
         variant="primary"
         disabled={false}
         />
-
+      </div>
       </form>
       </div>
       

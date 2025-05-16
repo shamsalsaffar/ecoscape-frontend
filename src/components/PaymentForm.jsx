@@ -3,14 +3,17 @@ import "../styles/payment.css";
 import { loadStripe } from "@stripe/stripe-js";
 import {
   Elements,
-  CardElement,
+  
   useStripe,
   useElements,
+  CardNumberElement,
+  CardExpiryElement,
+  CardCvcElement
 } from "@stripe/react-stripe-js";
 import Button from "./Button";
 import api from "../api/axios"; 
 
-const stripePromise = loadStripe('pk_test_51RLSChQEubero97NhRlRQDb7AHac3FKDb3NtjyaiBRWTG3i1eQeqiUDSYPECCqJgnk81SiqiSvg8NUr6b817hwOl00XhzHVWfT');
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 
 
 const CheckoutForm = ({ fullBookingData, goToNextStep }) => {
@@ -41,10 +44,15 @@ const CheckoutForm = ({ fullBookingData, goToNextStep }) => {
       );
 
       const clientSecret = intentRes.data.clientSecret;
+      console.log("Client secret:", clientSecret);
 
+      
       const confirmResult = await stripe.confirmCardPayment(clientSecret, {
         payment_method: {
-          card: elements.getElement(CardElement),
+          card: elements.getElement(CardNumberElement),
+          billing_details: {
+            name: fullBookingData.firstName + " " + fullBookingData.lastName,
+          },
         },
       });
 
@@ -62,6 +70,8 @@ const CheckoutForm = ({ fullBookingData, goToNextStep }) => {
       });
 
       goToNextStep(finalizeRes.data); // ✅ انتقل إلى الخطوة التالية مع البيانات النهائية
+      console.log("Received fullBookingData in PaymentForm:", fullBookingData);
+
     } catch (error) {
       setError(error.message);
     } finally {
@@ -74,10 +84,16 @@ const CheckoutForm = ({ fullBookingData, goToNextStep }) => {
       <h2>Payment Details</h2>
 
       <p><strong>Booking for:</strong> {fullBookingData.firstName} {fullBookingData.lastName}</p>
-      <p><strong>Total to pay:</strong> {fullBookingData.totalPrice} SEK</p>
-      <div className="cardelement">
-      <CardElement />
-      </div>
+      <p><strong>Total to pay:</strong> {fullBookingData?.totalPrice ?? "Not available"} SEK</p>
+      <label>Card Number</label>
+  <div className="cardelement"><CardNumberElement /></div>
+
+  <label>Expiry Date</label>
+  <div className="cardelement"><CardExpiryElement /></div>
+
+  <label>CVC</label>
+  <div className="cardelement"><CardCvcElement /></div>
+  
 
       {error && <div style={{ color: "red", marginBottom: "10px" }}>{error}</div>}
       <Button type="submit" 
@@ -102,4 +118,4 @@ const PaymentForm = ({ fullBookingData, goToNextStep }) => {
   );
 };
 
-export default PaymentForm;
+export default PaymentForm;  

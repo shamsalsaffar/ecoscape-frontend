@@ -6,7 +6,11 @@ import React from 'react'
 export const submitBooking = async (listingId, bookingData) => {
     try {
       const response = await api.post(`/api/bookings?listingId=${listingId}`, bookingData);
+      console.log("Booking response from backend:", response.data);
+
+      
       return response.data;
+     
     } catch (error) {
       if (error.response) {
         throw new Error(error.response.data);
