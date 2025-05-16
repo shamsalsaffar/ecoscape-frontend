@@ -17,7 +17,7 @@ const Header = ({ onFetch }) => {
     setDropdownOpen(!dropdownOpen); // Växla mellan true och false
   };
 
-  const { currentUser, logout } = useAuth();
+  const { user, logout } = useAuth();
 
   const handleLogout = async () => {
     await logout();
@@ -57,13 +57,14 @@ const Header = ({ onFetch }) => {
             to="/viewAllAccomodations"
             onClick={onFetch}
             style={{
-              color: "white",
+             color: "white",
               cursor: "pointer",
-              textDecoration: "none",
+             textDecoration: "none",
             }}
           >
             View All Accommodation
           </Link>
+
         </div>
 
         {/* Högra knappar */}
@@ -91,23 +92,23 @@ const Header = ({ onFetch }) => {
             onClick={toggleDropdown}
             className="icon-button"
             style={{
-              padding: 0, // إلغاء أي padding
-              margin: 0, // إلغاء أي margin
+              padding: 0,              
+              margin: 0,                
               borderRadius: "12px",
               width: "50px",
               height: "55px",
-              backgroundColor: "#fff", // لون الخلفية إن احتجت
-              display: "flex", // استخدم flex لوضع الأيقونة في المنتصف
+              backgroundColor: "#fff",  
+              display: "flex",          
               justifyContent: "center",
               alignItems: "center",
               border: "none",
             }}
-            text={<User className="user-icon" />} // تمرير الأيقونة كـ نص
+            text={<User className="user-icon" />}   
           />
 
           {dropdownOpen && (
             <div className="dropdown-menu">
-              {currentUser ? (
+              {user ? (
                 <>
                   <Link to="/profile">Profile</Link>
                   <Link
@@ -137,24 +138,3 @@ const Header = ({ onFetch }) => {
 
 export default Header;
 
-/* const Header = ({ onFetch }) => {
-  const navigate = useNavigate();
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const toggleDropdown = () => setDropdownOpen(!dropdownOpen);
-
-  useEffect(() => {
-    const closeDropdown = (e) => {
-      if (!e.target.closest('.dropdown-menu') && !e.target.closest('.icon-button')) {
-        setDropdownOpen(false);
-      }
-    };
-    document.addEventListener('click', closeDropdown);
-    return () => {
-      document.removeEventListener('click', closeDropdown);
-    };
-  }, []);
-
-  const handleClick = () => {
-    navigate("/host"); // المسار هنا يجب أن يتطابق مع /host في App.jsx
-  };
- */

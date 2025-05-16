@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams} from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getListingById, getImagesByListingId } from "../api/listingService";
 import { getUserByListingId } from "../api/userService";
@@ -6,10 +6,13 @@ import ListingPageGallery from "../components/ListingPageGallery";
 import ListingPageHostInfoSmallBox from "../components/ListingPageHostInfoSmallBox";
 import ListingPageDescriptionBox from "../components/ListingPageDescriptionBox";
 import ListingPageRules from "../components/ListingPageRules";
+import ReserveButton from "../components/ReserveButton";
 import ListingPageAmenities from "../components/ListingPageAmenities";
 import ListingPageSustainabilitySymbols from "../components/ListingPageSustainabilitySymbols";
 
 import "../styles/listingpage.css"
+
+
 
 const ListingPage = () => {
   const { id } = useParams();
@@ -17,11 +20,14 @@ const ListingPage = () => {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
+  
+ 
 
   useEffect(() => {
     const fetchListingDetails = async () => {
       try {
-        const data = await getListingById(id);          
+        const data = await getListingById(id); 
+        console.log("Data from getListingById:", data);         
         const imgs = await getImagesByListingId(id);  
         const userData = await getUserByListingId(id);
         setListing(data);
@@ -36,6 +42,7 @@ const ListingPage = () => {
 
     fetchListingDetails();
   }, [id]);
+  console.log("Listing ID being passed to ReserveButton:", listing?.id);
 
   if (loading) return <div>Loading...</div>;
   if (!listing) return <div>Listing not found</div>;
@@ -51,6 +58,8 @@ const ListingPage = () => {
       <ListingPageRules className="listing-page-rules" listing={listing} />
       <ListingPageSustainabilitySymbols className="listing-page-sustainability-symbols" listing={listing}/>
       <ListingPageAmenities className="listing-page-amenities"listing={listing}/>
+
+      <ReserveButton listingId={listing.id} />
     </div>
   );
 };

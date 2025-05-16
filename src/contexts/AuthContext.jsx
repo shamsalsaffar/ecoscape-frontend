@@ -29,7 +29,10 @@ export const AuthProvider = ({ children }) => {
       const response = await api.post("/auth/login", { username, password });
 
       setCurrentUser(response.data);
+   
+
       console.log("Response: " + JSON.stringify(response.data));
+      localStorage.setItem("token", response.data.token); 
       return response.data;
     } catch (error) {
       console.error("Login error:", error.response?.data || error.message);
@@ -38,7 +41,7 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (username, password) => {
     try {
-      const response = await api.post("/auth/register", {
+        const response = await api.post("/auth/register", {
         username,
         password,
       });
@@ -53,6 +56,12 @@ export const AuthProvider = ({ children }) => {
       await api.post("/auth/logout");
 
       setCurrentUser(null);
+
+      // CLEAN BOOKING DATA  AFTER LOGOUT BUT SAVE IT WHEN DO REFRESH OR CLOSE BROWSER
+
+       localStorage.removeItem("bookingData");
+      localStorage.removeItem("bookingStep");
+      localStorage.removeItem("listingId"); 
     } catch (error) {
       console.error("Logout error:", error.response?.data || error.message);
 
@@ -61,7 +70,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const value = {
-    currentUser,
+    user:currentUser,
     login,
     logout,
     register,
