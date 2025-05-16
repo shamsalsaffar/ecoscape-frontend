@@ -1,4 +1,4 @@
-.login-form {
+.form {
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -15,13 +15,11 @@
   border-radius: 10px;
 }
 
-.login-form-group .login-input {
+.form-group input {
   font-size: 1rem;
   padding: 1.2rem 1rem;
   border: 1px solid black;
   border-radius: 30px;
-  min-width: 450px;
-
 }
 
 .login-page {
@@ -59,6 +57,7 @@
   width: 44%;
 }
 
+/*https://www.youtube.com/watch?v=XI-hc_BRSb8&ab_channel=AndreasWik*/
 .hr-text {
   border: none;
   position: relative;

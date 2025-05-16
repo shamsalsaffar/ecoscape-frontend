@@ -22,24 +22,15 @@ const Login = () => {
 
     try {
       await login(username, password);
-      await checkAuthStatus();  
-     
-      navigate(from, { replace: true }); // العودة إلى الصفحة السابقة بعد التسجيل
-    
+      await checkAuthStatus();
+
+      // back to pervious page after registration عودة للصفحة سابقه 
+      navigate(from, { replace: true });
     } catch (err) {
       console.log("error: " + err);
     }
   };
-<<<<<<< HEAD
-  
-  return (
-    <div className="login-page">
-      <div className="login-container">
-        <div className="login-text">Login or Sign up</div>
-        <form className="login-form" onSubmit={handleSubmit}>
-          <div className="login-form-group">
-            <input className="login-input"
-=======
+
 
   /*https://surajsharma.net/blog/react-onkeypress-form-submit*/
   const handleKeyPress = (event) => {
@@ -55,7 +46,7 @@ const Login = () => {
         <form className="form" onSubmit={handleSubmit}>
           <div className="form-group">
             <input
->>>>>>> f09f893fec91d1f98d0b0b505f7bcedcc24ee7a9
+
               type="text"
               id="username"
               placeholder="Email"
