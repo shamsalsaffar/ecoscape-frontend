@@ -10,6 +10,7 @@ import Profile from "./pages/Profile";
 import Helpcenter from "./pages/Helpcenter";
 import HostPage from "./pages/HostPage";
 import { AuthProvider } from "./contexts/AuthContext";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 import "./styles/home.css";
 const App = () => {
@@ -31,7 +32,9 @@ const App = () => {
               <Route path="/login" element={<Login />} />
               <Route path="/helpcenter" element={<Helpcenter />} />
               <Route path="/host" element={<HostPage />} />
-              <Route path="/profile/:userId" element={<Profile />} />
+              <Route element={<ProtectedRoute />}>
+                <Route path="/profile/:userId" element={<Profile />} />
+              </Route>
               {/* protected routes for all authenticated users */}
 
               {/* protected routes for admins only */}
