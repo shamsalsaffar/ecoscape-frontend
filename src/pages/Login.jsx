@@ -10,13 +10,12 @@ const Login = () => {
 
   const navigate = useNavigate();
   const location = useLocation();
-  
+
   // konsumerar contexten
-  const { login, user, checkAuthStatus} = useAuth();
+  const { login, user, checkAuthStatus } = useAuth();
 
-  const from = location.state?.from?.pathname || "/"; 
+  const from = location.state?.from?.pathname || "/";
 
-  
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -24,13 +23,12 @@ const Login = () => {
       await login(username, password);
       await checkAuthStatus();
 
-      // back to pervious page after registration عودة للصفحة سابقه 
+      // back to pervious page after registration عودة للصفحة سابقه
       navigate(from, { replace: true });
     } catch (err) {
       console.log("error: " + err);
     }
   };
-
 
   /*https://surajsharma.net/blog/react-onkeypress-form-submit*/
   const handleKeyPress = (event) => {
@@ -44,9 +42,8 @@ const Login = () => {
       <div className="login-container">
         <div className="login-text">Login</div>
         <form className="form" onSubmit={handleSubmit}>
-          <div className="form-group">
+          <div className="login-form-group">
             <input
-
               type="text"
               id="username"
               placeholder="Email"
@@ -56,7 +53,8 @@ const Login = () => {
             />
           </div>
           <div className="login-form-group">
-            <input className="login-input"
+            <input
+              className="login-input"
               type="password"
               id="password"
               placeholder="Password"

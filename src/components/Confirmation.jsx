@@ -10,7 +10,7 @@ const Confirmation = ({bookingData}) => {
   return (
     <div className= "comfirmation-container">
 
-        <h2>✅ Booking Confirmed!</h2>
+        <h2 className="confirmation-text">✅ Booking Confirmed!</h2>
         <p>{bookingData.message}</p>
 
         <div className="confirmation-details">
