@@ -9,6 +9,8 @@ import ListingPageRules from "../components/ListingPageRules";
 import ListingPageAmenities from "../components/ListingPageAmenities";
 import ListingPageSustainabilitySymbols from "../components/ListingPageSustainabilitySymbols";
 
+import "../styles/listingpage.css"
+
 const ListingPage = () => {
   const { id } = useParams();
   const [listing, setListing] = useState(null);
@@ -42,14 +44,13 @@ const ListingPage = () => {
   const sideImages = images.slice(1).map((img) => img.imageUrl);
 
   return (
-    <div className="listing-page">
+    <div className="listing-page-layot">
       <ListingPageGallery mainImage={mainImage} sideImages={sideImages} />
       <ListingPageHostInfoSmallBox user={user} />
       <ListingPageDescriptionBox listing={listing} />
-      <ListingPageRules listing={listing} />
-      <ListingPageAmenities listing={listing}/>
-      <ListingPageSustainabilitySymbols listing={listing}/>
-      
+      <ListingPageRules className="listing-page-rules" listing={listing} />
+      <ListingPageSustainabilitySymbols className="listing-page-sustainability-symbols" listing={listing}/>
+      <ListingPageAmenities className="listing-page-amenities"listing={listing}/>
     </div>
   );
 };

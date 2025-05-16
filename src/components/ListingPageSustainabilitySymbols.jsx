@@ -13,9 +13,9 @@ import BiodiversitySustainabilityIcon from "../icons/BiodiversitySustainabilityI
 import SolarPanelsSustainabilityIcon from "../icons/SolarPanelsSustainabilityIcon";
 import EcoCleaningSustainabilityIcon from "../icons/EcoCleaningSustainabilityIcon";
 
-const ListingPageSustainabilitySymbols = ({ listing }) => {
-  console.log("Listing sustainabilities:", listing?.sustainabilities);
+import "../styles/listingpagesustainabilityicons.css";
 
+const ListingPageSustainabilitySymbols = ({ listing }) => {
   const sustainabilities = [
 
     {
@@ -77,13 +77,14 @@ const ListingPageSustainabilitySymbols = ({ listing }) => {
 
   ]
   return (
-    <div className="listing-page-amenities">
-            <div className="amenities-container">
+    <div className="listing-page-sustainability-symbols-section">
+        <h3 className="sustainability-heading">Sustainability</h3>
+            <div className="sustainability-container">
               {sustainabilities.map((sustainability) => {
                 if (listing.sustainability.includes(sustainability.key)) {
                   return (
-                    <div key={sustainability.key} className="amenity">
-                      <sustainability.Icon className="amenity-icon" />
+                    <div key={sustainability.key} className="sustainability">
+                      <sustainability.Icon className="sustainability-icon" />
                     </div>
                   );
                 }
