@@ -88,7 +88,7 @@ const Profile = () => {
                   />
                 </>
               ) : (
-                <h2>
+                <h2 className="profile-hello">
                   Hello, {user?.firstName} {user?.lastName}
                 </h2>
               )}

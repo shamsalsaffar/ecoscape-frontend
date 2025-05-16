@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 import Button from "../components/Button";
 import "../styles/auth.css";
@@ -9,15 +9,22 @@ const Login = () => {
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
+  const location = useLocation();
+
   // konsumerar contexten
-  const { login } = useAuth();
+  const { login, user, checkAuthStatus } = useAuth();
+
+  const from = location.state?.from?.pathname || "/";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       await login(username, password);
-      navigate("/");
+      await checkAuthStatus();
+
+      // back to pervious page after registration عودة للصفحة سابقه
+      navigate(from, { replace: true });
     } catch (err) {
       console.log("error: " + err);
     }
@@ -35,7 +42,7 @@ const Login = () => {
       <div className="login-container">
         <div className="login-text">Login</div>
         <form className="form" onSubmit={handleSubmit}>
-          <div className="form-group">
+          <div className="login-form-group">
             <input
               type="text"
               id="username"
@@ -45,8 +52,9 @@ const Login = () => {
               onKeyPress={handleKeyPress}
             />
           </div>
-          <div className="form-group">
+          <div className="login-form-group">
             <input
+              className="login-input"
               type="password"
               id="password"
               placeholder="Password"

@@ -9,40 +9,55 @@ import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import Helpcenter from "./pages/Helpcenter";
 import HostPage from "./pages/HostPage";
+
 import { AuthProvider } from "./contexts/AuthContext";
-import ProtectedRoute from "./components/ProtectedRoute";
+import ProtectedRoute from "./router/ProtectedRoute";
 
 import "./styles/home.css";
+import Bookings from "./pages/Bookings";
+
+import { BookingProvider } from "./contexts/BookingContext";
+import BookingForm from "./components/BookingForm";
 const App = () => {
   return (
     <BrowserRouter>
       <AuthProvider>
-        <div className="app">
-          <Header />
-          <main className="main-content">
-            <Routes>
-              {/* public routes */}
-              <Route path="/" element={<Home />} />
-              <Route path="/listing/:id" element={<ListingPage />} />
-              <Route
-                path="view-all-accomodations"
-                element={<ViewAllAccomodations />}
-              />
-              <Route path="/signup" element={<Signup />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/helpcenter" element={<Helpcenter />} />
-              <Route path="/host" element={<HostPage />} />
-              <Route element={<ProtectedRoute />}>
-                <Route path="/profile/:userId" element={<Profile />} />
-              </Route>
-              {/* protected routes for all authenticated users */}
+        <BookingProvider>
+          <div className="app">
+            <Header />
+            <main className="main-content">
+              <Routes>
+                {/* public routes */}
 
-              {/* protected routes for admins only */}
-            </Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/listing/:id" element={<ListingPage />} />
 
-            <Footer />
-          </main>
-        </div>
+                <Route
+                  path="/viewAllAccomodations"
+                  element={<ViewAllAccomodations />}
+                />
+
+                <Route path="/signup-page" element={<Signup />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/helpcenter" element={<Helpcenter />} />
+                <Route path="/host" element={<HostPage />} />
+
+                {/* protected routes for all authenticated users */}
+                <Route
+                  element={
+                    <ProtectedRoute requiredRoles={["USER", "HOST", "ADMIN"]} />
+                  }
+                >
+                  <Route path="/bookings/:listingId" element={<Bookings />} />
+                  <Route path="/profile/:userId" element={<Profile />} />
+                </Route>
+                {/* protected routes for admins only */}
+              </Routes>
+
+              <Footer />
+            </main>
+          </div>
+        </BookingProvider>
       </AuthProvider>
     </BrowserRouter>
   );

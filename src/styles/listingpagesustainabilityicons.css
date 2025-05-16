@@ -1,0 +1,26 @@
+.listing-page-sustainability-symbols-section {
+  background: rgba(250, 248, 248, 0.75);
+  padding-left: 50px;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  font-family: "Montserrat";
+  width: 40%;
+}
+
+.sustainability-heading {
+  font-size: 22px;
+  color: #484848;
+}
+
+.sustainability-container {
+  padding-top: 5%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-right: 50px;
+}
+
+.sustainability-icon {
+  margin: 0;
+  padding: 0;
+}

@@ -3,7 +3,8 @@
   padding-left: 50px;
   padding-top: 2%;
   padding-bottom: 2%;
-  padding-right: 50%;
+  width: 100%;
+  padding-right: 30%;
   font-family: "Montserrat";
 }
 
@@ -13,7 +14,7 @@
 }
 
 .amenities-container {
-    padding-top: 3%;
+  padding-top: 3%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
