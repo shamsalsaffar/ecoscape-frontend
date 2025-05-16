@@ -31,32 +31,30 @@
 }
 
 .large-section-host-details {
-    padding-right: 5%;
-    line-height: 200%;
+  padding-right: 5%;
+  line-height: 200%;
 }
 
-.large-section-host-name{
-    font-weight: 700;
-    font-size: 26px;
-
+.large-section-host-name {
+  font-weight: 700;
+  font-size: 26px;
 }
 
-.host-contact-email{
-    font-weight: bold;
-    font-size: 20px;
+.host-contact-email {
+  font-weight: bold;
+  font-size: 20px;
 }
 
-.host-contact-phone-number{
-    font-weight: bold;
-    font-size: 20px;
-
+.host-contact-phone-number {
+  font-weight: bold;
+  font-size: 20px;
 }
 
 .host-bio-section {
+  text-indent: 20px;
   width: 90%;
   padding-left: 5%;
   padding-bottom: 5%;
   font-weight: 600;
   font-size: 16;
 }
-

@@ -1,0 +1,41 @@
+.comfirmation-container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: #f3f8f4; /* لون أخضر فاتح */
+  border: 2px solid #065818; /* لون حدود مريح */
+  border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+h2 {
+  color: #08682c;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.confirmation-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 12px;
+  column-gap: 30px;
+  padding: 10px;
+}
+
+.confirmation-details p {
+  margin: 0;
+  padding: 5px;
+  font-size: 16px;
+  color: #1f2937;
+}
+
+.confirmation-details strong {
+  color: #065f46;
+}
+
+.total-price {
+  font-weight: bold;
+  color: #16a34a;
+  font-size: 18px;
+}

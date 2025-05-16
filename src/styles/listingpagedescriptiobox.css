@@ -24,6 +24,7 @@
   color: #484848;
   padding-top: 0;
   padding-bottom: 0;
+  text-align: left;
 }
 
 
@@ -48,6 +49,10 @@
   color: #9a9a9a;
 }
 
+.listing-price-info {
+  color: #484848;
+}
+
 .listing-location-info {
   color: #9a9a9a;
 }
@@ -58,6 +63,4 @@
   font-family: "Montserrat";
   padding-right: 30%;
   font-size: 12px;
-
-  
 }

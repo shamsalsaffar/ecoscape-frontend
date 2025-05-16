@@ -7,6 +7,7 @@ export const getAllListings = async () => {
 
 export const getListingById = async (id) => {
   const response = await api.get(`/api/listings/${id}`);
+
   return response.data;
 };
 
