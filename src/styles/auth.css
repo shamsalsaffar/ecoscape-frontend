@@ -9,13 +9,13 @@
   margin-top: 40px;
 }
 
-.form-group {
+.login-form-group {
   display: flex;
   flex-direction: column;
   border-radius: 10px;
 }
 
-.form-group input {
+.login-form-group input {
   font-size: 1rem;
   padding: 1.2rem 1rem;
   border: 1px solid black;

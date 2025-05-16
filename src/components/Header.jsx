@@ -21,6 +21,7 @@ const Header = ({ onFetch }) => {
 
   const handleLogout = async () => {
     await logout();
+    navigate("/");
   };
 
   return (
@@ -57,14 +58,13 @@ const Header = ({ onFetch }) => {
             to="/viewAllAccomodations"
             onClick={onFetch}
             style={{
-             color: "white",
+              color: "white",
               cursor: "pointer",
-             textDecoration: "none",
+              textDecoration: "none",
             }}
           >
             View All Accommodation
           </Link>
-
         </div>
 
         {/* Högra knappar */}
@@ -92,25 +92,25 @@ const Header = ({ onFetch }) => {
             onClick={toggleDropdown}
             className="icon-button"
             style={{
-              padding: 0,              
-              margin: 0,                
+              padding: 0,
+              margin: 0,
               borderRadius: "12px",
               width: "50px",
               height: "55px",
-              backgroundColor: "#fff",  
-              display: "flex",          
+              backgroundColor: "#fff",
+              display: "flex",
               justifyContent: "center",
               alignItems: "center",
               border: "none",
             }}
-            text={<User className="user-icon" />}   
+            text={<User className="user-icon" />}
           />
 
           {dropdownOpen && (
             <div className="dropdown-menu">
               {user ? (
                 <>
-                  <Link to="/profile">Profile</Link>
+                  <Link to={`/profile/${user.userId}`}>My Profile</Link>{" "}
                   <Link
                     to="/"
                     onClick={(event) => {
@@ -137,4 +137,3 @@ const Header = ({ onFetch }) => {
 };
 
 export default Header;
-
