@@ -12,6 +12,9 @@ const Header = ({ onFetch }) => {
 
   const { user, logout, checkAuthStatus } = useAuth();
 
+  const checkUserRole =
+    user?.roles?.includes("ADMIN") || user?.roles?.includes("HOST");
+
   const handleClick = async () => {
     const freshUser = await checkAuthStatus();
 
@@ -96,24 +99,26 @@ const Header = ({ onFetch }) => {
 
         {/* Högra knappar */}
         <div style={{ display: "flex", alignItems: "center", gap: "0.2rem" }}>
-          <Button
-            onClick={handleClick}
-            text="Become A Host"
-            className="icon-button"
-            style={{
-              padding: "0.5rem 1rem",
-              borderRadius: "20px",
-              backgroundColor: "white",
-              paddingRight: "1rem",
-              paddinLeft: "1rem",
-              fontSize: "1rem",
-              paddingTop: "0.5rem",
-              paddingBottom: "0.5rem",
-              fontFamily: "Montserrat",
-              fontWeight: "600",
-              marginRight: "2rem",
-            }}
-          />
+          {!checkUserRole && (
+            <Button
+              onClick={handleClick}
+              text="Become A Host"
+              className="icon-button"
+              style={{
+                padding: "0.5rem 1rem",
+                borderRadius: "20px",
+                backgroundColor: "white",
+                paddingRight: "1rem",
+                paddinLeft: "1rem",
+                fontSize: "1rem",
+                paddingTop: "0.5rem",
+                paddingBottom: "0.5rem",
+                fontFamily: "Montserrat",
+                fontWeight: "600",
+                marginRight: "2rem",
+              }}
+            />
+          )}
 
           <Button
             onClick={toggleDropdown}
