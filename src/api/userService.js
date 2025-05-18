@@ -14,3 +14,10 @@ export const updateUser = async (id, data) => {
   const res = await api.put(`/users/${id}`, data, { withCredentials: true });
   return res.data;
 };
+
+export const requestHost = async (userId) => {
+  const res = await api.post(`/users/request/${userId}`, null, {
+    withCredentials: true,
+  });
+  return res.data;
+};

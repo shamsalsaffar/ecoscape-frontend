@@ -5,20 +5,49 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import HostPage from "../pages/HostPage";
 import { useAuth } from "../hooks/useAuth";
+import { requestHost } from "../api/userService";
 
 const Header = ({ onFetch }) => {
   const navigate = useNavigate();
-  const handleClick = () => {
-    // kan använda denna function för become a host i framtiden
-    navigate("/host"); // flytta till host request sidan
+
+  const { user, logout, checkAuthStatus } = useAuth();
+
+  const checkUserRole =
+    user?.roles?.includes("ADMIN") || user?.roles?.includes("HOST");
+
+  const handleClick = async () => {
+    const freshUser = await checkAuthStatus();
+
+    if (freshUser?.userStatus === "PENDING") {
+      alert("Your host requsted is currently pending.");
+      return;
+    }
+
+    if (
+      !freshUser?.firstName ||
+      !freshUser?.lastName ||
+      !freshUser?.bio ||
+      !freshUser?.birthDate ||
+      !freshUser?.contactPhoneNumber ||
+      !freshUser?.contactEmail
+    ) {
+      alert("Please complete your profile before becoming a host.");
+      navigate(`/profile/${freshUser?.userId}`);
+      return;
+    }
+
+    try {
+      const message = await requestHost(user.userId);
+      alert(message);
+    } catch (err) {
+      console.log("error: " + err);
+    }
   };
+
   const [dropdownOpen, setDropdownOpen] = useState(false); // skapar state för dropdown menyn
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen); // Växla mellan true och false
   };
-
-  const { user, logout } = useAuth();
-
   const handleLogout = async () => {
     await logout();
     navigate("/");
@@ -69,24 +98,26 @@ const Header = ({ onFetch }) => {
 
         {/* Högra knappar */}
         <div style={{ display: "flex", alignItems: "center", gap: "0.2rem" }}>
-          <Button
-            onClick={handleClick}
-            text="Become A Host"
-            className="icon-button"
-            style={{
-              padding: "0.5rem 1rem",
-              borderRadius: "20px",
-              backgroundColor: "white",
-              paddingRight: "1rem",
-              paddinLeft: "1rem",
-              fontSize: "1rem",
-              paddingTop: "0.5rem",
-              paddingBottom: "0.5rem",
-              fontFamily: "Montserrat",
-              fontWeight: "600",
-              marginRight: "2rem",
-            }}
-          />
+          {!checkUserRole && (
+            <Button
+              onClick={handleClick}
+              text="Become A Host"
+              className="icon-button"
+              style={{
+                padding: "0.5rem 1rem",
+                borderRadius: "20px",
+                backgroundColor: "white",
+                paddingRight: "1rem",
+                paddinLeft: "1rem",
+                fontSize: "1rem",
+                paddingTop: "0.5rem",
+                paddingBottom: "0.5rem",
+                fontFamily: "Montserrat",
+                fontWeight: "600",
+                marginRight: "2rem",
+              }}
+            />
+          )}
 
           <Button
             onClick={toggleDropdown}

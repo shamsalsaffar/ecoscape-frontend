@@ -51,7 +51,7 @@ const Signup = () => {
       <div className="login-container">
         <div className="login-text">Sign up</div>
         <form className="form" onSubmit={handleSubmit}>
-          <div className="form-group">
+          <div className="login-form-group">
             <input
               type="text"
               id="username"
@@ -61,7 +61,7 @@ const Signup = () => {
               onKeyPress={handleKeyPress}
             />
           </div>
-          <div className="form-group">
+          <div className="login-form-group">
             <input
               type="password"
               id="password"
@@ -72,7 +72,7 @@ const Signup = () => {
             />
           </div>
 
-          <div className="form-group">
+          <div className="login-form-group">
             <input
               type="password"
               id="repeat-password"
