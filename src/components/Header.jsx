@@ -38,10 +38,9 @@ const Header = ({ onFetch }) => {
 
     try {
       const message = await requestHost(user.userId);
-      alert(message); // or use a toast notification here
-    } catch (error) {
-      const errorMsg = error?.response?.data || "An unexpected error occurred.";
-      alert(errorMsg); // or toast
+      alert(message);
+    } catch (err) {
+      console.log("error: " + err);
     }
   };
 
