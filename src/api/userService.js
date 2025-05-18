@@ -21,3 +21,10 @@ export const requestHost = async (userId) => {
   });
   return res.data;
 };
+
+export const getPendingUsers = async () => {
+  const response = await api.get("/users/pending", {
+    withCredentials: true,
+  });
+  return response.data;
+};

@@ -9,6 +9,8 @@ import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import Helpcenter from "./pages/Helpcenter";
 import HostPage from "./pages/HostPage";
+import Admin from "./pages/Admin";
+import Unauthorized from "./pages/Unauthorized";
 
 import { AuthProvider } from "./contexts/AuthContext";
 import ProtectedRoute from "./router/ProtectedRoute";
@@ -41,6 +43,7 @@ const App = () => {
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/helpcenter" element={<Helpcenter />} />
                 <Route path="/host" element={<HostPage />} />
+                <Route path="/unauthorized" element={<Unauthorized />} />
 
                 {/* protected routes for all authenticated users */}
                 <Route
@@ -52,6 +55,9 @@ const App = () => {
                   <Route path="/profile/:userId" element={<Profile />} />
                 </Route>
                 {/* protected routes for admins only */}
+                <Route element={<ProtectedRoute requiredRoles={["ADMIN"]} />}>
+                  <Route path="/admin" element={<Admin />} />
+                </Route>
               </Routes>
 
               <Footer />
