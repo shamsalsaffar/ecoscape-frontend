@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import api from "../api/axios";
+import { getUserById } from "../api/userService";
 
 export const AuthContext = createContext();
 
@@ -15,7 +16,9 @@ export const AuthProvider = ({ children }) => {
   const checkAuthStatus = async () => {
     try {
       const response = await api.get("/auth/check");
+
       setCurrentUser(response.data);
+      return response.data;
     } catch (error) {
       setCurrentUser(null);
       console.log("Authentication check failed:", error.message);
@@ -29,10 +32,9 @@ export const AuthProvider = ({ children }) => {
       const response = await api.post("/auth/login", { username, password });
 
       setCurrentUser(response.data);
-   
 
       console.log("Response: " + JSON.stringify(response.data));
-      localStorage.setItem("token", response.data.token); 
+      localStorage.setItem("token", response.data.token);
       return response.data;
     } catch (error) {
       console.error("Login error:", error.response?.data || error.message);
@@ -41,7 +43,7 @@ export const AuthProvider = ({ children }) => {
 
   const register = async (username, password) => {
     try {
-        const response = await api.post("/auth/register", {
+      const response = await api.post("/auth/register", {
         username,
         password,
       });
@@ -59,9 +61,9 @@ export const AuthProvider = ({ children }) => {
 
       // CLEAN BOOKING DATA  AFTER LOGOUT BUT SAVE IT WHEN DO REFRESH OR CLOSE BROWSER
 
-       localStorage.removeItem("bookingData");
+      localStorage.removeItem("bookingData");
       localStorage.removeItem("bookingStep");
-      localStorage.removeItem("listingId"); 
+      localStorage.removeItem("listingId");
     } catch (error) {
       console.error("Logout error:", error.response?.data || error.message);
 
@@ -70,7 +72,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const value = {
-    user:currentUser,
+    user: currentUser,
     login,
     logout,
     register,

@@ -5,20 +5,47 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import HostPage from "../pages/HostPage";
 import { useAuth } from "../hooks/useAuth";
+import { requestHost } from "../api/userService";
 
 const Header = ({ onFetch }) => {
   const navigate = useNavigate();
-  const handleClick = () => {
-    // kan använda denna function för become a host i framtiden
-    navigate("/host"); // flytta till host request sidan
+
+  const { user, logout, checkAuthStatus } = useAuth();
+
+  const handleClick = async () => {
+    const freshUser = await checkAuthStatus();
+
+    if (freshUser?.userStatus === "PENDING") {
+      alert("Your host requsted is currently pending.");
+      return;
+    }
+
+    if (
+      !freshUser?.firstName ||
+      !freshUser?.lastName ||
+      !freshUser?.bio ||
+      !freshUser?.birthDate ||
+      !freshUser?.contactPhoneNumber ||
+      !freshUser?.contactEmail
+    ) {
+      alert("Please complete your profile before becoming a host.");
+      navigate(`/profile/${freshUser?.userId}`);
+      return;
+    }
+
+    try {
+      const message = await requestHost(user.userId);
+      alert(message); // or use a toast notification here
+    } catch (error) {
+      const errorMsg = error?.response?.data || "An unexpected error occurred.";
+      alert(errorMsg); // or toast
+    }
   };
+
   const [dropdownOpen, setDropdownOpen] = useState(false); // skapar state för dropdown menyn
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen); // Växla mellan true och false
   };
-
-  const { user, logout } = useAuth();
-
   const handleLogout = async () => {
     await logout();
     navigate("/");
