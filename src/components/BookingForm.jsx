@@ -5,8 +5,9 @@ import { useBooking } from "../contexts/BookingContext";
 import "../styles/bookingForm.css";
 import { AuthContext } from "../contexts/AuthContext";
 import { useAuth } from "../hooks/useAuth";
-import { useLocation , useNavigate} from "react-router-dom";
+import { useLocation , useNavigate, Link} from "react-router-dom";
 import React, { useEffect, useState } from "react";
+import { getListingById } from "../api/listingService";
 
 
 
@@ -15,6 +16,7 @@ const BookingForm = ({ listingId: propListingId, goToNextStep }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const [listingId, setListingId] = useState(null); // state to save listing id retrived from props or url
+  const [listingName, setListingName]= useState(""); // state to listing name 
   const [error, setError] = useState(null); // state to save error
  
   const { user } = useAuth();
@@ -66,6 +68,24 @@ useEffect(() => {
 // COSOLE LOG TO CHECK IF THE USER AND LISTING ID DEFIEND 
 console.log("Listing ID from URL:", listingId);
 console.log("user ID from URL:", user);
+
+
+// USEEFFECT TO FETCH LISTING NAME 
+useEffect (() => {
+  const fetchListingName = async() =>{
+    if (listingId){
+      try{
+        const data = await getListingById(listingId);
+        console.log("Listing fetched:", data);
+        setListingName(data.name);
+
+      } catch (error){
+        console.error("Failed to fetch listing name:", error);
+      }
+    }
+  };
+  fetchListingName();
+},[listingId]);
 
 
 // TO CONNECT BACKEND CONNECT FUNCATION THAT IS IN BOOKKINGS SERVICE
@@ -130,7 +150,16 @@ console.log("user ID from URL:", user);
         almost done! You only need to fill in the required fields marked with 
         <span className="required-star"> *</span>
          </section>
-         <p>Listing ID: {listingId}</p>
+         <p>You are booking: {""}
+          {listingName ? (
+            <Link to= {`/listing/${listingId}`} style={{ color: "#496155", textDecoration: "underline" }}>
+              {listingName}
+            </Link>
+          ) : (
+            <strong>{listingName ||`Listing #${listingId}` }</strong>
+          )} 
+          
+          </p>
       <form  className="form" onSubmit={handleSubmit}>
         <div className="form-grid">
         <div className="form-bookingsgroup">

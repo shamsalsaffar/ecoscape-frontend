@@ -14,8 +14,8 @@
   }
   
   .reserve-button:hover:not(:disabled) {
-    background-color: #74876b; /* أخضر أغمق */
-    box-shadow: 0 0 10px rgba(150, 170, 150, 0.8); /* توهج */
+    background-color: #74876b;  
+    box-shadow: 0 0 10px rgba(150, 170, 150, 0.8);
     transform: scale(1.02);
   }
   

@@ -91,24 +91,24 @@ const ListingCalendar = ({listingId, pricePerNight}) => {
 
 
                 if (nights < 1){
-                    console.log("⛔ Not enough nights selected");
+                    console.log("Not enough nights selected");
                     alert("You must select at least one night to book.");
                     return;
                 }
 
-                if (nights === 1) {
+                /* if (nights === 1) {
                     const isStartAvailable = availableDates.some(d => d.toDateString() === start.toDateString());
                     const isEndAvailable = availableDates.some(d => d.toDateString() === end.toDateString());
                     console.log("Start available?", isStartAvailable, "End available?", isEndAvailable);
 
                 
-                    // إذا كان كلا اليومين متاحين ولكن لا توجد ليلة فعليًا بينهم (أي فجوة)
+                   
                     if (isStartAvailable && isEndAvailable) {
-                        console.log("⛔ Single night between two bookings, not allowed.");
+                        console.log("Single night between two bookings, not allowed.");
                         alert("You cannot book only one night between two bookings. Please select a longer period.");
                         return;
                     }
-                }
+                } */
 
                 const allDatesInRange = [];
                 for (let d = new Date(start); d <end; d.setDate(d.getDate()+ 1)){

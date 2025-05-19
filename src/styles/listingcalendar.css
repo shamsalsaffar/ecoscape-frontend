@@ -1,5 +1,5 @@
 .available-date {
-    background-color: #5e6b58 !important; /* mörkgrön */
+    background-color: #5e6b58 !important; 
     color: white !important;
     border-radius: 2px;
     width: 100%;
@@ -8,7 +8,7 @@
   }
   
   .unavailable-date {
-    background-color: #deefdf !important; /* ljusgrön */
+    background-color: #deefdf !important; 
     color: black !important;
     border-radius: 2px;
     width: 100%;
@@ -16,15 +16,15 @@
   }
   
   .react-calendar__tile {
-    font-size: 0.75rem; /* Ändra till önskad storlek, t.ex. 12px */
+    font-size: 0.75rem; 
     padding: 10px;
     margin-top: 14px;
   }
-  /* استهداف شبكة الأيام داخل التقويم */
+  
 .react-calendar__month-view__days {
   display: grid !important;
   grid-template-columns: repeat(7, 1fr);
-  gap: 3px; /* ← المسافة بين الأيام (يمكن تغيير الرقم حسب رغبتك) */
+  gap: 3px; 
   width: 100%;
   padding: 12px;
   padding-right: 2px;
@@ -38,21 +38,19 @@
   bottom: 0.5px;
   width: 100%;
   left: 0;
-  /* margin-top: 6px;
-  padding-top: 6px; */
   pointer-events: none;
 }
 
-/* عند وضع الماوس على أي يوم */
+
 .react-calendar__tile:hover {
-  background-color: #b2d8b2 !important; /* لون أخضر فاتح */
-  transform: scale(1.05); /* تكبير بسيط */
+  background-color: #b2d8b2 !important; 
+  transform: scale(1.05); 
   transition: all 0.2s ease-in-out;
 }
 
-/* عند اختيار (الضغط على) يوم */
+
 .react-calendar__tile--active {
-  background-color: #789e66 !important; /* أخضر غامق مميز */
+  background-color: #789e66 !important; 
   color: white !important;
   font-weight: bold;
   border-radius: 6px;

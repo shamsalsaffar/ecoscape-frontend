@@ -74,9 +74,12 @@ const CheckoutForm = ({ fullBookingData, goToNextStep }) => {
 
 
       triggerReloadDates();
-      resetBooking();
+      resetBooking(); 
 
-      goToNextStep(finalizeRes.data); //  move to the final step انتقل إلى الخطوة التالية مع البيانات النهائية
+      goToNextStep({
+        ...fullBookingData,
+        ...finalizeRes.data,
+        }); //  move to the final step انتقل إلى الخطوة التالية مع البيانات النهائية
       console.log("Received fullBookingData in PaymentForm:", fullBookingData);
 
     } catch (error) {

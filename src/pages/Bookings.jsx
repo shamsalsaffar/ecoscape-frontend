@@ -57,13 +57,12 @@ const Bookings = () => {
      
   //Optional reset function to clear all booking data and return to step 1
   // Useful to include in presentation or for debugging during development
-     /* const handleReset = () => {
+      const handleReset = () => {
       resetBooking();
       setStep(1); // نرجع إلى أول خطوة
       localStorage.removeItem("bookingstep");
       window.scrollTo(0, 0); // نرجع المستخدم لأعلى الصفحة
-    }; */
-    
+    }; 
 
  
 
@@ -76,11 +75,11 @@ const Bookings = () => {
       {step === 2 && <PaymentForm fullBookingData={bookingData} goToNextStep={goToNextStep}/>}
       {step === 3 && <Confirmation bookingData = {bookingData}/>}
      
-
-    {/*  <button onClick={handleReset} className="reset-button">
-     🧹 Clear Booking Settings
+    
+     <button onClick={handleReset} className="reset-button">
+     🧹  Clear Booking Settings
     </button>
-     */}
+     
       
       
     </div>
