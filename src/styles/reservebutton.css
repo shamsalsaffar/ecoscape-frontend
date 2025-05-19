@@ -1,0 +1,21 @@
+.reserve-button {
+    background-color: #5e6b58;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .reserve-button:disabled {
+    background-color: #2c2f2b;
+    cursor: not-allowed;
+  }
+  
+  .reserve-button:hover:not(:disabled) {
+    background-color: #74876b; /* أخضر أغمق */
+    box-shadow: 0 0 10px rgba(150, 170, 150, 0.8); /* توهج */
+    transform: scale(1.02);
+  }
+  

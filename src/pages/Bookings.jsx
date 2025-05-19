@@ -31,6 +31,10 @@ const Bookings = () => {
     useEffect(() => {
      const savedData = localStorage.getItem("bookingData");
       if (savedData) {
+        resetBooking();
+        localStorage.setItem("bookingStep", "1");
+        setStep(1);
+      } else {
       updateBookingData(JSON.parse(savedData)); //update with saved data 
       }
     }, []);

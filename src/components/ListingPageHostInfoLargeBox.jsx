@@ -10,7 +10,7 @@ const ListingPageHostInfoLargeBox = ({ user }) => {
           <div className="large-section-host-details">
             <div className="large-section-host-name-details">
               <p  className="large-section-host-name">{user.firstName} {user.lastName}</p>
-              <span classname="host-contact">Contact</span>
+              <span className="host-contact">Contact</span>
               <div className="host-contact-email"> {user.contactEmail}</div>
               <div className="host-contact-phone-number">{user.contactPhoneNumber}</div>
             </div>

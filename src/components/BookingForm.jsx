@@ -245,4 +245,3 @@ console.log("user ID from URL:", user);
 }
 
 export default BookingForm
-
