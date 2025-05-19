@@ -5,7 +5,7 @@ import StoveAmenityIcon from "../icons/StoveAmenityIcon";
 import MicrowaveAmenityIcon from "../icons/MicrowaveAmenityIcon";
 import WiFiAmenityIcon from "../icons/WiFiAmenityIcon";
 import TVAmetinyIcon from "../icons/TVAmetinyIcon";
-import ParkingAmenityIcon from "./ParkingAmenityIcon";
+import ParkingAmenityIcon from "../icons/ParkingAmenityIcon";
 import KitchenAmenityIcon from "../icons/KitchenAmenityIcon";
 import BabyCribAmenityIcon from "../icons/BabyCribAmenityIcon";
 import BabyChairAmenityIcon from "../icons/BabyChairAmenityIcon";
