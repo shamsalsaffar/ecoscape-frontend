@@ -11,7 +11,7 @@ const Profile = () => {
   const { userId } = useParams();
   const [user, setUser] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
-  const [showBookings,setShowBookings]= useState(false) // state to show my bookings
+  const [showBookings, setShowBookings] = useState(false); // state to show my bookings
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
@@ -141,22 +141,26 @@ const Profile = () => {
                 user?.contactEmail
               )}
             </div>
-            <Button
-              className="profile-button"
-              text={isEditing ? "Save Changes" : "Edit Profile"}
-              type="button"
-              variant="auth"
-              onClick={isEditing ? handleSave : () => setIsEditing(true)}
-            />
-             <Button
-              className="profile-button"
-              text={showBookings ? "Hide My Bookings" : "My Bookings"}
-              type="button"
-              variant="auth"
-              onClick={() => setShowBookings(!showBookings)}
-            />
+            <div className="profile-button-container">
+              <Button
+                className="profile-button"
+                text={isEditing ? "Save Changes" : "Edit Profile"}
+                type="button"
+                variant="auth"
+                onClick={isEditing ? handleSave : () => setIsEditing(true)}
+              />
+              <Button
+                className="profile-button"
+                text={showBookings ? "Hide My Bookings" : "My Bookings"}
+                type="button"
+                variant="auth"
+                onClick={() => setShowBookings(!showBookings)}
+              />
 
-            {showBookings && <MyBookingsModal onClose={() => setShowBookings(false)} />}
+              {showBookings && (
+                <MyBookingsModal onClose={() => setShowBookings(false)} />
+              )}
+            </div>
           </div>
         </div>
       </ProfileBackground>
