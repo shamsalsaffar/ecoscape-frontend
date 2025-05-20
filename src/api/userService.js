@@ -21,3 +21,18 @@ export const requestHost = async (userId) => {
   });
   return res.data;
 };
+
+export const getPendingUsers = async () => {
+  const response = await api.get("/users/pending", {
+    withCredentials: true,
+  });
+  return response.data;
+};
+
+export const approveHost = async (userId) => {
+  return api.put(`/users/approve/${userId}`);
+};
+
+export const rejectHost = async (userId) => {
+  return api.put(`/users/reject/${userId}`);
+};
