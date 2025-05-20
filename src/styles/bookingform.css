@@ -1,11 +1,39 @@
 .booking-page h1 {
-  text-align: center;               /* Centrerar texten horisontellt */
-  color: #064420;                   /* Mörkgrön färg */
-  margin-top: 2rem;                 /* Lite avstånd uppåt */
-  font-size: 2.5rem;                /* Stor rubrik */
+  text-align: center;               
+  color: #064420;                   
+  margin-top: 2rem;               
+  font-size: 2.5rem;                
   font-weight: bold;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);  /* Subtil skugga */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);  
   transition: transform 0.3s ease;
+}
+.reset-button{
+  border-radius: 80px;
+  margin-bottom: 2rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding-top: 1.2rem;
+    padding-bottom: 1.2rem;
+    background-color: #064420;
+    color: white;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border: none;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    width: 15%;
+    align-items: center;
+   
+   transform: translateY(-100px) ;
+   transform: translateX(1200px) ;
+    
+  
+}
+
+.booking-form p {
+  font-size: 2rem;
+  color: #758a7f;
+  font-weight: bold;
 }
 
 .form {
@@ -44,20 +72,6 @@
 }
 
 
-
-
-
-/* .submit-booking-form{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
- 
-    align-items: stretch;
-    gap: 1.5rem;
-    font-family: "Montserrat", sans-serif;
-    box-shadow: none;
-    padding: 0;
-    margin-top: 40px;
-  } */
   .booking-section {
     border: 2px solid #074f18;
     padding: 1.5rem ;
@@ -111,23 +125,7 @@
     margin-top: 5rem;
   }
   
-  /* .button-form {
-    grid-column: span 2;
-    border-radius: 80px;
-    padding-left: 5rem;
-    padding-right: 5rem;
-    padding-top: 1.2rem;
-    padding-bottom: 1.2rem;
-    background-color: #49613d;
-    color: white;
-    font-size: 0.9rem;
-    cursor: pointer;
-    border: none;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 600;
-    width: 44%;
-  }
- */
+ 
   .required-star {
     color: red;
     font-size: 1.3rem;

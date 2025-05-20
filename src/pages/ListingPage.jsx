@@ -12,6 +12,7 @@ import ListingPageSustainabilitySymbols from "../components/ListingPageSustainab
 import ListingPageHostInfoLargeBox from "../components/ListingPageHostInfoLargeBox";
 
 import "../styles/listingpage.css"
+import ListingCalendar from "../components/ListingCalendar";
 
 
 
@@ -61,6 +62,7 @@ const ListingPage = () => {
       <ListingPageAmenities className="listing-page-amenities"listing={listing}/>
       <ListingPageHostInfoLargeBox user={user} />
       <ReserveButton listingId={listing.id} />
+      <ListingCalendar listingId={listing.id} pricePerNight={listing.pricePerNight}/>
     </div>
   );
 };

@@ -12,6 +12,7 @@ import {
 } from "@stripe/react-stripe-js";
 import Button from "./Button";
 import api from "../api/axios"; 
+import { useBooking } from "../contexts/BookingContext";
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
 
@@ -22,6 +23,8 @@ const CheckoutForm = ({ fullBookingData, goToNextStep }) => {
 
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+
+  const {triggerReloadDates, resetBooking}=useBooking();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -34,11 +37,11 @@ const CheckoutForm = ({ fullBookingData, goToNextStep }) => {
     setError(null);
 
     try {
-      // ✅ أنشئ payment intent بدون Authorization header
+      //  create payment intent بدون Authorization header
       const intentRes = await api.post(
         "/api/payments/create-payment-intent",
         {
-          amount: fullBookingData.totalPrice * 100, // المبلغ بالـ öre (100 öre = 1 SEK)
+          amount: fullBookingData.totalPrice * 100,  
           currency: "sek",
         }
       );
@@ -60,7 +63,7 @@ const CheckoutForm = ({ fullBookingData, goToNextStep }) => {
         throw new Error(confirmResult.error.message);
       }
 
-      // ✅ أرسل نتيجة الدفع لتحديث الحجز في قاعدة البيانات
+      //  أرسال نتيجة الدفع لتحديث الحجز في قاعدة البيانات
       const finalizeRes = await api.post("/api/payments/finalize-payment", {
         paymentIntentId: confirmResult.paymentIntent.id,
         amount: confirmResult.paymentIntent.amount,
@@ -69,7 +72,14 @@ const CheckoutForm = ({ fullBookingData, goToNextStep }) => {
         paymentType: "STRIPE",
       });
 
-      goToNextStep(finalizeRes.data); // ✅ انتقل إلى الخطوة التالية مع البيانات النهائية
+
+      triggerReloadDates();
+      resetBooking(); 
+
+      goToNextStep({
+        ...fullBookingData,
+        ...finalizeRes.data,
+        }); //  move to the final step انتقل إلى الخطوة التالية مع البيانات النهائية
       console.log("Received fullBookingData in PaymentForm:", fullBookingData);
 
     } catch (error) {

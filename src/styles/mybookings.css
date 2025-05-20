@@ -1,0 +1,47 @@
+.my-bookings {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #394c37;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+    max-height: 70vh;
+  }
+  
+  .my-bookings h3 {
+    font-size: 1.8rem;
+    color: #bbbdbe;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .my-bookings ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .my-bookings li {
+    background-color: #7da27d;
+    border-left: 5px solid #2c3e50;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    transition: transform 0.2s ease;
+  }
+  
+  .my-bookings li:hover {
+    transform: scale(1.02);
+    background-color: #a1c0a1;
+  }
+  
+  .my-bookings strong {
+    font-size: 1.1rem;
+    color: #02431d;
+  }
+  
+  .my-bookings p {
+    color: #555;
+  }
+  
