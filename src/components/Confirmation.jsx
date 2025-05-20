@@ -1,5 +1,7 @@
 import React from 'react'
 import "../styles/confirmation.css";
+import { Link } from "react-router-dom";
+
 
 
 const Confirmation = ({bookingData}) => {
@@ -7,6 +9,9 @@ const Confirmation = ({bookingData}) => {
   if (!bookingData){
     return <p>Loading booking details...</p>
   }
+
+  const listingId = bookingData.listingId;
+  const listingName = bookingData.listingname;
   return (
     <div className= "comfirmation-container">
 
@@ -19,7 +24,16 @@ const Confirmation = ({bookingData}) => {
         <p><strong>Name:</strong> {bookingData.firstName} {bookingData.lastName}</p>
         <p><strong>Email:</strong> {bookingData.usersContactEmail}</p>
         <p><strong>Phone:</strong> {bookingData.usersContactPhoneNumber}</p>
-        <p><strong>Listing ID:</strong> {bookingData.listingId}</p>
+        <p>Your listing is: {""}
+          {listingName ? (
+            <Link to= {`/listing/${listingId}`} style={{ color: "#2c3e50", textDecoration: "underline" }}>
+              {listingName}
+            </Link>
+          ) : (
+            <strong>{listingName ||`Listing #${listingId}` }</strong>
+          )} 
+          
+          </p>
         <p><strong>Guests:</strong> {bookingData.guests}</p>
         <p><strong>Check-in:</strong> {bookingData.startDate}</p>
         <p><strong>Check-out:</strong> {bookingData.endDate}</p>

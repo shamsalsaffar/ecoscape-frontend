@@ -35,6 +35,10 @@ export const AuthProvider = ({ children }) => {
 
       console.log("Response: " + JSON.stringify(response.data));
       localStorage.setItem("token", response.data.token);
+      
+      localStorage.removeItem("bookingStep");
+    localStorage.removeItem("bookingData");
+
       return response.data;
     } catch (error) {
       console.error("Login error:", error.response?.data || error.message);
