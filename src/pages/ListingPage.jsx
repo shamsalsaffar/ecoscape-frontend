@@ -1,4 +1,4 @@
-import { useParams} from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getListingById, getImagesByListingId } from "../api/listingService";
 import { getUserByListingId } from "../api/userService";
@@ -11,10 +11,8 @@ import ListingPageAmenities from "../components/ListingPageAmenities";
 import ListingPageSustainabilitySymbols from "../components/ListingPageSustainabilitySymbols";
 import ListingPageHostInfoLargeBox from "../components/ListingPageHostInfoLargeBox";
 
-import "../styles/listingpage.css"
+import "../styles/listingpage.css";
 import ListingCalendar from "../components/ListingCalendar";
-
-
 
 const ListingPage = () => {
   const { id } = useParams();
@@ -22,19 +20,17 @@ const ListingPage = () => {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
-  
- 
 
   useEffect(() => {
     const fetchListingDetails = async () => {
       try {
-        const data = await getListingById(id); 
-        console.log("Data from getListingById:", data);         
-        const imgs = await getImagesByListingId(id);  
+        const data = await getListingById(id);
+        console.log("Data from getListingById:", data);
+        const imgs = await getImagesByListingId(id);
         const userData = await getUserByListingId(id);
         setListing(data);
         setImages(imgs);
-        setUser(userData)
+        setUser(userData);
       } catch (err) {
         console.log("Error:", err);
       } finally {
@@ -57,12 +53,26 @@ const ListingPage = () => {
       <ListingPageGallery mainImage={mainImage} sideImages={sideImages} />
       <ListingPageHostInfoSmallBox user={user} />
       <ListingPageDescriptionBox listing={listing} />
+      <div className="calender-section">
+        <ListingCalendar
+          listingId={listing.id}
+          pricePerNight={listing.pricePerNight}
+          className="calender-layot"
+        />
+        <div className="reserve-button-wrapper">
+          <ReserveButton listingId={listing.id} />
+        </div>
+      </div>
       <ListingPageRules className="listing-page-rules" listing={listing} />
-      <ListingPageSustainabilitySymbols className="listing-page-sustainability-symbols" listing={listing}/>
-      <ListingPageAmenities className="listing-page-amenities"listing={listing}/>
+      <ListingPageSustainabilitySymbols
+        className="listing-page-sustainability-symbols"
+        listing={listing}
+      />
+      <ListingPageAmenities
+        className="listing-page-amenities"
+        listing={listing}
+      />
       <ListingPageHostInfoLargeBox user={user} />
-      <ReserveButton listingId={listing.id} />
-      <ListingCalendar listingId={listing.id} pricePerNight={listing.pricePerNight}/>
     </div>
   );
 };
