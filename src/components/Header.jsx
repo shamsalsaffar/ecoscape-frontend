@@ -18,6 +18,12 @@ const Header = ({ onFetch }) => {
   const handleClick = async () => {
     const freshUser = await checkAuthStatus();
 
+    if (!user) {
+      alert("You need to login first.");
+      navigate("/login");
+      return;
+    }
+
     if (freshUser?.userStatus === "PENDING") {
       alert("Your host requsted is currently pending.");
       return;
@@ -142,6 +148,9 @@ const Header = ({ onFetch }) => {
               {user ? (
                 <>
                   <Link to={`/profile/${user.userId}`}>My Profile</Link>{" "}
+                  {user.roles?.includes("ADMIN") && (
+                    <Link to="/admin">Admin</Link>
+                  )}
                   <Link
                     to="/"
                     onClick={(event) => {

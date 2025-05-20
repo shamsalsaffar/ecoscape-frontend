@@ -38,7 +38,6 @@ const Home = () => {
     fetchListingsWithImages();
   }, []);
 
-  //visualiserar loading med text så användaren vet att något är på gång
   if (loading) return <div>Loading...</div>;
 
   //funcktionen som tar emot sök kriteria

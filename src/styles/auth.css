@@ -82,3 +82,11 @@
   font-size: 14px;
   margin-left: 30px;
 }
+
+.unauth-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 89vh;
+}
