@@ -3,7 +3,6 @@
   grid-template-columns: 1fr 1fr;
   gap: 20px;
   padding: 50px;
-  background: rgba(250, 248, 248, 0.75);
   height: 100%;
   width: 100%;
 }
