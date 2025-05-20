@@ -4,11 +4,14 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { getUserById, updateUser } from "../api/userService";
 import Button from "../components/Button";
+import MyBookings from "../components/MyBookings";
+import MyBookingsModal from "../components/MyBookingsModal";
 
 const Profile = () => {
   const { userId } = useParams();
   const [user, setUser] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
+  const [showBookings,setShowBookings]= useState(false) // state to show my bookings
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
@@ -145,6 +148,15 @@ const Profile = () => {
               variant="auth"
               onClick={isEditing ? handleSave : () => setIsEditing(true)}
             />
+             <Button
+              className="profile-button"
+              text={showBookings ? "Hide My Bookings" : "My Bookings"}
+              type="button"
+              variant="auth"
+              onClick={() => setShowBookings(!showBookings)}
+            />
+
+            {showBookings && <MyBookingsModal onClose={() => setShowBookings(false)} />}
           </div>
         </div>
       </ProfileBackground>
