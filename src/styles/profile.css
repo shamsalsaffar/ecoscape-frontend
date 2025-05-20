@@ -4,6 +4,8 @@
   align-items: center;
   min-height: 100vh;
   color: white;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .profile-image {
@@ -39,9 +41,6 @@
 
 .profile-about {
   font-size: 16px;
-  overflow-y: auto; /* adds vertical scrollbar if content exceeds max-height */
-  word-wrap: break-word;
-  white-space: pre-wrap; /* preserves line breaks */
 }
 
 .profile-title {
@@ -80,6 +79,7 @@ h3 {
   text-align: center;
 }
 
-.profile-hello {
-  color: #fff;
+.profile-button-container {
+  display: flex;
+  gap: 10px;
 }
