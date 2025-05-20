@@ -23,3 +23,32 @@ export const getImagesByListingId = async (id) => {
     return [];
   }
 };
+
+export const searchAvailableListings = async ({
+  checkInDate,
+  checkOutDate,
+  name,
+  location,
+  capacity,
+  category
+}) => {
+  const params = new URLSearchParams();
+
+  if (checkInDate) params.append('checkInDate', checkInDate);
+  if (checkOutDate) params.append('checkOutDate', checkOutDate);
+  if (name) params.append('name', name);
+  if (location) params.append('location', location);
+  if (capacity) params.append('capacity', capacity);
+  if (category) params.append('category', category);
+
+  const url = `/api/listings/search?${params.toString()}`;
+
+  try {
+    const response = await api.get(url);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching listings:', error);
+    throw error;
+  }
+};
+
