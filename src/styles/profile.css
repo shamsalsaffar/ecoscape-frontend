@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 89vh;
+  min-height: 100vh;
   color: white;
 }
 
@@ -39,6 +39,9 @@
 
 .profile-about {
   font-size: 16px;
+  overflow-y: auto; /* adds vertical scrollbar if content exceeds max-height */
+  word-wrap: break-word;
+  white-space: pre-wrap; /* preserves line breaks */
 }
 
 .profile-title {
