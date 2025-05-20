@@ -28,3 +28,11 @@ export const getPendingUsers = async () => {
   });
   return response.data;
 };
+
+export const approveHost = async (userId) => {
+  return api.put(`/users/approve/${userId}`);
+};
+
+export const rejectHost = async (userId) => {
+  return api.put(`/users/reject/${userId}`);
+};
