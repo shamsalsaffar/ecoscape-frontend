@@ -19,6 +19,13 @@ export const submitBooking = async (listingId, bookingData) => {
     }
   };
 
+  
+
+  export const getMyBookings = async () =>{
+    const response = await api.get("/api/bookings/my-bookings");
+    return response.data;
+  }
+
 
 
 //  TO UPDATE BOOKING BY USER

@@ -52,3 +52,8 @@ export const searchAvailableListings = async ({
   }
 };
 
+
+export const getAvailableDates = async (listingId) => {
+  const response = await api.get(`/api/availableDates/${listingId}/getAll`);
+  return response.data;
+};

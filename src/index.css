@@ -17,33 +17,6 @@ html {
   font-family: "Montserrat", sans-serif;
   overflow-x: hidden;
 }
-/*
-
-body {
-  font-family: sans-serif;
-}
-
-body,
-html {
-  width: 100%;
-  height: 100%;
-}
-
-.layout {
-  background-color: white;
-  display: flex;
-  flex-direction: column;
-  width: 100vw;
-  height: 100vh;
-}
-
-.nav-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  padding: 10px;
-  background-color: #e0e0e0;
-}
 
 
 

@@ -68,10 +68,10 @@ const Header = ({ onFetch }) => {
         style={{
           display: "flex",
           alignItems: "center",
-          justifyContent: "space-between", // يعطي توزيع أفضل
-          padding: "0 2rem", // يعطي مسافة من اليمين واليسار
+          justifyContent: "space-between", 
+          padding: "0 2rem",  
           width: "100%",
-          gap: "4rem", // gap داخل JSX
+          gap: "4rem", 
         }}
       >
         {/* Vänstra länkar */}

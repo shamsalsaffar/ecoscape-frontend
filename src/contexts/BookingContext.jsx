@@ -6,16 +6,13 @@ export const useBooking = () => useContext(BookingContext);
 
 export const BookingProvider = ({children}) => {
     const [bookingData, setBookingData]= useState({
-     /* userId: '',
-     listingId: '',
-     firstName: '',
-     lastName: '',
-     usersContactPhoneNumber: '',
-     usersContactEmail: '',
-     startDate: '',
-     endDate: '',
-     status: 'PENDING',
-     guests: 1,  */
+        startDate: '',
+        endDate: '',
+        guests: 1,
+        firstName: '',
+        lastName: '',
+        usersContactPhoneNumber: '',
+        usersContactEmail: '',
 
     });
 
@@ -28,14 +25,27 @@ export const BookingProvider = ({children}) => {
     };
 
     const resetBooking = () => {
-        setBookingData({});
-        localStorage.removeItem("bookingData");
-        localStorage.removeItem("bookingStep");
+        setBookingData({
+            startDate: '',
+            endDate: '',
+            guests: 1,
+            firstName: '',
+            lastName: '',
+            usersContactPhoneNumber: '',
+            usersContactEmail: '',
+          });
+        };
+
+    const [reloadDates, setReloadDates]= useState(false);
+    const triggerReloadDates = () => {
+        setReloadDates(prev => !prev);
     };
 
 
    return (
-    <BookingContext.Provider value={{ bookingData, updateBookingData, resetBooking}}>
+    <BookingContext.Provider value={{
+         bookingData, updateBookingData,
+         resetBooking,reloadDates, triggerReloadDates}}>
 
     {children}
     </BookingContext.Provider>
