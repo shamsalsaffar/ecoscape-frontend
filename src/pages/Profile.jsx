@@ -116,13 +116,13 @@ const Profile = () => {
                   <label htmlFor="firstName">First Name</label>
                   <input
                     name="firstName"
-                    value={form.firstName}
+                    value={form.firstName ?? ""}
                     onChange={handleChange}
                   />
                   <label htmlFor="lastName">Last Name</label>
                   <input
                     name="lastName"
-                    value={form.lastName}
+                    value={form.lastName ?? ""}
                     onChange={handleChange}
                   />
                 </>
@@ -138,7 +138,7 @@ const Profile = () => {
                 <textarea
                   className="profile-bio"
                   name="bio"
-                  value={form.bio}
+                  value={form.bio ?? ""}
                   onChange={handleChange}
                 />
               ) : (
