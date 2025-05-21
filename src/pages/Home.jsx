@@ -4,6 +4,7 @@ import { getAllListings, getImagesByListingId } from "../api/listingService";
 import { searchAvailableListings } from "../api/listingService";
 import Button from "../components/Button";
 import { useState, useEffect } from "react";
+import Loading from "../components/Loading";
 
 const Home = () => {
   //skafar en state variablel listings för att spara listings, by default den är tom
@@ -16,6 +17,7 @@ const Home = () => {
       // Hämtar alla listings från API:et
       const data = await getAllListings();
       // hämtar och kombinerar listingar och dess bilder i nya objecter (listing + image) och s'tter de i listan listingsWithImages
+      // väntar på att alla API-anrop för bilder ska bli klara
       const listingsWithImages = await Promise.all(
         data.map(async (listing) => {
           const images = await getImagesByListingId(listing.id);
@@ -38,7 +40,7 @@ const Home = () => {
     fetchListingsWithImages();
   }, []);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <Loading />;
 
   //funcktionen som tar emot sök kriteria
   const handleSearch = async (searchParams) => {

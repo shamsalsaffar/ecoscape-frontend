@@ -10,6 +10,8 @@ import ReserveButton from "../components/ReserveButton";
 import ListingPageAmenities from "../components/ListingPageAmenities";
 import ListingPageSustainabilitySymbols from "../components/ListingPageSustainabilitySymbols";
 import ListingPageHostInfoLargeBox from "../components/ListingPageHostInfoLargeBox";
+import Loading from "../components/Loading";
+
 
 import "../styles/listingpage.css";
 import ListingCalendar from "../components/ListingCalendar";
@@ -42,7 +44,7 @@ const ListingPage = () => {
   }, [id]);
   console.log("Listing ID being passed to ReserveButton:", listing?.id);
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <Loading />;
   if (!listing) return <div>Listing not found</div>;
 
   const mainImage = images[0]?.imageUrl;
