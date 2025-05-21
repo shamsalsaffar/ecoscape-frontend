@@ -36,26 +36,62 @@ const Profile = () => {
     fetchUserDetails();
   }, [userId]);
 
-  /*https://www.geeksforgeeks.org/how-to-use-handlechange-function-in-react-component/*/
-  const handleChange = (event) => {
-    let value = event.target.value;
-    let name = event.target.name;
+  //if input is empty it gets stored as null
+  const handleChange = (e) => {
+    const { name, value } = e.target;
 
-    setForm((prev) => {
-      return {
-        ...prev,
-        [name]: value,
-      };
-    });
+    setForm((prev) => ({
+      ...prev,
+      [name]: value === "" ? null : value,
+    }));
   };
 
   const handleSave = async () => {
+    const namePattern = /^$|^[A-Za-zÀ-ÖØ-öø-ÿ'\s-]+$/;
+
+    const maxBioLength = 600;
+
+    const contactEmailPattern =
+      /(^$|^[a-zA-Z0-9_+&*-]+(?:\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,7}$)/;
+
+    const contactPhonePattern = /(^$|^\+\d{1,3}\d{9}$)/;
+
+    if (!namePattern.test(form.firstName)) {
+      alert("Invalid characters in first name");
+      return;
+    }
+
+    if (!namePattern.test(form.lastName)) {
+      alert("Invalid characters in last name");
+      return;
+    }
+
+    if (form.bio && form.bio.length > maxBioLength) {
+      alert(`Your bio cannot be longer than 600 characters.`);
+      return;
+    }
+
+    if (!contactPhonePattern.test(form.contactPhoneNumber ?? "")) {
+      alert("That's not a valid phone number.");
+      return;
+    }
+
+    if (!contactEmailPattern.test(form.contactEmail ?? "")) {
+      alert("That's not a valid email.");
+      return;
+    }
+
     try {
       const updatedUser = await updateUser(userId, form);
       setUser(updatedUser);
       setIsEditing(false);
     } catch (err) {
-      console.error("Failed to update: ", err);
+      //if the server error equals 409 (conflict) it responds accordingly why (contact email&password needs to be unique)
+      if (err.response && err.response.status === 409) {
+        alert(err.response.data);
+      } else {
+        console.error("Failed to update: ", err);
+      }
     }
   };
 
@@ -99,9 +135,14 @@ const Profile = () => {
             <div className="profile-about">
               <h3>Bio</h3>
               {isEditing ? (
-                <input name="bio" value={form.bio} onChange={handleChange} />
+                <textarea
+                  className="profile-bio"
+                  name="bio"
+                  value={form.bio}
+                  onChange={handleChange}
+                />
               ) : (
-                user?.bio
+                <p>{user?.bio}</p>
               )}
             </div>
             <div className="profile-birth">
@@ -112,6 +153,8 @@ const Profile = () => {
                   type="date"
                   value={form.birthDate}
                   onChange={handleChange}
+                  //can't set birthdate to future, need to fix so you can't set birthdate to a certain age
+                  max={new Date().toLocaleDateString("sv-SE")}
                 />
               ) : (
                 user?.birthDate
