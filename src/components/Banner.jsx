@@ -2,6 +2,7 @@ import SearchBar from "./SearchBar";
 import CategoryBar from "./CategoryBar";
 import "../styles/banner.css";
 import background from "../images/tree_background.jpg";
+
 //får onSearch function som props från Home
 const Banner = ({ onSearch }) => {
   return (

@@ -4,7 +4,7 @@ import "../styles/listingcollection.css";
 //får två props från home
 const ListingCollection = ({ listings, loading }) => {
   //visualiserar loading med text så användaren vet att något är på gång
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <Loading/>;
 
   return (
     <div className="listing-grid">
