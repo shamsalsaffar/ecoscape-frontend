@@ -83,3 +83,9 @@ h3 {
   display: flex;
   gap: 10px;
 }
+
+.profile-bio {
+  height: 160px;
+  width: 100%;
+  resize: none;
+}
