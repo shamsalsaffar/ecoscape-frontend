@@ -12,7 +12,8 @@ const Banner = ({ onSearch }) => {
         <h1 className="ecoscape-header">Ecoscape</h1>
         <div className="banner-toolbar">
           <h2 className="search-header">Find your sustainable accommodation</h2>
-          <CategoryBar />
+          {/* skicka onSearch function till categorybar componenten*/}
+          <CategoryBar onSearch={onSearch} />
           {/* skicka onSearch function till searchbar componenten*/}
           <SearchBar onSearch={onSearch} />
         </div>

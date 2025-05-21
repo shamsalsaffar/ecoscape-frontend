@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom"; // Import Link for navigation
+import { Link } from "react-router-dom"; 
 import DefaultListingImage from "../icons/DefaultListingImage";
 import "../styles/listingcollection.css";
 //får två props från home
