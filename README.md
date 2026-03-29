@@ -10,7 +10,7 @@ This repository contains the **frontend application built with React**, integrat
 
 EcoScape aims to:
 
-* promote sustainable travel 
+* promote sustainable travel
 * connect users with eco-friendly listings
 * provide a smooth and secure booking experience
 
@@ -43,7 +43,7 @@ EcoScape follows a **three-layer architecture**:
 * Spring Boot
 * JWT Authentication
 * REST APIs
-* Stripe integration for payments
+* Stripe integration
 
 ### 3. Frontend (this project)
 
@@ -92,22 +92,24 @@ The booking process is implemented as a **3-step flow**:
 * Validation before submission
 * Integration with backend booking system
 * Stripe PaymentIntent flow
-* Reset logic for safe user experience
+* Reset logic for better user experience
 
 ---
 
 ##  Payment Integration (Stripe)
 
-* Payment handled via Stripe
-* Uses:
+* Payment handled using Stripe
+
+* Implemented with:
 
   * CardNumberElement
   * CardExpiryElement
   * CardCvcElement
-* Backend integration:
 
-  * create-payment-intent
-  * finalize-payment
+* Backend endpoints:
+
+  * `create-payment-intent`
+  * `finalize-payment`
 
 ---
 
@@ -116,7 +118,7 @@ The booking process is implemented as a **3-step flow**:
 Users can:
 
 * view and edit personal information
-* validate input (email, phone, name)
+* validate inputs (email, phone, name)
 * view bookings via modal
 
 ---
@@ -130,20 +132,19 @@ Users can:
 
 ##  Search & Listings
 
-Users can:
+Users can search listings by:
 
-* search listings by:
+* date
+* location
+* number of guests
+* category
 
-  * date
-  * location
-  * guests
-  * category
-* view:
+Listings include:
 
-  * images
-  * amenities
-  * sustainability features
-  * host information
+* images
+* amenities
+* sustainability features
+* host information
 
 ---
 
@@ -165,22 +166,42 @@ npm run dev
 
 ---
 
-##  Author
+##  Team & Contribution
 
-**Shams AlSaffar**
+This project was developed as part of a team collaboration.
+
+### My Contribution
+
+I played a major role in the frontend development, with a primary focus on the **booking system and payment flow**, including:
+
+* Designing and implementing the multi-step booking flow
+* Managing booking state using Context API (`BookingContext`)
+* Integrating frontend with backend booking endpoints
+* Implementing Stripe payment flow (PaymentIntent & confirmation)
+* Handling form validation and error states
+* Ensuring a smooth and user-friendly booking experience
+
+I also contributed to:
+
+* frontend architecture decisions
+* API integration
+* authentication flow handling
+
+### Team Collaboration
+
+The project was developed in an agile team environment, where responsibilities were shared across frontend and backend development.
 
 ---
 
 ##  Reflection
 
-This project represents my development as a **full-stack developer**, where I worked on:
+This project represents my development as a **full-stack developer**, where I gained experience in:
 
-* frontend architecture
-* booking systems
-* payment integration
-* API communication
-* authentication flows
-* teamwork in an agile environment
+* building scalable frontend architecture
+* integrating payment systems (Stripe)
+* handling API communication
+* implementing authentication flows
+* collaborating in an agile team
 
 ---
 
